@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp;
+package com.example.greenhouseappnew;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sep4_greenhouseapp.model.Plant;
+import com.example.greenhouseappnew.model.Plant;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;

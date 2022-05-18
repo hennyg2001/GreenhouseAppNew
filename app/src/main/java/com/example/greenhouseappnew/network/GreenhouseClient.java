@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp.network;
+package com.example.greenhouseappnew.network;
 
 public class GreenhouseClient {
 }

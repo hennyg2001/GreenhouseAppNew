@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp.model;
+package com.example.greenhouseappnew.model;
 
 public class LogResponse {
 

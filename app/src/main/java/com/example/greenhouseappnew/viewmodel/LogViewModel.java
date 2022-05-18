@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp.viewmodel;
+package com.example.greenhouseappnew.viewmodel;
 
 public class LogViewModel {
 }

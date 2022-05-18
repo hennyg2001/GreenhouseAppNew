@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp.authentication;
+package com.example.greenhouseappnew.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.sep4_greenhouseapp.MainActivity;
-import com.example.sep4_greenhouseapp.R;
+import com.example.greenhouseappnew.MainActivity;
+import com.example.greenhouseappnew.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

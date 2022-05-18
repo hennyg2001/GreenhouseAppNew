@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp;
+package com.example.greenhouseappnew;
 
 import android.os.Bundle;
 import android.view.View;

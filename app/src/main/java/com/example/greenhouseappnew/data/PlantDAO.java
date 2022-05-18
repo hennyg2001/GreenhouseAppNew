@@ -1,11 +1,11 @@
-package com.example.sep4_greenhouseapp.data;
+package com.example.greenhouseappnew.data;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.sep4_greenhouseapp.model.Plant;
+import com.example.greenhouseappnew.model.Plant;
 
 import java.util.List;
 

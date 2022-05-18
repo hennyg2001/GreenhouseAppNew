@@ -1,4 +1,4 @@
-package com.example.sep4_greenhouseapp;
+package com.example.greenhouseappnew;
 
 public class WateringActivity {
 }
