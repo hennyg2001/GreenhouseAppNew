@@ -34,7 +34,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         return new LogAdapter.ViewHolder(view);
     }
 
-    public void onBindViewHolder(@NonNull PlantAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull LogAdapter.ViewHolder viewHolder, int position) {
         viewHolder.name.setText(logs.get(position).getName());
     }
 
@@ -44,7 +44,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public final TextView name;
+        private final TextView name;
 
         ViewHolder(View itemView) {
             super(itemView);

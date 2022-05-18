@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Plant {
 
-    private String id;
+    private int id;
     private String name;
     private String type;
     private String description;
@@ -19,6 +19,10 @@ public class Plant {
         this.type = type;
         this.description = description;
         this.logs = logs;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
