@@ -7,7 +7,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PlantActivity extends AppCompatActivity {
+import com.example.greenhouseappnew.model.Plant;
+
+public class CreateEditPlantActivity extends AppCompatActivity {
 
     private EditText nameTextView, typeTextView, descriptionTextView;
     private Button btn;
@@ -29,7 +31,7 @@ public class PlantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                setContentView(R.layout.plants_list);
+
             }
         });
     }
