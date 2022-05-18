@@ -5,20 +5,21 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
 
 import java.util.List;
 
 @Dao
-public interface PlantDAO {
+public interface GreenhouseDAO {
 
-    @Query("SELECT * FROM plants")
-    List<Plant> getAll();
+    @Query("SELECT * FROM greenhouses")
+    List<Greenhouse> getAll();
 
     @Insert
-    void insert(Plant plant);
+    void insert(Greenhouse greenhouse);
 
     @Delete
-    void delete(Plant plant);
+    void delete(Greenhouse greenhouse);
 
 }

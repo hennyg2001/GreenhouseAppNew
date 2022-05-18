@@ -11,6 +11,8 @@ import com.example.greenhouseappnew.R;
 
 public class PlantProfileFragment extends Fragment {
 
-
+    public PlantProfileFragment() {
+        super(R.layout.fragment_plant_profile);
+    }
 
 }
