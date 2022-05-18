@@ -7,26 +7,30 @@
 
     <fragment
         android:id="@+id/nav_plants"
-        android:name="com.example.greenhouseappnew.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_plants" />
+        android:name="com.example.greenhouseappnew.ui.plants.PlantsFragment"
+        android:label="Plants"
+        tools:layout="@layout/fragment_plants" >
+        <action
+            android:id="@+id/action_nav_plants_to_nav_plant_profile"
+            app:destination="@id/nav_plant_profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_plant_profile"
-        android:name="com.example.greenhouseappnew.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:name="com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment"
+        android:label="Plant Profiles"
         tools:layout="@layout/fragment_plant_profile" />
 
     <fragment
-        android:id="@+id/nav_info"
-        android:name="com.example.greenhouseappnew.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_plants" />
+        android:id="@+id/nav_logs"
+        android:name="com.example.greenhouseappnew.ui.logs.LogsFragment"
+        android:label="Logs"
+        tools:layout="@layout/fragment_logs" />
 
     <fragment
-        android:id="@+id/nav_logs"
-        android:name="com.example.greenhouseappnew.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:id="@+id/nav_info"
+        android:name="com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment"
+        android:label="Logs"
         tools:layout="@layout/fragment_logs" />
 
 </navigation>

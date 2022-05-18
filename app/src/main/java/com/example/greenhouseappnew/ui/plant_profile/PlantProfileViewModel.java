@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.greenhouseappnew.model.Plant;
+import com.example.greenhouseappnew.model.Routine;
 import com.example.greenhouseappnew.network.GreenhouseService;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,25 +21,25 @@ public class PlantProfileViewModel extends AndroidViewModel {
     }
 
     private GreenhouseService service;
-    private LiveData<List<Routines>> routines;
+    private LiveData<List<Routine>> allRoutines;
 
-    public LiveData<Plant> get(int id) {
-
-    }
-
-    public LiveData<List<Plant>> getAll() {
+    public LiveData<Routine> get(int id) {
 
     }
 
-    public void insert(Plant plant) {
+    public LiveData<List<Routine>> getAll() {
 
     }
 
-    public void update(Plant plant) {
+    public void insert(Routine routine) {
 
     }
 
-    public void delete(Plant plant) {
+    public void update(Routine routine) {
+
+    }
+
+    public void delete(Routine routine) {
 
     }
 
