@@ -34,7 +34,7 @@ public class GreenhouseRepository {
     private final MutableLiveData<Plant> updatedPlant;
     private final MutableLiveData<Greenhouse> updatedGreenhouse;
 
-    private GreenhouseRepository()
+    public GreenhouseRepository()
     {
         greenHouse = new MutableLiveData<Greenhouse>();
         plantList = new MutableLiveData<List<Plant>>();
