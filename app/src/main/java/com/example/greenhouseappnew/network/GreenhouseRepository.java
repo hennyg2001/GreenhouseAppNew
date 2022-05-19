@@ -30,6 +30,8 @@ public class GreenhouseRepository {
     private final MutableLiveData<List<LogClass>> logList;
     private final MutableLiveData<Plant> addPlant;
     private final MutableLiveData<LogClass> log;
+    private final MutableLiveData<Plant> updatedPlant;
+    private final MutableLiveData<Greenhouse> updatedGreenhouse;
 
     private GreenhouseRepository()
     {
@@ -40,6 +42,8 @@ public class GreenhouseRepository {
         greenHouseList = new MutableLiveData<List<Greenhouse>>();
         addGreenHouse = new MutableLiveData<Greenhouse>();
         addPlant = new MutableLiveData<Plant>();
+        updatedPlant = new MutableLiveData<Plant>();
+        updatedGreenhouse = new MutableLiveData<Greenhouse>();
     }
 
     public static synchronized GreenhouseRepository getInstance()
@@ -49,6 +53,10 @@ public class GreenhouseRepository {
             instance = new GreenhouseRepository();
         }
         return instance;
+    }
+
+    public MutableLiveData<Plant> getUpdatedPlant() {
+        return updatedPlant;
     }
 
     public MutableLiveData<Greenhouse> getGreenHouse() {
@@ -220,11 +228,29 @@ public class GreenhouseRepository {
         call.enqueue(new Callback<GreenhouseResponse>() {
             @Override
             public void onResponse(Call<GreenhouseResponse> call, Response<GreenhouseResponse> response) {
-                greenHouse.setValue(params);
+                updatedGreenhouse.setValue(params);
             }
 
             @Override
             public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
+                Log.i("Error", t.getMessage());
+            }
+        });
+    }
+
+    public void updatePlant(Plant params)
+    {
+        GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
+        Call<PlantResponse> call = greenhouseApi.updatePlant(params);
+
+        call.enqueue(new Callback<PlantResponse>() {
+            @Override
+            public void onResponse(Call<PlantResponse> call, Response<PlantResponse> response) {
+                updatedPlant.setValue(params);
+            }
+
+            @Override
+            public void onFailure(Call<PlantResponse> call, Throwable t) {
                 Log.i("Error", t.getMessage());
             }
         });

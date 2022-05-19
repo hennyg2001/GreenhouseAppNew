@@ -52,6 +52,10 @@ public interface GreenHouseApi {
     @PUT("Greenhouse")
     Call<GreenhouseResponse> updateGreenhouse(@Body Greenhouse greenHouse);
 
+    @PUT("Plants")
+    Call<PlantResponse> updatePlant(@Body Plant plant);
+
+
     @DELETE("greenhouseId")
     Call<Void> removeGreenhouse(@Path("greenhouseId") int id);
 
