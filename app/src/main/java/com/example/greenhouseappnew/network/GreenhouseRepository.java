@@ -50,6 +50,34 @@ public class GreenhouseRepository {
         return instance;
     }
 
+    public MutableLiveData<Greenhouse> getGreenHouse() {
+        return greenHouse;
+    }
+
+    public MutableLiveData<Greenhouse> getAddGreenHouse() {
+        return addGreenHouse;
+    }
+
+    public MutableLiveData<List<Greenhouse>> getGreenHouseList() {
+        return greenHouseList;
+    }
+
+    public MutableLiveData<List<Plant>> getPlantList() {
+        return plantList;
+    }
+
+    public MutableLiveData<List<LogClass>> getLogList() {
+        return logList;
+    }
+
+    public MutableLiveData<Plant> getAddPlant() {
+        return addPlant;
+    }
+
+    public MutableLiveData<LogClass> getLog() {
+        return log;
+    }
+
     public void searchForGreenhouseById(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
         Call<GreenhouseResponse> call = greenhouseApi.getGreenHouseById(id);
