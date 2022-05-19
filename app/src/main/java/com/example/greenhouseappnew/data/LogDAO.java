@@ -4,20 +4,19 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.greenhouseappnew.model.Log;
-import com.example.greenhouseappnew.model.Plant;
+import com.example.greenhouseappnew.model.LogClass;
 
 import java.util.List;
 
 public interface LogDAO {
 
     @Query("SELECT * FROM logs")
-    List<Log> getAll();
+    List<LogClass> getAll();
 
     @Insert
-    void insert(Log log);
+    void insert(LogClass logClass);
 
     @Delete
-    void delete(Log log);
+    void delete(LogClass logClass);
 
 }

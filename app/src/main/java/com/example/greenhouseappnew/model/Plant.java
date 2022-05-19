@@ -8,7 +8,7 @@ public class Plant {
     private String name;
     private String type;
     private String description;
-    private ArrayList<Log> logs;
+    private ArrayList<LogClass> logClasses;
 
     public Plant() {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
@@ -18,7 +18,7 @@ public class Plant {
         this.name = name;
         this.type = type;
         this.description = description;
-        this.logs = logs;
+        this.logClasses = logClasses;
     }
 
     public void setId(int id) {
@@ -35,8 +35,8 @@ public class Plant {
 
     public String getDescription() { return description; }
 
-    public ArrayList<Log> getPlantLogs() {
-        return logs;
+    public ArrayList<LogClass> getPlantLogs() {
+        return logClasses;
     }
 
 }

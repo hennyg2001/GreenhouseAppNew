@@ -5,8 +5,8 @@ public class LogResponse {
     private String taskName;
     private String type;
 
-    public Log getLog() {
-        return new Log(taskName, type);
+    public LogClass getLog() {
+        return new LogClass(taskName, type);
     }
 
 }
