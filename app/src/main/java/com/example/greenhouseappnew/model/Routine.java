@@ -17,6 +17,10 @@ public class Routine {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTaskName() {
         return taskName;
     }
