@@ -7,10 +7,13 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 import java.util.List;
 
 public class GreenhouseViewModel extends AndroidViewModel {
+
+    private GreenhouseRepository repository;
 
     public GreenhouseViewModel(@NonNull Application application) {
         super(application);
