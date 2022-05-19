@@ -21,7 +21,7 @@ public class GreenhouseActivity extends AppCompatActivity {
     public static final String GREENHOUSE_DESCRIPTION = "com.example.and_recipeapp.GREENHOUSE_DESCRIPTION";
 
     private TextView nameTextView, locationTextView, descriptionTextView;
-    private Button closeButton, editButton;
+    private Button editButton;
 
     private GreenhousesViewModel greenhousesViewModel;
 
@@ -57,19 +57,19 @@ public class GreenhouseActivity extends AppCompatActivity {
                         int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
 
                         if(id == -1) {
-                            Toast.makeText(this, "Recipe can't be updated...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Greenhouse can't be updated...", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         Greenhouse greenhouse = new Greenhouse(name, location, description);
                         greenhouse.setId(id);
                         greenhousesViewModel.update(greenhouse);
-                        Toast.makeText(this, "Recipe updated...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 
                     }
                     else {
 
-                        Toast.makeText(this, "Recipe not saved...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
 
                     }
                 }
