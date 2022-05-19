@@ -12,6 +12,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.model.Plant;
+import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
+import com.example.greenhouseappnew.ui.plants.PlantsFragment;
+
+import java.util.ArrayList;
 
 public class GreenhouseActivity extends AppCompatActivity {
 
@@ -30,12 +35,23 @@ public class GreenhouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse);
 
+        Intent intent = getIntent();
+
+        if (savedInstanceState == null) {
+
+            Bundle plantsBundle = new Bundle();
+            plantsBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0) );
+
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.greenhouse_fragment_container_view, PlantsFragment.class, plantsBundle)
+                    .commit();
+        }
+
         nameTextView = findViewById(R.id.greenhouseName);
         locationTextView = findViewById(R.id.greenhouseLocation);
         descriptionTextView = findViewById(R.id.greenhouseDescription);
         editButton = findViewById(R.id.editGreenhouseButton);
-
-        Intent intent = getIntent();
 
         nameTextView.setText(intent.getStringExtra(GREENHOUSE_NAME));
         locationTextView.setText(intent.getStringExtra(GREENHOUSE_LOCATION));
