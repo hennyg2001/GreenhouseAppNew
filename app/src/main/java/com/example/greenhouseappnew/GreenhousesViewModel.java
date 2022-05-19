@@ -7,8 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.network.GreenhouseService;
 
 import java.util.List;
 

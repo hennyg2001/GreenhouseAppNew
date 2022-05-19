@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.network.GreenhouseService;
 
 import org.jetbrains.annotations.NotNull;
 
