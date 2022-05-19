@@ -2,6 +2,8 @@ package com.example.greenhouseappnew.network;
 
 
 
+import androidx.room.Delete;
+
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.GreenhouseResponse;
 import com.example.greenhouseappnew.model.LogListResponse;
@@ -48,5 +50,8 @@ public interface GreenHouseApi {
 
     @PUT("Greenhouse")
     Call<GreenhouseResponse> updateGreenhouse(@Body Greenhouse greenHouse);
+
+    //@Delete("greenhouseId")
+    //Call<Void> removeGreenhouse(@Path)
 
 }
