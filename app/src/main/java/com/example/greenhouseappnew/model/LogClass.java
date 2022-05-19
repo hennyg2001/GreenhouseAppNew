@@ -1,12 +1,12 @@
 package com.example.greenhouseappnew.model;
 
-public class Log {
+public class LogClass {
 
     private int id;
     private String name;
     private String type;
 
-    public Log(String name, String type) {
+    public LogClass(String name, String type) {
 
         this.name = name;
         this.type = type;

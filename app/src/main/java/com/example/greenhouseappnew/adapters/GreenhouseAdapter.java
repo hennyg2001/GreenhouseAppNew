@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.model.Log;
 
 import org.jetbrains.annotations.NotNull;
 

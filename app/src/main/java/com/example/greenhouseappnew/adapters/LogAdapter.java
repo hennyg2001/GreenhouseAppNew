@@ -9,8 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
-import com.example.greenhouseappnew.model.Log;
-import com.example.greenhouseappnew.model.Plant;
+import com.example.greenhouseappnew.model.LogClass;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,11 +17,11 @@ import java.util.ArrayList;
 
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
-    ArrayList<Log> logs;
+    ArrayList<LogClass> logClasses;
     LogAdapter.OnListItemClicker listener;
 
-    LogAdapter(ArrayList<Log> logs, LogAdapter.OnListItemClicker listener) {
-        this.logs = logs;
+    LogAdapter(ArrayList<LogClass> logClasses, LogAdapter.OnListItemClicker listener) {
+        this.logClasses = logClasses;
         this.listener = listener;
     }
 
@@ -35,11 +34,11 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
     }
 
     public void onBindViewHolder(@NonNull LogAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.name.setText(logs.get(position).getName());
+        viewHolder.name.setText(logClasses.get(position).getName());
     }
 
     public int getItemCount() {
-        return logs.size();
+        return logClasses.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
