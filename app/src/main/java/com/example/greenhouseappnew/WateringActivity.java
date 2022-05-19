@@ -1,4 +1,9 @@
 package com.example.greenhouseappnew;
 
-public class WateringActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class WateringActivity extends AppCompatActivity {
+
+
+
 }

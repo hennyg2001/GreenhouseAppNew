@@ -17,26 +17,16 @@ public class GreenhouseViewModel extends AndroidViewModel {
 
     public GreenhouseViewModel(@NonNull Application application) {
         super(application);
+        repository = new GreenhouseRepository();
     }
 
     public LiveData<Greenhouse> get(int id) {
-
-    }
-
-    public LiveData<List<Greenhouse>> getAll() {
-
-    }
-
-    public void insert(Greenhouse greenhouse) {
-
+        repository.searchForGreenhouseById(id);
+        return repository.getGreenhouse();
     }
 
     public void update(Greenhouse greenhouse) {
-
-    }
-
-    public void delete(Greenhouse greenhouse) {
-
+        repository.updateGreenhouse(greenhouse);
     }
 
 }

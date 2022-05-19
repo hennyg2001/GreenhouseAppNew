@@ -1,42 +1,33 @@
 package com.example.greenhouseappnew.ui.logs;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.greenhouseappnew.model.Log;
+import com.example.greenhouseappnew.model.LogClass;
+import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 import java.util.List;
 
 public class LogsViewModel extends AndroidViewModel {
 
+    private GreenhouseRepository repository;
+    private LiveData<List<LogClass>> allLogs;
+
     public LogsViewModel(@NonNull Application application) {
         super(application);
+        repository = new GreenhouseRepository();
+        allLogs = repository.getLogList();
     }
 
-    private GreenhouseService service;
-    private LiveData<List<Log>> allLogs;
-
-    public LiveData<Log> get(int id) {
-
+    public LiveData<LogClass> get(int id) {
+        repository.searchForLogsByGreenhouseId(id);
+        return repository.getLog();
     }
 
-    public LiveData<List<Log>> getAll() {
-
-    }
-
-    public void insert(Log log) {
-
-    }
-
-    public void update(Log log) {
-
-    }
-
-    public void delete(Log log) {
-
+    public LiveData<List<LogClass>> getAll() {
+        return allLogs;
     }
 
 }
