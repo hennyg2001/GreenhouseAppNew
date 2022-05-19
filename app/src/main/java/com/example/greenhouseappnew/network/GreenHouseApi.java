@@ -16,6 +16,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -51,7 +52,11 @@ public interface GreenHouseApi {
     @PUT("Greenhouse")
     Call<GreenhouseResponse> updateGreenhouse(@Body Greenhouse greenHouse);
 
-    //@Delete("greenhouseId")
-    //Call<Void> removeGreenhouse(@Path)
+    @DELETE("greenhouseId")
+    Call<Void> removeGreenhouse(@Path("greenhouseId") int id);
+
+    @DELETE("Plants/{plantId}")
+    Call<Void> removePlant(@Path("plantId") int id);
+
 
 }

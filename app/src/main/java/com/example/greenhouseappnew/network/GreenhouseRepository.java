@@ -229,4 +229,43 @@ public class GreenhouseRepository {
             }
         });
     }
+
+    public void deleteGreenhouse(int id)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.removeGreenhouse(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void deletePlant(int id)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.removePlant(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
 }
