@@ -31,7 +31,7 @@ public class GreenhouseRepository {
     private final MutableLiveData<Plant> addPlant;
     private final MutableLiveData<LogClass> log;
 
-    private GreenhouseRepository()
+    public GreenhouseRepository()
     {
         greenHouse = new MutableLiveData<Greenhouse>();
         plantList = new MutableLiveData<List<Plant>>();
@@ -51,15 +51,15 @@ public class GreenhouseRepository {
         return instance;
     }
 
-    public MutableLiveData<Greenhouse> getGreenHouse() {
+    public MutableLiveData<Greenhouse> getGreenhouse() {
         return greenHouse;
     }
 
-    public MutableLiveData<Greenhouse> getAddGreenHouse() {
+    public MutableLiveData<Greenhouse> getAddGreenhouse() {
         return addGreenHouse;
     }
 
-    public MutableLiveData<List<Greenhouse>> getGreenHouseList() {
+    public MutableLiveData<List<Greenhouse>> getGreenhouseList() {
         return greenHouseList;
     }
 

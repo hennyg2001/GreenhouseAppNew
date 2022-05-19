@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
@@ -14,19 +15,19 @@ import java.util.List;
 public class GreenhousesViewModel extends AndroidViewModel {
 
     private GreenhouseRepository repository;
-    private LiveData<List<Greenhouse>> allGreenhouses;
+    private MutableLiveData<List<Greenhouse>> allGreenhouses;
 
     public GreenhousesViewModel(@NonNull Application application) {
         super(application);
-        repository = new GreenhouseRepository(app);
-        allGreenhouses = repository.getAllGreenhouses();
+        repository = new GreenhouseRepository();
+        allGreenhouses = repository.getGreenhouseList();
     }
 
-    public LiveData<Greenhouse> get(int id) {
-        return repository.getAllGreenhouses();
+    public MutableLiveData<Greenhouse> get(int id) {
+        return repository.getGreenhouse();
     }
 
-    public LiveData<List<Greenhouse>> getAll() {
+    public MutableLiveData<List<Greenhouse>> getAll() {
         return allGreenhouses;
     }
 
