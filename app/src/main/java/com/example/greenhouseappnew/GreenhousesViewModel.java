@@ -5,41 +5,42 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.network.GreenhouseService;
+import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 import java.util.List;
 
 public class GreenhousesViewModel extends AndroidViewModel {
 
-    private GreenhouseService service;
-    private LiveData<List<Greenhouse>> allGreenhouses;
+    private GreenhouseRepository repository;
+    private MutableLiveData<List<Greenhouse>> allGreenhouses;
 
     public GreenhousesViewModel(@NonNull Application application) {
         super(application);
-        allGreenhouses = service.getAllGreenhouses();
+        repository = new GreenhouseRepository();
+        allGreenhouses = repository.getGreenhouseList();
     }
 
-    public LiveData<Greenhouse> get(int id) {
-        return service.get(id);
+    public MutableLiveData<Greenhouse> get(int id) {
+        return repository.getGreenhouse();
     }
 
-    public LiveData<List<Greenhouse>> getAll() {
+    public MutableLiveData<List<Greenhouse>> getAll() {
         return allGreenhouses;
     }
 
     public void insert(Greenhouse greenhouse) {
-        service.insert(greenhouse);
+        repository.addGreenhouse(greenhouse);
     }
 
     public void update(Greenhouse greenhouse) {
-        service.update(greenhouse);
+        repository.updateGreenhouse(greenhouse);
     }
 
     public void delete(Greenhouse greenhouse) {
-        service.delete(greenhouse);
+        repository.deleteGreenhouse(greenhouse.getId());
     }
 
 }

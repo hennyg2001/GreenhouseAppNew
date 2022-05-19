@@ -21,6 +21,7 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class GreenhouseRepository {
+
     private static GreenhouseRepository instance;
     private final MutableLiveData<Greenhouse> greenHouse;
     private final MutableLiveData<Greenhouse> addGreenHouse;
@@ -30,7 +31,7 @@ public class GreenhouseRepository {
     private final MutableLiveData<Plant> addPlant;
     private final MutableLiveData<LogClass> log;
 
-    private GreenhouseRepository()
+    public GreenhouseRepository()
     {
         greenHouse = new MutableLiveData<Greenhouse>();
         plantList = new MutableLiveData<List<Plant>>();
@@ -48,6 +49,34 @@ public class GreenhouseRepository {
             instance = new GreenhouseRepository();
         }
         return instance;
+    }
+
+    public MutableLiveData<Greenhouse> getGreenhouse() {
+        return greenHouse;
+    }
+
+    public MutableLiveData<Greenhouse> getAddGreenhouse() {
+        return addGreenHouse;
+    }
+
+    public MutableLiveData<List<Greenhouse>> getGreenhouseList() {
+        return greenHouseList;
+    }
+
+    public MutableLiveData<List<Plant>> getPlantList() {
+        return plantList;
+    }
+
+    public MutableLiveData<List<LogClass>> getLogList() {
+        return logList;
+    }
+
+    public MutableLiveData<Plant> getAddPlant() {
+        return addPlant;
+    }
+
+    public MutableLiveData<LogClass> getLog() {
+        return log;
     }
 
     public void searchForGreenhouseById(int id) {
@@ -200,4 +229,43 @@ public class GreenhouseRepository {
             }
         });
     }
+
+    public void deleteGreenhouse(int id)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.removeGreenhouse(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void deletePlant(int id)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.removePlant(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
 }
