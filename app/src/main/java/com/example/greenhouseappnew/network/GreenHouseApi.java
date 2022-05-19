@@ -29,6 +29,9 @@ public interface GreenHouseApi {
     @GET("GreenhouseById/{greenhouseId}")
     Call<GreenhouseResponse> getGreenHouseById(@Path("greenhouseId") int greenhouseId);
 
+    @GET("PlantById/{plantId}")
+    Call<PlantResponse> getPlantById(@Path("plantId") int plantId);
+
     @GET("Greenhouse/{userEmail}")
     Call<GreenhouseResponse> getGreenHouseByEmail(@Path("userMail") String userMail);
 
@@ -55,12 +58,14 @@ public interface GreenHouseApi {
     @PUT("Plants")
     Call<PlantResponse> updatePlant(@Body Plant plant);
 
-
-    @DELETE("greenhouseId")
+    @DELETE("Greenhouse/greenhouseId")
     Call<Void> removeGreenhouse(@Path("greenhouseId") int id);
 
     @DELETE("Plants/{plantId}")
     Call<Void> removePlant(@Path("plantId") int id);
+
+    @DELETE("Routine/{routineId}")
+    Call<Void> removeRoutine(@Path("routineID") int id);
 
 
 }

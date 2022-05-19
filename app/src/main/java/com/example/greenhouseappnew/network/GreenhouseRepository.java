@@ -24,6 +24,7 @@ public class GreenhouseRepository {
 
     private static GreenhouseRepository instance;
     private final MutableLiveData<Greenhouse> greenHouse;
+    private final MutableLiveData<Plant> plant;
     private final MutableLiveData<Greenhouse> addGreenHouse;
     private final MutableLiveData<List<Greenhouse>> greenHouseList;
     private final MutableLiveData<List<Plant>> plantList;
@@ -44,6 +45,7 @@ public class GreenhouseRepository {
         addPlant = new MutableLiveData<Plant>();
         updatedPlant = new MutableLiveData<Plant>();
         updatedGreenhouse = new MutableLiveData<Greenhouse>();
+        plant = new MutableLiveData<Plant>();
     }
 
     public static synchronized GreenhouseRepository getInstance()
@@ -87,6 +89,14 @@ public class GreenhouseRepository {
         return log;
     }
 
+    public MutableLiveData<Greenhouse> getUpdatedGreenhouse() {
+        return updatedGreenhouse;
+    }
+
+    public MutableLiveData<Plant> getPlant() {
+        return plant;
+    }
+
     public void searchForGreenhouseById(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
         Call<GreenhouseResponse> call = greenhouseApi.getGreenHouseById(id);
@@ -104,6 +114,29 @@ public class GreenhouseRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
+
+            }
+        });
+    }
+
+    public void searchForPlantById(int id) {
+        GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
+        Call<PlantResponse> call = greenhouseApi.getPlantById(id);
+        call.enqueue(new Callback<PlantResponse>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<PlantResponse> call, Response<PlantResponse> response) {
+                if (response.isSuccessful()) {
+                    plant.setValue(response.body().getPlant());
+                    Log.i("Header", response.headers().toString());
+                    Log.i("Complete response", String.valueOf(response.code()));
+                    Log.i("Success", response.body().toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<PlantResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
 
             }
@@ -291,6 +324,26 @@ public class GreenhouseRepository {
             }
         });
     }
+
+    public void deleteRoutine(int id)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.removeRoutine(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+
 
 
 
