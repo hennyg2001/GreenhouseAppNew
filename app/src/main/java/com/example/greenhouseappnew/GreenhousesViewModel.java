@@ -18,12 +18,13 @@ public class GreenhousesViewModel extends AndroidViewModel {
 
     public GreenhousesViewModel(@NonNull Application application) {
         super(application);
-        repository = new GreenhouseRepository(app);
-        allGreenhouses = repository.getAllGreenhouses();
+        repository = new GreenhouseRepository();
+        allGreenhouses = repository.getGreenHouseList();
     }
 
     public LiveData<Greenhouse> get(int id) {
-        return repository.getAllGreenhouses();
+        repository.searchForPlantById(id);
+        return repository.getGreenHouse();
     }
 
     public LiveData<List<Greenhouse>> getAll() {
@@ -39,7 +40,7 @@ public class GreenhousesViewModel extends AndroidViewModel {
     }
 
     public void delete(Greenhouse greenhouse) {
-        repository.removeGreenhouse(greenhouse.getId());
+        repository.deleteGreenhouse(greenhouse.getId());
     }
 
 }

@@ -48,7 +48,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                     Intent data = result.getData();
 
-                    if(result.getResultCode() == RESULT_OK) {
+                    if (result.getResultCode() == RESULT_OK) {
 
                         String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
                         String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
@@ -56,7 +56,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                         int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
 
-                        if(id == -1) {
+                        if (id == -1) {
                             Toast.makeText(this, "Greenhouse can't be updated...", Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -66,8 +66,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 
-                    }
-                    else {
+                    } else {
 
                         Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
 
@@ -75,18 +74,9 @@ public class GreenhouseActivity extends AppCompatActivity {
                 }
         );
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-
-                finish();
-
-            }
-        });
-
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v){
+            public void onClick(View v) {
 
                 Intent it = new Intent(GreenhouseActivity.this, CreateEditGreenhouseActivity.class);
                 it.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, intent.getStringExtra(GREENHOUSE_ID));
@@ -97,5 +87,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
             }
         });
+
+    }
 
 }
