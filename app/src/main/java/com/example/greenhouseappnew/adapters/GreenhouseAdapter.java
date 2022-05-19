@@ -15,52 +15,67 @@ import com.example.greenhouseappnew.model.Log;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.ViewHolder> {
 
-    ArrayList<Greenhouse> greenhouses;
-    GreenhouseAdapter.OnListItemClicker listener;
+    private OnItemListClicker listener;
+    private List<Greenhouse> greenhouses = new ArrayList<>();
 
-    GreenhouseAdapter(ArrayList<Greenhouse> greenhouses, GreenhouseAdapter.OnListItemClicker listener) {
-        this.greenhouses = greenhouses;
-        this.listener = listener;
-    }
-
-    @NotNull
+    @NonNull
     @Override
-    public GreenhouseAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.greenhouse_item, parent, false);
-        return new GreenhouseAdapter.ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.greenhouse_item, parent, false);
+        return new ViewHolder(itemView);
     }
 
-    public void onBindViewHolder(@NonNull GreenhouseAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.name.setText(greenhouses.get(position).getName());
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Greenhouse currentGreenhouse = greenhouses.get(position);
+        holder.name.setText(currentGreenhouse.getName());
     }
 
+    @Override
     public int getItemCount() {
         return greenhouses.size();
+    }
+
+    public void setGreenhouses(List<Greenhouse> greenhouses) {
+        this.greenhouses = greenhouses;
+        notifyDataSetChanged();
+    }
+
+    public Greenhouse getGreenhouseAt(int position) {
+        return greenhouses.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView name;
 
-        ViewHolder(View itemView) {
+        private ViewHolder(View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.tv_name);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onClick(getAdapterPosition());
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(greenhouses.get(position));
+                    }
                 }
             });
-            name = itemView.findViewById(R.id.tv_name);
         }
 
     }
 
-    public interface OnListItemClicker {
-        void onClick(int position);
+    public interface OnItemListClicker {
+        void onItemClick(Greenhouse greenhouse);
     }
 
+    public void setOnItemClickListener(OnItemListClicker listener) {
+        this.listener = listener;
+    }
 }
