@@ -1,62 +1,33 @@
 {
   "project_info": {
-    "project_number": "621012609757",
-    "project_id": "sep4-greenhouseapp",
-    "storage_bucket": "sep4-greenhouseapp.appspot.com"
+    "project_number": "905462271318",
+    "project_id": "greenhouseappnew",
+    "storage_bucket": "greenhouseappnew.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:621012609757:android:4b3f65b17be5417424c934",
+        "mobilesdk_app_id": "1:905462271318:android:9c8a77200e2c03766f1af7",
         "android_client_info": {
-          "package_name": "com.example.sep4_greenhouseapp"
+          "package_name": "com.example.greenhouseappnew"
         }
       },
       "oauth_client": [
         {
-          "client_id": "621012609757-goi6t5f8120dbh87okbsr3p425jn1vrn.apps.googleusercontent.com",
+          "client_id": "905462271318-uifc9tagad5qmom3hege9oabpfdd6fu3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC231fu7Spa-gYF7Fw8r0ie_KeXfruiuWs"
+          "current_key": "AIzaSyA9tGFknagZ6SsdVnwcSUPPc8ZlAytqFf4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "621012609757-goi6t5f8120dbh87okbsr3p425jn1vrn.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:621012609757:android:d574c74711024ec824c934",
-        "android_client_info": {
-          "package_name": "come.example.greenhouseappnew"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "621012609757-goi6t5f8120dbh87okbsr3p425jn1vrn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC231fu7Spa-gYF7Fw8r0ie_KeXfruiuWs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "621012609757-goi6t5f8120dbh87okbsr3p425jn1vrn.apps.googleusercontent.com",
+              "client_id": "905462271318-uifc9tagad5qmom3hege9oabpfdd6fu3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
