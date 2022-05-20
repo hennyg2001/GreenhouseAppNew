@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     if(result.getResultCode() == RESULT_OK) {
 
                         String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
-                        String type = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_TYPE);
+                        String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
                         String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
 
-                        Greenhouse greenhouse = new Greenhouse(name, type, description);
+                        Greenhouse greenhouse = new Greenhouse(name, location, description);
                         greenhousesViewModel.insert(greenhouse);
                         Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
 

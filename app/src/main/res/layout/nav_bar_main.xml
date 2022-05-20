@@ -17,25 +17,32 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="4"
+            android:layout_marginEnd="15dp">
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:src="@android:drawable/ic_menu_save"/>
+                android:src="@drawable/icon_info"/>
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:src="@android:drawable/ic_menu_save"/>
+                android:src="@drawable/actuator_icon"/>
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:src="@android:drawable/ic_menu_save"/>
+                android:src="@drawable/plant_icon"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:src="@drawable/graph_icon"/>
 
         </LinearLayout>
 

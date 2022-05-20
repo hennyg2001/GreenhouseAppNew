@@ -12,6 +12,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.model.Plant;
+import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
+import com.example.greenhouseappnew.ui.plants.PlantsFragment;
+
+import java.util.ArrayList;
 
 public class GreenhouseActivity extends AppCompatActivity {
 
@@ -30,12 +35,23 @@ public class GreenhouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse);
 
+        Intent intent = getIntent();
+
+        if (savedInstanceState == null) {
+
+            Bundle plantsBundle = new Bundle();
+            plantsBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0) );
+
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.greenhouse_fragment_container_view, PlantsFragment.class, plantsBundle)
+                    .commit();
+        }
+
         nameTextView = findViewById(R.id.greenhouseName);
         locationTextView = findViewById(R.id.greenhouseLocation);
         descriptionTextView = findViewById(R.id.greenhouseDescription);
         editButton = findViewById(R.id.editGreenhouseButton);
-
-        Intent intent = getIntent();
 
         nameTextView.setText(intent.getStringExtra(GREENHOUSE_NAME));
         locationTextView.setText(intent.getStringExtra(GREENHOUSE_LOCATION));
@@ -48,7 +64,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                     Intent data = result.getData();
 
-                    if(result.getResultCode() == RESULT_OK) {
+                    if (result.getResultCode() == RESULT_OK) {
 
                         String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
                         String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
@@ -56,7 +72,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                         int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
 
-                        if(id == -1) {
+                        if (id == -1) {
                             Toast.makeText(this, "Greenhouse can't be updated...", Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -66,8 +82,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 
-                    }
-                    else {
+                    } else {
 
                         Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
 
@@ -75,18 +90,9 @@ public class GreenhouseActivity extends AppCompatActivity {
                 }
         );
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-
-                finish();
-
-            }
-        });
-
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v){
+            public void onClick(View v) {
 
                 Intent it = new Intent(GreenhouseActivity.this, CreateEditGreenhouseActivity.class);
                 it.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, intent.getStringExtra(GREENHOUSE_ID));
@@ -97,5 +103,7 @@ public class GreenhouseActivity extends AppCompatActivity {
 
             }
         });
+
+    }
 
 }

@@ -21,12 +21,12 @@ public class LogsViewModel extends AndroidViewModel {
         allLogs = repository.getLogList();
     }
 
-    public LiveData<LogClass> get(int id) {
+    public LiveData<LogClass> getLog(int id) {
         repository.searchForLogsByGreenhouseId(id);
         return repository.getLog();
     }
 
-    public LiveData<List<LogClass>> getAll() {
+    public LiveData<List<LogClass>> getAllLogs() {
         return allLogs;
     }
 

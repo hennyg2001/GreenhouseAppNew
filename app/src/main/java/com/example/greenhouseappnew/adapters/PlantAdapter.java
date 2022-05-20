@@ -9,57 +9,74 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> {
 
-    ArrayList<Plant> plants;
-    OnListItemClicker listener;
+    private OnItemListClicker listener;
+    private List<Plant> plants = new ArrayList<>();
 
-    PlantAdapter(ArrayList<Plant> plants, OnListItemClicker listener) {
-        this.plants = plants;
-        this.listener = listener;
-    }
-
-    @NotNull
+    @NonNull
     @Override
-    public PlantAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.plant_item, parent, false);
-        return new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.greenhouse_item, parent, false);
+        return new ViewHolder(itemView);
     }
 
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        viewHolder.name.setText(plants.get(position).getName());
+    @Override
+    public void onBindViewHolder(@NonNull PlantAdapter.ViewHolder holder, int position) {
+        Plant currentPlant = plants.get(position);
+        holder.name.setText(currentPlant.getName());
     }
 
+    @Override
     public int getItemCount() {
         return plants.size();
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
+        notifyDataSetChanged();
+    }
+
+    public Plant getPlantAt(int position) {
+        return plants.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView name;
 
-        ViewHolder(View itemView) {
+        private ViewHolder(View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.tv_name);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onClick(getAdapterPosition());
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(plants.get(position));
+                    }
                 }
             });
-            name = itemView.findViewById(R.id.tv_name);
         }
 
     }
 
-    public interface OnListItemClicker {
-        void onClick(int position);
+    public interface OnItemListClicker {
+        void onItemClick(Plant plant);
+    }
+
+    public void setOnItemClickListener(PlantAdapter.OnItemListClicker listener) {
+        this.listener = listener;
     }
 
 }
