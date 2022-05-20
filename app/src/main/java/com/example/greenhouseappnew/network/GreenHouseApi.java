@@ -52,6 +52,9 @@ public interface GreenHouseApi {
     @Headers({"Accept:application/json", "Content-Type:application/json"})
     Call<PlantResponse> addPlant(@Body Plant params);
 
+    @POST("Actuator/greenhouseId")
+    Call<Void> activeActuator(@Body int greenhouseId);
+
     @PUT("Greenhouse")
     Call<GreenhouseResponse> updateGreenhouse(@Body Greenhouse greenHouse);
 
