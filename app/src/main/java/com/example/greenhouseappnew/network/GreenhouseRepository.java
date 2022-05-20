@@ -12,6 +12,8 @@ import com.example.greenhouseappnew.model.LogResponse;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.model.PlantListResponse;
 import com.example.greenhouseappnew.model.PlantResponse;
+import com.example.greenhouseappnew.model.Routine;
+import com.example.greenhouseappnew.model.RoutineListResponse;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class GreenhouseRepository {
     private final MutableLiveData<LogClass> log;
     private final MutableLiveData<Plant> updatedPlant;
     private final MutableLiveData<Greenhouse> updatedGreenhouse;
+    private final MutableLiveData<List<Routine>> routineList;
 
     public GreenhouseRepository()
     {
@@ -46,6 +49,7 @@ public class GreenhouseRepository {
         updatedPlant = new MutableLiveData<Plant>();
         updatedGreenhouse = new MutableLiveData<Greenhouse>();
         plant = new MutableLiveData<Plant>();
+        routineList = new MutableLiveData<List<Routine>>();
     }
 
     public static synchronized GreenhouseRepository getInstance()
@@ -114,6 +118,29 @@ public class GreenhouseRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
+
+            }
+        });
+    }
+
+    public void searchForRoutinesById(int id) {
+        GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
+        Call<RoutineListResponse> call = greenhouseApi.getRoutinesByPlantId(id);
+        call.enqueue(new Callback<RoutineListResponse>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<RoutineListResponse> call, Response<RoutineListResponse> response) {
+                if (response.isSuccessful()) {
+                    routineList.setValue(response.body().getResponse());
+                    Log.i("Header", response.headers().toString());
+                    Log.i("Complete response", String.valueOf(response.code()));
+                    Log.i("Success", response.body().toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<RoutineListResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
 
             }

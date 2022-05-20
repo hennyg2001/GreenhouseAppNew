@@ -11,6 +11,8 @@ import com.example.greenhouseappnew.model.LogResponse;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.model.PlantListResponse;
 import com.example.greenhouseappnew.model.PlantResponse;
+import com.example.greenhouseappnew.model.RoutineListResponse;
+import com.example.greenhouseappnew.model.RoutineResponse;
 
 import java.util.List;
 
@@ -44,6 +46,9 @@ public interface GreenHouseApi {
     @GET("LogsById/{logId}")
     Call<LogResponse> getLogById(@Path("logId") int logId);
 
+    @GET("Routine/{plantId}")
+    Call<RoutineListResponse> getRoutinesByPlantId(@Path("plantId") int plantId);
+
     @POST("Greenhouse")
     @Headers({"Accept:application/json", "Content-Type:application/json"})
     Call<GreenhouseResponse> addGreenHouse(@Body Greenhouse params);
@@ -52,7 +57,7 @@ public interface GreenHouseApi {
     @Headers({"Accept:application/json", "Content-Type:application/json"})
     Call<PlantResponse> addPlant(@Body Plant params);
 
-    @POST("Actuator/greenhouseId")
+    @POST("Actuator/{greenhouseId}")
     Call<Void> activeActuator(@Body int greenhouseId);
 
     @PUT("Greenhouse")
@@ -61,7 +66,7 @@ public interface GreenHouseApi {
     @PUT("Plants")
     Call<PlantResponse> updatePlant(@Body Plant plant);
 
-    @DELETE("Greenhouse/greenhouseId")
+    @DELETE("Greenhouse/{greenhouseId}")
     Call<Void> removeGreenhouse(@Path("greenhouseId") int id);
 
     @DELETE("Plants/{plantId}")
