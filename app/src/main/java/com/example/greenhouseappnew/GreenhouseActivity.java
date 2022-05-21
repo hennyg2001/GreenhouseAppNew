@@ -12,11 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsFragment;
-
-import java.util.ArrayList;
 
 public class GreenhouseActivity extends AppCompatActivity {
 
@@ -78,7 +74,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         }
 
                         Greenhouse greenhouse = new Greenhouse(name, location, description);
-                        greenhouse.setId(id);
+                        greenhouse.setIdGreenhouse(id);
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 

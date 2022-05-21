@@ -37,7 +37,7 @@ public class PlantProfileViewModel extends AndroidViewModel {
     }
 
     public void delete(Routine routine) {
-        repository.deletRoutine(routine.getId());
+        repository.deletRoutine(routine.getIdRoutine());
     }
 
 }

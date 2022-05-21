@@ -4,37 +4,39 @@ import java.util.ArrayList;
 
 public class Plant {
 
-    private int id;
-    private String name;
-    private String type;
     private String description;
+    private String name;
+    private String scientificName;
+    private int idGreenhouse;
+
     private ArrayList<LogClass> logClasses;
 
     public Plant() {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
 
-    public Plant(String name, String type, String description) {
+    public Plant(String name, String scientificName, String description, int idGreenhouse) {
         this.name = name;
-        this.type = type;
+        this.scientificName = scientificName;
         this.description = description;
         this.logClasses = logClasses;
+        this.idGreenhouse= idGreenhouse;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdGreenhouse(int idGreenhouse) {
+        this.idGreenhouse = idGreenhouse;
     }
 
-    public int getId() {
-        return id;
+    public int getIdGreenhouse() {
+        return idGreenhouse;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getType() {
-        return type;
+    public String getScientificName() {
+        return scientificName;
     }
 
     public String getDescription() { return description; }

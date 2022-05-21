@@ -9,24 +9,16 @@ import android.widget.Toast;
 
 import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.github.*;
 
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 
@@ -96,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getIdGreenhouse());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
