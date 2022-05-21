@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
+import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
 import com.example.greenhouseappnew.model.Greenhouse;
 
@@ -19,8 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getIdGreenhouse());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());

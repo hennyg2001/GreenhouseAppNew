@@ -23,12 +23,14 @@
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_greenhouse_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_logs.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_plant_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_plants.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_watering.xml" value="0.25" />
         <entry key="app/src/main/res/layout/greenhouse_item.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/nav_bar_main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2953125" />
@@ -36,6 +38,8 @@
         <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/plant_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/plants_list.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_create_greenhouse.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/misc/layout/parent_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/nav_bar.xml" value="0.3098958333333333" />

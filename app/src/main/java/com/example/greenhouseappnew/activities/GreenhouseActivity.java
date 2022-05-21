@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
+import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.ui.plants.PlantsFragment;
 

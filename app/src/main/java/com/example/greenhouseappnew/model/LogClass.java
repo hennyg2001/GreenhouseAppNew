@@ -1,52 +1,40 @@
 package com.example.greenhouseappnew.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class LogClass {
-
-    private int idLog;
-    //private String name;
-    //private String type;
+    private int id;
     private double co2;
     private double temperature;
     private double humidity;
-    private LocalDateTime dateTime;
-    private String idGreenhouse;
+    private Date timeStamp;
 
-
-    public LogClass(int idLog, double co2,double temperature, double humidity, LocalDateTime dateTime, String idGreenhouse) {
-
-        this.idLog = idLog;
+    public LogClass(int id, double co2, double temperature, double humidity, Date timeStamp)
+    {
+        this.id = id;
         this.co2 = co2;
-        this.temperature= temperature;
-        this.humidity= humidity;
-        this.dateTime= dateTime;
-        this.idGreenhouse= idGreenhouse;
-
-
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.timeStamp = timeStamp;
     }
 
-    public void setIdLog(int idLog) {
-        this.idLog = idLog;
+    public int getId() {
+        return id;
     }
 
-    public int getIdLog() {
-        return idLog;
-    }
-
-    public String getIdLog() {
-        return idLog;
-    }
-
-    public String getCo2() {
+    public double getCo2() {
         return co2;
     }
 
-    public double getTemperature() { return temperature; }
+    public double getTemperature() {
+        return temperature;
+    }
 
-    public double getHumidity() { return humidity; }
+    public double getHumidity() {
+        return humidity;
+    }
 
-    public LocalDateTime getDateTime() { return dateTime; }
-
-    public String getIdGreenhouse() { return idGreenhouse; }
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
 }
