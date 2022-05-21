@@ -5,85 +5,69 @@ android:layout_height="match_parent"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools">
 
-<fragment
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <LinearLayout
         android:id="@+id/greenhouseLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="150dp">
 
-        <LinearLayout
-            android:id="@+id/nameLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:text="Name"/>
-
-            <TextView
-                android:id="@+id/plantName"
-                android:layout_width="180dp"
-                android:layout_height="30dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/typeLayout"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:text="Greenhouse App"
+            android:layout_marginBottom="20dp"/>
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:text="Location"/>
-
-            <TextView
-                android:id="@+id/greenhouseLocation"
-                android:layout_width="180dp"
-                android:layout_height="30dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/descriptionLayout"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:text="Description"
+            android:layout_marginBottom="20dp"/>
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:text="Description"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+            android:layout_marginBottom="20dp"/>
 
-            <TextView
-                android:id="@+id/greenhouseDescription"
-                android:layout_width="150dp"
-                android:layout_height="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+            android:layout_marginBottom="20dp"/>
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How To Use"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"/>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/editGreenhouseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        app:layout_constraintTop_toBottomOf="@id/greenhouseLayout"
-        app:layout_constraintEnd_toEndOf="@id/greenhouseLayout"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"/>
-
-</fragment>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

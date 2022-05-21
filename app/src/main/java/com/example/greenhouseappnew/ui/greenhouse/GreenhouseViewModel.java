@@ -22,7 +22,7 @@ public class GreenhouseViewModel extends AndroidViewModel {
 
     public LiveData<Greenhouse> get(int id) {
         repository.searchForGreenhouseById(id);
-        return repository.getGreenhouse();
+        return repository.getGreenHouse();
     }
 
     public void update(Greenhouse greenhouse) {
