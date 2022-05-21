@@ -25,7 +25,7 @@
                 android:text="Name"/>
 
             <TextView
-                android:id="@+id/greenhouseName"
+                android:id="@+id/greenhouseNameTv"
                 android:layout_width="180dp"
                 android:layout_height="30dp"/>
 
@@ -43,7 +43,7 @@
                 android:text="Location"/>
 
             <TextView
-                android:id="@+id/greenhouseLocation"
+                android:id="@+id/greenhouseLocationTv"
                 android:layout_width="180dp"
                 android:layout_height="30dp"/>
 
@@ -61,8 +61,80 @@
                 android:text="Description"/>
 
             <TextView
-                android:id="@+id/greenhouseDescription"
+                android:id="@+id/greenhouseDescriptionTv"
                 android:layout_width="150dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/areaLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Area"/>
+
+            <TextView
+                android:id="@+id/greenhouseAreaTv"
+                android:layout_width="180dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/co2Layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Pref. CO2"/>
+
+            <TextView
+                android:id="@+id/greenhouseCo2Tv"
+                android:layout_width="180dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/humidityLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Perf. Humidity"/>
+
+            <TextView
+                android:id="@+id/greenhouseHumidityTv"
+                android:layout_width="180dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/temperatureLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Pref. Temp"/>
+
+            <TextView
+                android:id="@+id/greenhouseTempTv"
+                android:layout_width="180dp"
                 android:layout_height="30dp"/>
 
         </LinearLayout>
