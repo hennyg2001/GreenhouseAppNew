@@ -46,9 +46,9 @@ public class PlantsFragment extends Fragment {
             public void onItemClick(Plant plant) {
 
                 Bundle plantsBundle = new Bundle();
-                plantsBundle.putInt("id", plant.getId());
+                plantsBundle.putInt("id", plant.getIdGreenhouse());
                 plantsBundle.putString("name", plant.getName());
-                plantsBundle.putString("type", plant.getType());
+                plantsBundle.putString("type", plant.getScientificName());
                 plantsBundle.putString("description", plant.getDescription());
 
                 getParentFragmentManager().beginTransaction()

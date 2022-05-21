@@ -2,34 +2,34 @@ package com.example.greenhouseappnew.model;
 
 public class Routine {
 
-    private int id;
-    private String taskName;
+    private int idRoutine;
+    private String task;
     private String day;
-    private int frequency;
+    private int idPlant;
 
-    public Routine(String taskName, String day, int frequency) {
-        this.taskName = taskName;
+    public Routine(String task, String day, int idPlant) {
+        this.task = task;
         this.day = day;
-        this.frequency = frequency;
+        this.idPlant = idPlant;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdRoutine(int idRoutine) {
+        this.idRoutine = idRoutine;
     }
 
-    public int getId() {
-        return id;
+    public int getIdRoutine() {
+        return idRoutine;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getTask() {
+        return task;
     }
 
     public String getDay() {
         return day;
     }
 
-    public int getFrequency() {
-        return frequency;
+    public int getIdPlant() {
+        return idPlant;
     }
 }

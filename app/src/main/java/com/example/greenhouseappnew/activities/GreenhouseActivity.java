@@ -76,7 +76,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         }
 
                         Greenhouse greenhouse = new Greenhouse(name, location, description);
-                        greenhouse.setId(id);
+                        greenhouse.setIdGreenhouse(id);
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 

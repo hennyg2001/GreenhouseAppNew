@@ -44,9 +44,9 @@
             android:layout_marginTop="40dp">
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:text="Location"/>
+                android:text="Location" />
 
             <EditText
                 android:id="@+id/greenhouseLocation"
