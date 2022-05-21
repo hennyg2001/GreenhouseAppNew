@@ -25,8 +25,8 @@ public class PlantProfileFragment extends Fragment {
 
         int id = requireArguments().getInt("id");
         String name = requireArguments().getString("name");
-        String type = requireArguments().getString("name");
-        String description = requireArguments().getString("name");
+        String type = requireArguments().getString("type");
+        String description = requireArguments().getString("description");
 
         nameTextView = getView().findViewById(R.id.plantName);
         typeTextView = getView().findViewById(R.id.plantType);

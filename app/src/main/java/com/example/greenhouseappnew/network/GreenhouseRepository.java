@@ -61,6 +61,10 @@ public class GreenhouseRepository {
         return instance;
     }
 
+    public MutableLiveData<List<Routine>> getRoutineList() {
+        return routineList;
+    }
+
     public MutableLiveData<Plant> getUpdatedPlant() {
         return updatedPlant;
     }

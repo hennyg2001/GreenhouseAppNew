@@ -13,31 +13,26 @@ import java.util.List;
 
 public class PlantProfileViewModel extends AndroidViewModel {
 
-    public PlantProfileViewModel(@NonNull Application application) {
-        super(application);
-    }
-
     private GreenhouseRepository repository;
     private LiveData<List<Routine>> allRoutines;
 
-    public LiveData<Routine> get(int id) {
-        return repository.getRoutine(id);
+    public PlantProfileViewModel(@NonNull Application application) {
+        super(application);
+        repository = new GreenhouseRepository();
+        allRoutines = repository.getRoutineList();
+    }
+
+    public LiveData<List<Routine>> getRoutinesByPlant(int id) {
+        repository.searchForRoutinesById(id);
+        return repository.getRoutineList();
     }
 
     public LiveData<List<Routine>> getAll() {
         return allRoutines;
     }
 
-    public void insert(Routine routine) {
-        repository.addRoutine(routine);
-    }
-
-    public void update(Routine routine) {
-        repository.updateRoutine(routine);
-    }
-
     public void delete(Routine routine) {
-        repository.deletRoutine(routine.getId());
+        repository.deleteRoutine(routine.getId());
     }
 
 }
