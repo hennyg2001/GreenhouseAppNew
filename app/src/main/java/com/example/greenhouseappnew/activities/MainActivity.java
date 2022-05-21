@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
@@ -50,8 +51,12 @@ public class MainActivity extends AppCompatActivity {
                         String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
                         String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
                         String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+                        Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
+                        Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
+                        Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
+                        Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
 
-                        Greenhouse greenhouse = new Greenhouse(name, location, description);
+                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp);
                         greenhousesViewModel.insert(greenhouse);
                         Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
 
@@ -88,10 +93,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getIdGreenhouse());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_AREA, greenhouse.getArea());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, greenhouse.getPreferredCo2());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getPreferredHumidity());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getPreferredTemperature());
                 startActivity(intent);
             }
         });

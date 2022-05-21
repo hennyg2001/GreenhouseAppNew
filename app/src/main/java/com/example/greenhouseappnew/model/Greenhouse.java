@@ -53,7 +53,7 @@ public class Greenhouse {
 
     public Double getPreferredCo2() { return PreferredCo2; }
 
-    public Double getPreferredHumidity { return PreferredHumidity;}
+    public Double getPreferredHumidity() { return PreferredHumidity;}
 
     public Double getPreferredTemperature() { return PreferredTemperature; }
 
