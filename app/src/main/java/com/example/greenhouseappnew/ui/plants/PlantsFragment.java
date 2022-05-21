@@ -1,25 +1,17 @@
 package com.example.greenhouseappnew.ui.plants;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.greenhouseappnew.GreenhouseActivity;
-import com.example.greenhouseappnew.GreenhousesViewModel;
-import com.example.greenhouseappnew.MainActivity;
 import com.example.greenhouseappnew.R;
-import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
 import com.example.greenhouseappnew.adapters.PlantAdapter;
-import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
 

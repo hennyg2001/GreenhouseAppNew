@@ -5,7 +5,7 @@
     android:id="@+id/chart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GraphFragment">
+    tools:context=".ui.graphs.GraphFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CO2_btn"

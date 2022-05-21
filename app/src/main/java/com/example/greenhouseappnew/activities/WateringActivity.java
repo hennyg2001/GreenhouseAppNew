@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

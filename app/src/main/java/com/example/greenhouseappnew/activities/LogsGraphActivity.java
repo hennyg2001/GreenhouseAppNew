@@ -1,9 +1,11 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+
+import com.example.greenhouseappnew.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;

@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,28 +7,20 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
+import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
 import com.example.greenhouseappnew.model.Greenhouse;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.github.*;
-
-import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
