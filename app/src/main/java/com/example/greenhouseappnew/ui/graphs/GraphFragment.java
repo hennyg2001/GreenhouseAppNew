@@ -71,7 +71,7 @@ public class GraphFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_graph, null);
-        humidityBtn = (Button) root.findViewById(R.id.humidity_btn);
+        humidityBtn =  root.findViewById(R.id.humidity_btn);
         temperatureBtn = root.findViewById(R.id.temperature_btn);
         co2Btn = root.findViewById(R.id.CO2_btn);
 
@@ -119,5 +119,83 @@ public class GraphFragment extends Fragment {
         }
 
         return inflater.inflate(R.layout.fragment_graph, container, false);
+    }
+
+    public void changeToHumidity()
+    {
+        XAxis xAxis;
+        {   // // X-Axis Style // //
+            xAxis = chart.getXAxis();
+
+            // vertical grid lines
+            xAxis.enableGridDashedLine(10f, 10f, 0f);
+        }
+
+        YAxis yAxis;
+        {   // // Y-Axis Style // //
+            yAxis = chart.getAxisLeft();
+
+            // disable dual axis (only use LEFT axis)
+            chart.getAxisRight().setEnabled(false);
+
+            // horizontal grid lines
+            yAxis.enableGridDashedLine(10f, 10f, 0f);
+
+            // axis range
+            yAxis.setAxisMaximum(100f);
+            yAxis.setAxisMinimum(0f);
+        }
+    }
+
+    public void changeToCo2()
+    {
+        XAxis xAxis;
+        {   // // X-Axis Style // //
+            xAxis = chart.getXAxis();
+
+            // vertical grid lines
+            xAxis.enableGridDashedLine(10f, 10f, 0f);
+        }
+
+        YAxis yAxis;
+        {   // // Y-Axis Style // //
+            yAxis = chart.getAxisLeft();
+
+            // disable dual axis (only use LEFT axis)
+            chart.getAxisRight().setEnabled(false);
+
+            // horizontal grid lines
+            yAxis.enableGridDashedLine(10f, 10f, 0f);
+
+            // axis range
+            yAxis.setAxisMaximum(500f);
+            yAxis.setAxisMinimum(0f);
+        }
+    }
+
+    public void changeToTemperature()
+    {
+        XAxis xAxis;
+        {   // // X-Axis Style // //
+            xAxis = chart.getXAxis();
+
+            // vertical grid lines
+            xAxis.enableGridDashedLine(10f, 10f, 0f);
+        }
+
+        YAxis yAxis;
+        {   // // Y-Axis Style // //
+            yAxis = chart.getAxisLeft();
+
+            // disable dual axis (only use LEFT axis)
+            chart.getAxisRight().setEnabled(false);
+
+            // horizontal grid lines
+            yAxis.enableGridDashedLine(10f, 10f, 0f);
+
+            // axis range
+            yAxis.setAxisMaximum(40f);
+            yAxis.setAxisMinimum(0f);
+        }
     }
 }

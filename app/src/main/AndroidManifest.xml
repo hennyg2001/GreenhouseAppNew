@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenhouseAppNew">
         <activity
-            android:name=".activities.activity_graphs"
+            android:name=".activities.GraphsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LogsGraphActivity"

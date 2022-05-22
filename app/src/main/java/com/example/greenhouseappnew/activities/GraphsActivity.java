@@ -14,7 +14,7 @@ import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.ui.graphs.GraphFragment;
 import com.example.greenhouseappnew.ui.graphs.TableFragment;
 
-public class activity_graphs extends AppCompatActivity {
+public class GraphsActivity extends AppCompatActivity {
     Button tableBtn, graphBtn;
     FrameLayout graphLayout;
 
