@@ -31,6 +31,8 @@ public class GraphFragment extends Fragment {
 
     private LineChart chart;
     private Button humidityBtn;
+    private Button temperatureBtn;
+    private Button co2Btn;
 
     public GraphFragment() {
         // Required empty public constructor
@@ -70,6 +72,9 @@ public class GraphFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_graph, null);
         humidityBtn = (Button) root.findViewById(R.id.humidity_btn);
+        temperatureBtn = root.findViewById(R.id.temperature_btn);
+        co2Btn = root.findViewById(R.id.CO2_btn);
+
 
         {   // // Chart Style // //
             chart = (LineChart) root.findViewById(R.id.values_chart);
