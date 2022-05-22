@@ -11,9 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.model.LogClass;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +40,7 @@ public class GraphFragment extends Fragment {
     private Button humidityBtn;
     private Button temperatureBtn;
     private Button co2Btn;
+    private ArrayList<LogClass> logList;
 
     public GraphFragment() {
         // Required empty public constructor
@@ -69,86 +77,21 @@ public class GraphFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_graph, null);
         humidityBtn =  root.findViewById(R.id.humidity_btn);
         temperatureBtn = root.findViewById(R.id.temperature_btn);
         co2Btn = root.findViewById(R.id.CO2_btn);
+        chart = (LineChart) root.findViewById(R.id.values_chart);
 
 
-        {   // // Chart Style // //
-            chart = (LineChart) root.findViewById(R.id.values_chart);
-
-            // background color
+            chart.setDragEnabled(true);
+            chart.setScaleEnabled(false);
             chart.setBackgroundColor(Color.WHITE);
-
-            // disable description text
             chart.getDescription().setEnabled(false);
-
-            // enable touch gestures
             chart.setTouchEnabled(true);
-
-            // set listeners
 
             chart.setDrawGridBackground(false);
 
-            // create marker to display box when values are selected
-
-            XAxis xAxis;
-            {   // // X-Axis Style // //
-                xAxis = chart.getXAxis();
-
-                // vertical grid lines
-                xAxis.enableGridDashedLine(10f, 10f, 0f);
-            }
-
-            YAxis yAxis;
-            {   // // Y-Axis Style // //
-                yAxis = chart.getAxisLeft();
-
-                // disable dual axis (only use LEFT axis)
-                chart.getAxisRight().setEnabled(false);
-
-                // horizontal grid lines
-                yAxis.enableGridDashedLine(10f, 10f, 0f);
-
-                // axis range
-                yAxis.setAxisMaximum(200f);
-                yAxis.setAxisMinimum(-50f);
-            }
-        }
-
-        return inflater.inflate(R.layout.fragment_graph, container, false);
-    }
-
-    public void changeToHumidity()
-    {
-        XAxis xAxis;
-        {   // // X-Axis Style // //
-            xAxis = chart.getXAxis();
-
-            // vertical grid lines
-            xAxis.enableGridDashedLine(10f, 10f, 0f);
-        }
-
-        YAxis yAxis;
-        {   // // Y-Axis Style // //
-            yAxis = chart.getAxisLeft();
-
-            // disable dual axis (only use LEFT axis)
-            chart.getAxisRight().setEnabled(false);
-
-            // horizontal grid lines
-            yAxis.enableGridDashedLine(10f, 10f, 0f);
-
-            // axis range
-            yAxis.setAxisMaximum(100f);
-            yAxis.setAxisMinimum(0f);
-        }
-    }
-
-    public void changeToCo2()
-    {
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
@@ -171,31 +114,84 @@ public class GraphFragment extends Fragment {
             yAxis.setAxisMaximum(500f);
             yAxis.setAxisMinimum(0f);
         }
+
+        humidityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeToHumidity();
+            }
+        });
+
+        co2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeToCo2();
+            }
+        });
+
+        temperatureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeToTemperature();
+            }
+        });
+
+        return inflater.inflate(R.layout.fragment_graph, container, false);
     }
+
+    public void changeToHumidity()
+    {
+        ArrayList<Entry> yValues = new ArrayList<>();
+        //Initialize logList with values from viewModel
+        //Here add value from viewmodel with a for loop
+
+        for(LogClass temp: logList)
+        {
+            //It can only take float values figure date out
+            yValues.add(new Entry(1, Double.valueOf(temp.getHumidity()).floatValue()));
+        }
+        setData(yValues);
+
+    }
+
+    public void changeToCo2()
+    {
+        ArrayList<Entry> yValues = new ArrayList<>();
+        //Initialize logList with values from viewModel
+        //Here add value from viewmodel with a for loop
+
+        for(LogClass temp: logList)
+        {
+            //It can only take float values figure date out
+            yValues.add(new Entry(1, Double.valueOf(temp.getCo2()).floatValue()));
+        }
+        setData(yValues);
+    }
+
 
     public void changeToTemperature()
     {
-        XAxis xAxis;
-        {   // // X-Axis Style // //
-            xAxis = chart.getXAxis();
+        ArrayList<Entry> yValues = new ArrayList<>();
+        //Initialize logList with values from viewModel
+        //Here add value from viewmodel with a for loop
 
-            // vertical grid lines
-            xAxis.enableGridDashedLine(10f, 10f, 0f);
+        for(LogClass temp: logList)
+        {
+            //It can only take float values figure date out
+            yValues.add(new Entry(1, Double.valueOf(temp.getTemperature()).floatValue()));
         }
+        setData(yValues);
+    }
 
-        YAxis yAxis;
-        {   // // Y-Axis Style // //
-            yAxis = chart.getAxisLeft();
+    public void setData(ArrayList<Entry> values)
+    {
+        LineDataSet dataSet = new LineDataSet(values, "Data Set");
+        dataSet.setFillAlpha(110);
 
-            // disable dual axis (only use LEFT axis)
-            chart.getAxisRight().setEnabled(false);
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(dataSet);
+        LineData data = new LineData(dataSets);
 
-            // horizontal grid lines
-            yAxis.enableGridDashedLine(10f, 10f, 0f);
-
-            // axis range
-            yAxis.setAxisMaximum(40f);
-            yAxis.setAxisMinimum(0f);
-        }
+        chart.setData(data);
     }
 }
