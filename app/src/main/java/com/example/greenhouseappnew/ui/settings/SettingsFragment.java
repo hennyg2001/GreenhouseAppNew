@@ -14,13 +14,12 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
-
-       /* Preference myPref= (Package) findPreference("contact_preference");
+        /*Preference myPref= (Package) findPreference("contact_preference");
         myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 return false;
             }
-        }); */
+        });*/
     }
 }
