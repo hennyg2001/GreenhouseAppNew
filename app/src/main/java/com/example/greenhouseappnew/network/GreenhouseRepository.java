@@ -374,4 +374,22 @@ public class GreenhouseRepository {
         });
     }
 
+    public void activateWatering(int greenhouseId)
+    {
+        GreenHouseApi greenHouseApi = ServiceProvider.getGreenHouseApi();
+        Call<Void> call =  greenHouseApi.activeActuator(greenhouseId);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

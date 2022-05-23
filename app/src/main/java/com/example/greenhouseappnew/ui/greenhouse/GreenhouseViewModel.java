@@ -17,7 +17,7 @@ public class GreenhouseViewModel extends AndroidViewModel {
 
     public GreenhouseViewModel(@NonNull Application application) {
         super(application);
-        repository = new GreenhouseRepository();
+        repository = GreenhouseRepository.getInstance();
     }
 
     public LiveData<Greenhouse> get(int id) {
