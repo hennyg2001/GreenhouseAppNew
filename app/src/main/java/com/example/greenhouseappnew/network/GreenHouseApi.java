@@ -5,6 +5,7 @@ package com.example.greenhouseappnew.network;
 import androidx.room.Delete;
 
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.model.GreenhouseListResponse;
 import com.example.greenhouseappnew.model.GreenhouseResponse;
 import com.example.greenhouseappnew.model.LogListResponse;
 import com.example.greenhouseappnew.model.LogResponse;
@@ -35,7 +36,7 @@ public interface GreenHouseApi {
     Call<PlantResponse> getPlantById(@Path("plantId") int plantId);
 
     @GET("Greenhouse/{userEmail}")
-    Call<GreenhouseResponse> getGreenHouseByEmail(@Path("userMail") String userMail);
+    Call<GreenhouseListResponse> getGreenHouseByEmail(@Path("userEmail") String userEmail);
 
     @GET("Plants/{greenhouseId")
     Call<PlantListResponse> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);

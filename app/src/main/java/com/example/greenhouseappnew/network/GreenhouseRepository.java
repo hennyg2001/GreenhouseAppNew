@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.model.GreenhouseListResponse;
 import com.example.greenhouseappnew.model.GreenhouseResponse;
 import com.example.greenhouseappnew.model.LogClass;
 import com.example.greenhouseappnew.model.LogListResponse;
@@ -176,13 +177,13 @@ public class GreenhouseRepository {
 
     public void searchForGreenhouseByEmail(String email) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<GreenhouseResponse> call = greenhouseApi.getGreenHouseByEmail(email);
-        call.enqueue(new Callback<GreenhouseResponse>() {
+        Call<GreenhouseListResponse> call = greenhouseApi.getGreenHouseByEmail(email);
+        call.enqueue(new Callback<GreenhouseListResponse>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<GreenhouseResponse> call, Response<GreenhouseResponse> response) {
+            public void onResponse(Call<GreenhouseListResponse> call, Response<GreenhouseListResponse> response) {
                 if (response.isSuccessful()) {
-                    greenHouse.setValue(response.body().getGreenhouse());
+                    greenHouseList.setValue(response.body().getResponse());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -190,7 +191,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
+            public void onFailure(Call<GreenhouseListResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });

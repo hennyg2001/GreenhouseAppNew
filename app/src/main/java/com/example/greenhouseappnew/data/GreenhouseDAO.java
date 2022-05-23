@@ -27,11 +27,13 @@ public interface GreenhouseDAO
     @Query("SELECT * FROM Greenhouse WHERE id = :id")
     LiveData<Greenhouse> getGreenhouseById(int id);
 
-    @Query("SELECT * FROM Greenhouse WHERE UserEmail = :mail")
+    @Query("SELECT * FROM Greenhouse WHERE userEmail = :mail")
     LiveData<Greenhouse> getGreenhouseByEmail(String mail);
 
-    @Query("UPDATE Greenhouse SET name = :Name, UserEmail = :UserEmail, location = :Location, description = :Description, area = :Area, PreferredCo2 = :PreferredCo2, PreferredTemperature = :PreferredTemperature, PreferredHumidity = :PreferredHumidity  WHERE id = :id")
-    LiveData<Greenhouse> updateGreenhouse(int id, String Name, String UserEmail, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity);
+    @Query("UPDATE Greenhouse SET name = :Name, userEmail = :UserEmail, location = :Location, description = :Description, area = :Area, co2Preferred = :PreferredCo2, temperaturePreferred = :PreferredTemperature, humidityPreferred = :PreferredHumidity, actuatorSet = :actuatorSet  WHERE id = :id")
+    LiveData<Greenhouse> updateGreenhouse(int id, String Name, String UserEmail, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, boolean actuatorSet);
+
+
 
 
 
