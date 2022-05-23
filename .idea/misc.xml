@@ -35,7 +35,7 @@
         <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/plant_profile.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/plants_list.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_create_greenhouse.xml" value="0.33" />
+        <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_create_greenhouse.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_create_plant.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_graphs.xml" value="0.1546875" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_greenhouse.xml" value="0.3098958333333333" />

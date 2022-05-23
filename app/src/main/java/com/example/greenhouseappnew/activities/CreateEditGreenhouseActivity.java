@@ -40,6 +40,7 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         preferredTempEditText = findViewById(R.id.greenhousePreferredTemperature);
         createGreenhouseButton = findViewById(R.id.createGreenhouseButton);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         Intent intent = getIntent();
