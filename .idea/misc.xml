@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_greenhouse1.xml" value="0.1546875" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_greenhouse_main.xml" value="0.22" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_login.xml" value="0.1546875" />
-        <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/activity_signup.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layouts/activity_layouts/layout/table_item.xml" value="0.25" />
         <entry key="app/src/main/res/layouts/fragment_layouts/layout/fragment_graph.xml" value="0.3098958333333333" />
