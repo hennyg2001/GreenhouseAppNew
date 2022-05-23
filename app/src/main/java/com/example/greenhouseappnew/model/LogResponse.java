@@ -9,7 +9,7 @@ public class LogResponse {
     private double co2;
     private double temperature;
     private double humidity;
-    private LocalDateTime dateTime;
+    private String dateTime;
 
     public LogClass getLog() {
         return new LogClass(id, co2, temperature, humidity, dateTime);

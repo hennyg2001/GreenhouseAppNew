@@ -37,4 +37,20 @@ public class Routine {
     public int getIdPlant() {
         return id_Plant;
     }
+
+    public int getId_Plant() {
+        return id_Plant;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public void setId_Plant(int id_Plant) {
+        this.id_Plant = id_Plant;
+    }
 }

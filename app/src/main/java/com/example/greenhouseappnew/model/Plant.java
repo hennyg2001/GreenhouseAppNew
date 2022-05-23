@@ -50,6 +50,31 @@ public class Plant {
 
     public String getDescription() { return description; }
 
+    public int getId_Greenhouse() {
+        return id_Greenhouse;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setScientificName(String scientificName) {
+        this.scientificName = scientificName;
+    }
+
+    public void setId_Greenhouse(int id_Greenhouse) {
+        this.id_Greenhouse = id_Greenhouse;
+    }
 }

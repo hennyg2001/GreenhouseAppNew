@@ -90,5 +90,43 @@ public class Greenhouse {
         return temperaturePreferred;
     }
 
+    public boolean isActuatorSet() {
+        return actuatorSet;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
+    }
+
+    public void setCo2Preferred(Double co2Preferred) {
+        this.co2Preferred = co2Preferred;
+    }
+
+    public void setTemperaturePreferred(Double temperaturePreferred) {
+        this.temperaturePreferred = temperaturePreferred;
+    }
+
+    public void setHumidityPreferred(Double humidityPreferred) {
+        this.humidityPreferred = humidityPreferred;
+    }
+
+    public void setActuatorSet(boolean actuatorSet) {
+        this.actuatorSet = actuatorSet;
+    }
 }
