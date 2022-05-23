@@ -26,7 +26,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.greenhouse_item, parent, false);
+                .inflate(R.layout.plant_item, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -34,6 +34,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull PlantAdapter.ViewHolder holder, int position) {
         Plant currentPlant = plants.get(position);
         holder.name.setText(currentPlant.getName());
+        holder.type.setText(currentPlant.getScientificName());
     }
 
     @Override
@@ -53,10 +54,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView name;
+        private final TextView type;
 
         private ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
+            type = itemView.findViewById(R.id.tv_type);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

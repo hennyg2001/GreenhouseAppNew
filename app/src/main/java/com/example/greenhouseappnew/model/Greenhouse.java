@@ -25,8 +25,7 @@ public class Greenhouse {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
 
-    public Greenhouse(int idGreenhouse, String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {
-        this.idGreenhouse = idGreenhouse;
+    public Greenhouse(String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {
         this.Name = Name;
         this.Location = Location;
         this.Description = Description;

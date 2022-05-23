@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
