@@ -47,6 +47,8 @@ public class CreateEditPlantActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.createPlantButton);
 
+        setSupportActionBar(findViewById(R.id.add_plant_toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         Intent intent = getIntent();

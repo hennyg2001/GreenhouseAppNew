@@ -15,8 +15,6 @@ import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 public class CreateEditGreenhouseActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     public static final String EXTRA_ID = "com.example.and_recipeapp.EXTRA_ID";
     public static final String EXTRA_NAME = "com.example.and_recipeapp.EXTRA_NAME";
     public static final String EXTRA_LOCATION = "com.example.and_recipeapp.EXTRA_LOCATION";
@@ -33,8 +31,6 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_greenhouse);
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         nameEditText = findViewById(R.id.greenhouseName);
         locationEditText = findViewById(R.id.greenhouseLocation);
