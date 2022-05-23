@@ -1,13 +1,17 @@
 package com.example.greenhouseappnew.model;
 
-import java.util.ArrayList;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+@Entity
 public class Plant {
 
+    @PrimaryKey(autoGenerate = true)
+    private int idGreenhouse;
     private String description;
     private String name;
     private String scientificName;
-    private int idGreenhouse;
 
     private ArrayList<LogClass> logClasses;
 

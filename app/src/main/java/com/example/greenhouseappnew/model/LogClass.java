@@ -1,8 +1,13 @@
 package com.example.greenhouseappnew.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity
 public class LogClass {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private double co2;
     private double temperature;
