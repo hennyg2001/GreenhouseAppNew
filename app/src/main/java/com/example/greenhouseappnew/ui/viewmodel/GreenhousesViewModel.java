@@ -31,8 +31,9 @@ public class GreenhousesViewModel extends AndroidViewModel {
         return allGreenhouses;
     }
 
-    public LiveData<List<Greenhouse>> getAllByEmail() {
-        return allGreenhouses;
+    public LiveData<List<Greenhouse>> getAllByEmail(String email) {
+        repository.searchForGreenhouseByEmail(email);
+        return repository.getGreenHouseList();
     }
 
     public void insert(Greenhouse greenhouse) {

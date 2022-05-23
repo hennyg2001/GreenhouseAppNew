@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         greenhousesViewModel = new ViewModelProvider(this).get(GreenhousesViewModel.class);
-        greenhousesViewModel.getAll().observe(this, (greenhouses) -> {
+        greenhousesViewModel.getAllByEmail(userId).observe(this, (greenhouses) -> {
             adapter.setGreenhouses(greenhouses);
         });
 
