@@ -1,11 +1,14 @@
 package com.example.greenhouseappnew.ui.greenhouse;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.greenhouseappnew.R;
@@ -15,8 +18,10 @@ public class GreenhouseFragment extends Fragment {
     private TextView nameTextView, locationTextView, descriptionTextView, areaTextView, co2TextView, humidityTextView, tempTextView;
     private Button button;
 
-    public GreenhouseFragment() {
-        super(R.layout.fragment_greenhouse_info);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
     }
 
     @Override
