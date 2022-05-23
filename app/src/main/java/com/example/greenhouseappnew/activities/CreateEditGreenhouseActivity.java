@@ -10,9 +10,12 @@ import android.widget.NumberPicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 public class CreateEditGreenhouseActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
 
     public static final String EXTRA_ID = "com.example.and_recipeapp.EXTRA_ID";
     public static final String EXTRA_NAME = "com.example.and_recipeapp.EXTRA_NAME";
@@ -31,6 +34,8 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_greenhouse);
 
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
         nameEditText = findViewById(R.id.greenhouseName);
         locationEditText = findViewById(R.id.greenhouseLocation);
         descriptionEditText = findViewById(R.id.greenhouseDescription);
@@ -40,6 +45,7 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         preferredTempEditText = findViewById(R.id.greenhousePreferredTemperature);
         createGreenhouseButton = findViewById(R.id.createGreenhouseButton);
 
+        setSupportActionBar(findViewById(R.id.add_greenhouse_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
