@@ -8,8 +8,7 @@ public class PlantResponse {
 
     public Plant getPlant() {
 
-        return new Plant(name, type, description);
-
+        return new Plant();
     }
 
 }

@@ -34,7 +34,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
     }
 
     public void onBindViewHolder(@NonNull LogAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.name.setText(logClasses.get(position).getName());
+        viewHolder.name.setText("test");
     }
 
     public int getItemCount() {

@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew.model;
+package com.example.greenhouseappnew.ui.graphs;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.greenhouseappnew.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Temperature#newInstance} factory method to
+ * Use the {@link CO2Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Temperature extends Fragment {
+public class CO2Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Temperature extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Temperature() {
+    public CO2Fragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class Temperature extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Temperature.
+     * @return A new instance of fragment CO2Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Temperature newInstance(String param1, String param2) {
-        Temperature fragment = new Temperature();
+    public static CO2Fragment newInstance(String param1, String param2) {
+        CO2Fragment fragment = new CO2Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
