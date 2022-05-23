@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public interface RoutineDAO {
 
-    @Query("SELECT * FROM routines")
-    List<Routine> getAll();
+    @Query("SELECT * FROM Routine WHERE id_Plant = :id")
+    LiveData<List<Routine>> getRoutinesByPlantId(int id);
 
     @Insert
     void insert(Routine routine);

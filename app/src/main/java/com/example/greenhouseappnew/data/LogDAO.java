@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,8 +11,12 @@ import java.util.List;
 
 public interface LogDAO {
 
-    @Query("SELECT * FROM Logs WHERE ")
-    List<LogClass> getAll();
+    @Query("SELECT * FROM Logs WHERE id_Greenhouse = :id")
+    LiveData<List<LogClass>> getLogsByGreenhouseId(int id);
+
+    @Query("SELECT * FROM Logs WHERE id = :id")
+    LiveData<LogClass> getLogById(int id);
+
 
     @Insert
     void insert(LogClass logClass);
