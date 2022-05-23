@@ -163,9 +163,10 @@ public class GraphFragment extends Fragment {
     public void changeToCo2()
     {
         ArrayList<Entry> yValues = new ArrayList<>();
-        //Initialize logList with values from viewModel
-        //Here add value from viewmodel with a for loop
 
+        //Initialize logList with values from viewModel
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
+        //Here add value from viewmodel with a for loop
         for(LogClass temp: logList)
         {
             //It can only take float values figure date out
@@ -179,6 +180,7 @@ public class GraphFragment extends Fragment {
     {
         ArrayList<Entry> yValues = new ArrayList<>();
         //Initialize logList with values from viewModel
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
         //Here add value from viewmodel with a for loop
 
         for(LogClass temp: logList)
