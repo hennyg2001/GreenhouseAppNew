@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +43,7 @@ public class GraphFragment extends Fragment {
     private Button temperatureBtn;
     private Button co2Btn;
     private ArrayList<LogClass> logList;
+    private GraphViewModel viewModel;
 
     public GraphFragment() {
         // Required empty public constructor
@@ -78,6 +81,7 @@ public class GraphFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_graph, null);
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
         humidityBtn =  root.findViewById(R.id.humidity_btn);
         temperatureBtn = root.findViewById(R.id.temperature_btn);
         co2Btn = root.findViewById(R.id.CO2_btn);
@@ -142,9 +146,11 @@ public class GraphFragment extends Fragment {
     public void changeToHumidity()
     {
         ArrayList<Entry> yValues = new ArrayList<>();
-        //Initialize logList with values from viewModel
-        //Here add value from viewmodel with a for loop
 
+        //Initialize logList with values from viewModel
+        logList = (ArrayList<LogClass>) viewModel.getLogList().getValue();
+
+        //Here add value from viewmodel with a for loop
         for(LogClass temp: logList)
         {
             //It can only take float values figure date out
@@ -157,9 +163,10 @@ public class GraphFragment extends Fragment {
     public void changeToCo2()
     {
         ArrayList<Entry> yValues = new ArrayList<>();
-        //Initialize logList with values from viewModel
-        //Here add value from viewmodel with a for loop
 
+        //Initialize logList with values from viewModel
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
+        //Here add value from viewmodel with a for loop
         for(LogClass temp: logList)
         {
             //It can only take float values figure date out
@@ -173,6 +180,7 @@ public class GraphFragment extends Fragment {
     {
         ArrayList<Entry> yValues = new ArrayList<>();
         //Initialize logList with values from viewModel
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
         //Here add value from viewmodel with a for loop
 
         for(LogClass temp: logList)

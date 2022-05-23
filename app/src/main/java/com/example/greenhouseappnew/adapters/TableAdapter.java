@@ -52,7 +52,12 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull TableAdapter.ViewHolder holder, int position) {
         if(logList != null && logList.size() > 0)
         {
-           //populate list from view model
+           LogClass logModel = logList.get(position);
+
+           holder.temperature_tv.setText(String.valueOf(logModel.getTemperature()));
+           holder.cO2_tv.setText(String.valueOf(logModel.getCo2()));
+           holder.humidity_tv.setText(String.valueOf(logModel.getHumidity()));
+           holder.date_tv.setText(logModel.getTimeStamp().toString());
         }
     }
 
