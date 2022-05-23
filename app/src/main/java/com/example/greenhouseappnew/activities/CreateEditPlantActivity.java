@@ -1,5 +1,8 @@
 package com.example.greenhouseappnew.activities;
 
+import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_ID;
+import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_NAME;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +19,7 @@ import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 public class CreateEditPlantActivity extends AppCompatActivity {
 
-    private EditText nameEditView, typeEditView, descriptionEditView;
+    private EditText nameEditText, typeEditText, descriptionEditText;
     private Spinner spinner;
     private Button btn;
 
@@ -32,7 +35,7 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_plant);
 
         // initialising all views through id defined above
-        nameEditView = findViewById(R.id.plantName);
+        nameEditText = findViewById(R.id.plantName);
 
         spinner = (Spinner) findViewById(R.id.plantTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -40,9 +43,26 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        descriptionEditView = findViewById(R.id.description);
+        descriptionEditText = findViewById(R.id.description);
 
         btn = findViewById(R.id.createPlantButton);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
+        Intent intent = getIntent();
+
+        if(intent.hasExtra(EXTRA_PLANT_ID)) {
+
+            setTitle("Edit Plant");
+            nameEditText.setText(intent.getStringExtra(EXTRA_PLANT_NAME));
+            typeEditText.setText(intent.getStringExtra(EXTRA_PLANT_TYPE));
+            descriptionEditText.setText(intent.getStringExtra(EXTRA_PLANT_DESCRIPTION));
+
+        } else {
+
+            setTitle("Add Plant");
+
+        }
 
         // Set on Click Listener on Create button
         btn.setOnClickListener(new View.OnClickListener() {
@@ -56,9 +76,9 @@ public class CreateEditPlantActivity extends AppCompatActivity {
 
     private void savePlant() {
 
-        String name = nameEditView.getText().toString().trim();
+        String name = nameEditText.getText().toString().trim();
         String type = spinner.getSelectedItem().toString().trim();
-        String description = descriptionEditView.getText().toString().trim();
+        String description = descriptionEditText.getText().toString().trim();
 
         Intent data = new Intent();
         data.putExtra(EXTRA_PLANT_NAME, name);

@@ -11,7 +11,7 @@ public class ServiceProvider {
         if(greenHouseApi == null)
         {
             greenHouseApi = new Retrofit.Builder()
-                    .baseUrl("")
+                    .baseUrl("https://www.google.com")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(GreenHouseApi.class);
