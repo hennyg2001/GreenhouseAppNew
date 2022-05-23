@@ -34,7 +34,7 @@ public class Routine {
         return day;
     }
 
-    public int getIdPlant() {
+    public int getId_Plant() {
         return id_Plant;
     }
 }

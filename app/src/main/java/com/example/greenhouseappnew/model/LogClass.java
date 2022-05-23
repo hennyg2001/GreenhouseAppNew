@@ -44,4 +44,20 @@ public class LogClass {
     public LocalDateTime getTimeStamp() {
         return dateTime;
     }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public int getId_Greenhouse() {
+        return id_Greenhouse;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setId_Greenhouse(int id_Greenhouse) {
+        this.id_Greenhouse = id_Greenhouse;
+    }
 }
