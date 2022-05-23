@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenhouseAppNew">
-        <activity
-            android:name=".activities.GraphsActivity"
+        <activity android:name=".activities.CreateEditGreenhouseActivity"
+            android:exported="false" />
+        <activity android:name=".activities.GraphsActivity"
+            android:exported="false" />
+        <activity android:name=".authentication.LoginActivity"
+            android:exported="false" />
+        <activity android:name=".authentication.SignupActivity"
+            android:exported="false"/>
+        <activity android:name=".activities.CreateEditPlantActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LogsGraphActivity"
