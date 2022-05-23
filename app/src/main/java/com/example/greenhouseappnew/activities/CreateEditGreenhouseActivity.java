@@ -40,6 +40,8 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         preferredTempEditText = findViewById(R.id.greenhousePreferredTemperature);
         createGreenhouseButton = findViewById(R.id.createGreenhouseButton);
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
         Intent intent = getIntent();
 
         if(intent.hasExtra(EXTRA_ID)) {
@@ -55,7 +57,7 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
 
         } else {
 
-            setTitle("Add Recipe");
+            setTitle("Add Greenhouse");
 
         }
 
