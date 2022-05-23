@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(findViewById(R.id.toolbar));
+        setTitle("Greenhouses");
+
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
+
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -83,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         greenhousesViewModel = new ViewModelProvider(this).get(GreenhousesViewModel.class);
-        greenhousesViewModel.getAll().observe(this, (recipes) -> {
-            adapter.setGreenhouses(recipes);
+        greenhousesViewModel.getAll().observe(this, (greenhouses) -> {
+            adapter.setGreenhouses(greenhouses);
         });
 
         adapter.setOnItemClickListener(new GreenhouseAdapter.OnItemListClicker() {

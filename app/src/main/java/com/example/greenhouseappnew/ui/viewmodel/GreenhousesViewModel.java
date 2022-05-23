@@ -31,6 +31,10 @@ public class GreenhousesViewModel extends AndroidViewModel {
         return allGreenhouses;
     }
 
+    public LiveData<List<Greenhouse>> getAllByEmail() {
+        return allGreenhouses;
+    }
+
     public void insert(Greenhouse greenhouse) {
         repository.addGreenhouse(greenhouse);
     }
