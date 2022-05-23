@@ -22,16 +22,16 @@ public interface GreenhouseDAO
     void delete(Greenhouse greenhouse);
 
     @Query("SELECT * FROM Greenhouse")
-    LiveData<List<Greenhouse>> getAllGreenhouses();
+    List<Greenhouse> getAllGreenhouses();
 
     @Query("SELECT * FROM Greenhouse WHERE id = :id")
-    LiveData<Greenhouse> getGreenhouseById(int id);
+    Greenhouse getGreenhouseById(int id);
 
     @Query("SELECT * FROM Greenhouse WHERE userEmail = :mail")
-    LiveData<Greenhouse> getGreenhouseByEmail(String mail);
+    List<Greenhouse> getGreenhouseByEmail(String mail);
 
     @Query("UPDATE Greenhouse SET name = :Name, userEmail = :UserEmail, location = :Location, description = :Description, area = :Area, co2Preferred = :PreferredCo2, temperaturePreferred = :PreferredTemperature, humidityPreferred = :PreferredHumidity, actuatorSet = :actuatorSet  WHERE id = :id")
-    LiveData<Greenhouse> updateGreenhouse(int id, String Name, String UserEmail, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, boolean actuatorSet);
+    Greenhouse updateGreenhouse(int id, String Name, String UserEmail, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, boolean actuatorSet);
 
 
 
