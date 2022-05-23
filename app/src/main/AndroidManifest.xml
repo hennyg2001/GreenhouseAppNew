@@ -13,10 +13,6 @@
             android:exported="false" />
         <activity android:name=".activities.GraphsActivity"
             android:exported="false" />
-        <activity android:name=".authentication.LoginActivity"
-            android:exported="false" />
-        <activity android:name=".authentication.SignupActivity"
-            android:exported="false"/>
         <activity android:name=".activities.CreateEditPlantActivity"
             android:exported="false" />
         <activity
@@ -26,6 +22,28 @@
             android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".authentication.LoginActivity"
+            android:exported="true"
+            android:label="Login"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ALL_APPS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".authentication.SignupActivity"
+            android:exported="true"
+            android:label="SignUp"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ALL_APPS" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
