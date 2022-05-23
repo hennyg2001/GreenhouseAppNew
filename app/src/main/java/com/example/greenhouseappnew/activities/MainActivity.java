@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         greenhousesViewModel = new ViewModelProvider(this).get(GreenhousesViewModel.class);
-        greenhousesViewModel.getAll().observe(this, (greenhouses) -> {
+        greenhousesViewModel.getAllByEmail(userId).observe(this, (greenhouses) -> {
             adapter.setGreenhouses(greenhouses);
         });
 
@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_AREA, greenhouse.getArea());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, greenhouse.getPreferredCo2());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getPreferredHumidity());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getPreferredTemperature());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
                 startActivity(intent);
             }
         });

@@ -40,6 +40,16 @@ public class Greenhouse {
         this.actuatorSet = actuator;
     }
 
+    public Greenhouse(String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {
+        this.name = Name;
+        this.location = Location;
+        this.description = Description;
+        this.area = Area;
+        this.co2Preferred= PreferredCo2;
+        this.temperaturePreferred= PreferredTemperature;
+        this.humidityPreferred= PreferredHumidity;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
