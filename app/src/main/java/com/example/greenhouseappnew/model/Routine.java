@@ -10,12 +10,12 @@ public class Routine {
     private int idRoutine;
     private String task;
     private String day;
-    private int idPlant;
+    private int id_Plant;
 
-    public Routine(String task, String day, int idPlant) {
+    public Routine(String task, String day, int id_Plant) {
         this.task = task;
         this.day = day;
-        this.idPlant = idPlant;
+        this.id_Plant = id_Plant;
     }
 
     public void setIdRoutine(int idRoutine) {
@@ -35,6 +35,6 @@ public class Routine {
     }
 
     public int getIdPlant() {
-        return idPlant;
+        return id_Plant;
     }
 }

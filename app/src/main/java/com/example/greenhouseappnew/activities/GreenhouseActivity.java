@@ -3,9 +3,6 @@ package com.example.greenhouseappnew.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -87,7 +84,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         }
 
                         Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp);
-                        greenhouse.setIdGreenhouse(id);
+                        greenhouse.setId(id);
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 

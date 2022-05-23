@@ -8,31 +8,36 @@ import java.util.ArrayList;
 public class Plant {
 
     @PrimaryKey(autoGenerate = true)
-    private int idGreenhouse;
+    private int id;
     private String description;
     private String name;
+    private String type;
     private String scientificName;
+    private int id_Greenhouse;
 
-    private ArrayList<LogClass> logClasses;
+    public Plant(int id, String description, String name, String type, String scientificName, int id_Greenhouse) {
+        this.id = id;
+        this.description = description;
+        this.name = name;
+        this.type = type;
+        this.scientificName = scientificName;
+        this.id_Greenhouse = id_Greenhouse;
+    }
 
     public Plant() {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
 
-    public Plant(String name, String scientificName, String description, int idGreenhouse) {
-        this.name = name;
-        this.scientificName = scientificName;
-        this.description = description;
-        this.logClasses = logClasses;
-        this.idGreenhouse= idGreenhouse;
+    public int getId() {
+        return id;
     }
 
-    public void setIdGreenhouse(int idGreenhouse) {
-        this.idGreenhouse = idGreenhouse;
+    public String getType() {
+        return type;
     }
 
     public int getIdGreenhouse() {
-        return idGreenhouse;
+        return id_Greenhouse;
     }
 
     public String getName() {
@@ -45,8 +50,6 @@ public class Plant {
 
     public String getDescription() { return description; }
 
-    public ArrayList<LogClass> getPlantLogs() {
-        return logClasses;
-    }
+
 
 }

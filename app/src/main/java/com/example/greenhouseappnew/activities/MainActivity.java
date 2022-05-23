@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getIdGreenhouse());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
                 intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());

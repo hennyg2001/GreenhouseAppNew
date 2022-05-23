@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface LogDAO {
 
-    @Query("SELECT * FROM logs")
+    @Query("SELECT * FROM Logs WHERE ")
     List<LogClass> getAll();
 
     @Insert
