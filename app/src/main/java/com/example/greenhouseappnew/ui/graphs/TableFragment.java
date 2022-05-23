@@ -3,6 +3,7 @@ package com.example.greenhouseappnew.ui.graphs;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,8 +31,10 @@ public class TableFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-   RecyclerView recyclerView;
-   TableAdapter tableAdapter;
+   private RecyclerView recyclerView;
+   private TableAdapter tableAdapter;
+   private GraphViewModel viewModel;
+
 
     public TableFragment() {
         // Required empty public constructor
@@ -67,7 +70,8 @@ public class TableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.graphs_activity, null);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_graphs, null);
+        viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
         recyclerView  = root.findViewById(R.id.table_recycler_view);
         setRecyclerView();
         return inflater.inflate(R.layout.fragment_table, container, false);
@@ -85,6 +89,8 @@ public class TableFragment extends Fragment {
     {
         List<LogClass> logClassList = new ArrayList<>();
         //add code from viewmodel to populate
+        logClassList = viewModel.getLogList().getValue();
+
         return logClassList;
 
     }

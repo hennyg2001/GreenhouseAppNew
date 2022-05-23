@@ -32,8 +32,8 @@
         <SwitchPreferenceCompat
             app:dependency="sync"
             app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
+            app:summaryOff="Only download attachments when manually requested"
+            app:summaryOn="Automatically download attachments for incoming emails"
             app:title="@string/attachment_title" />
 
     </PreferenceCategory>
