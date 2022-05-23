@@ -7,7 +7,7 @@ public class GreenhouseResponse {
     private String description;
 
     public Greenhouse getGreenhouse() {
-        return new Greenhouse(name, location, description);
+        return new Greenhouse();
     }
 
 }

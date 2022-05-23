@@ -18,7 +18,7 @@ public class WateringViewModel extends AndroidViewModel {
     }
 
     public void activateWatering(int id) {
-        repository.activateWatering(id);
+        // repository.activateWatering(id);
     }
 
 }
