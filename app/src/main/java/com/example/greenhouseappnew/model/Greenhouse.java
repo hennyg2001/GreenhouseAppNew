@@ -1,16 +1,21 @@
 package com.example.greenhouseappnew.model;
 
-import java.util.ArrayList;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+@Entity
 public class Greenhouse {
 
 
     //ok related to the tables in the database
+    @PrimaryKey(autoGenerate = true)
     private int idGreenhouse; //ok
     private String Name; //ok
     private String Location; //ok
     private String Description; //ok
-    private Double Area; //ok   / to instantiate and getmothod
+    private Double Area; //ok   / to instantiate and getmethod
     private Double PreferredCo2; // ok  / to instantiate...
     private Double PreferredTemperature; // ok / to do///
     private Double PreferredHumidity; //ok
@@ -20,7 +25,8 @@ public class Greenhouse {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
 
-    public Greenhouse(String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {
+    public Greenhouse(int idGreenhouse, String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {
+        this.idGreenhouse = idGreenhouse;
         this.Name = Name;
         this.Location = Location;
         this.Description = Description;
