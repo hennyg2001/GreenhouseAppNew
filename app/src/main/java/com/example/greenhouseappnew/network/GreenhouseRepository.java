@@ -241,6 +241,28 @@ public class GreenhouseRepository {
         });
     }
 
+    public void searchForLogById(int id) {
+        GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
+        Call<LogListResponse> call = greenhouseApi.getLogsByGreenhouseId(id);
+        call.enqueue(new Callback<LogListResponse>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<LogListResponse> call, Response<LogListResponse> response) {
+                if (response.isSuccessful()) {
+                    logList.setValue(response.body().getResponse());
+                    Log.i("Header", response.headers().toString());
+                    Log.i("Complete response", String.valueOf(response.code()));
+                    Log.i("Success", response.body().toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<LogListResponse> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
+            }
+        });
+    }
+
     public void addGreenhouse(Greenhouse params) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
         Call<GreenhouseResponse> call = greenhouseApi.addGreenHouse(params);
@@ -374,6 +396,8 @@ public class GreenhouseRepository {
             }
         });
     }
+
+
 
     public void activateWatering(int greenhouseId)
     {
