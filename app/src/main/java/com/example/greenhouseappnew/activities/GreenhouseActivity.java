@@ -2,6 +2,7 @@ package com.example.greenhouseappnew.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,12 +10,19 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.example.greenhouseappnew.ui.graphs.GraphFragment;
+import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.ui.plants.PlantsFragment;
+import com.example.greenhouseappnew.ui.watering.WateringFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class GreenhouseActivity extends AppCompatActivity {
 
@@ -27,18 +35,21 @@ public class GreenhouseActivity extends AppCompatActivity {
     public static final String GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.GREENHOUSE_PREFERRED_HUMIDITY";
     public static final String GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.GREENHOUSE_PREFERRED_TEMPERATURE";
 
-    private TextView nameTextView, locationTextView, descriptionTextView, areaTextView, preferredCo2TextView, preferredHumditiyTextView, preferredTempTextView;
-    private Button editButton;
-
     private GreenhousesViewModel greenhousesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_greenhouse);
+        setContentView(R.layout.activity_greenhouse_main);
 
-        Intent intent = getIntent();
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnItemSelectedListener(navListener);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
+
+        //Intent intent = getIntent();
+
+        /*
         if (savedInstanceState == null) {
 
             Bundle plantsBundle = new Bundle();
@@ -49,23 +60,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                     .add(R.id.greenhouse_fragment_container_view, PlantsFragment.class, plantsBundle)
                     .commit();
         }
-
-        nameTextView = findViewById(R.id.greenhouseName);
-        locationTextView = findViewById(R.id.greenhouseLocation);
-        descriptionTextView = findViewById(R.id.greenhouseDescription);
-        areaTextView = findViewById(R.id.greenhouseArea);
-        preferredCo2TextView = findViewById(R.id.greenhousePreferredCo2);
-        preferredHumditiyTextView = findViewById(R.id.greenhousePreferredHumidity);
-        preferredTempTextView = findViewById(R.id.greenhousePreferredTemperature);
-        editButton = findViewById(R.id.editGreenhouseButton);
-
-        nameTextView.setText(intent.getStringExtra(GREENHOUSE_NAME));
-        locationTextView.setText(intent.getStringExtra(GREENHOUSE_LOCATION));
-        descriptionTextView.setText(intent.getStringExtra(GREENHOUSE_DESCRIPTION));
-        areaTextView.setText(intent.getStringExtra(GREENHOUSE_AREA));
-        preferredCo2TextView.setText(intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
-        preferredHumditiyTextView.setText(intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
-        preferredTempTextView.setText(intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
+         */
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
@@ -104,24 +99,37 @@ public class GreenhouseActivity extends AppCompatActivity {
                 }
         );
 
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent it = new Intent(GreenhouseActivity.this, CreateEditGreenhouseActivity.class);
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, intent.getStringExtra(GREENHOUSE_ID));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_NAME, intent.getStringExtra(GREENHOUSE_NAME));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION, intent.getStringExtra(GREENHOUSE_LOCATION));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION, intent.getStringExtra(GREENHOUSE_DESCRIPTION));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_AREA, intent.getStringExtra(GREENHOUSE_AREA));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2, intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY, intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
-                it.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE, intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
-                mStartForResult.launch(it);
-
-            }
-        });
-
     }
+
+    private NavigationBarView.OnItemSelectedListener navListener =
+            new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch(item.getItemId()) {
+                        case R.id.nav_info:
+                            selectedFragment = new GreenhouseFragment();
+                            break;
+
+                        case R.id.nav_graphs:
+                            selectedFragment = new GraphFragment();
+                            break;
+
+                        case R.id.nav_watering:
+                            selectedFragment = new WateringFragment();
+                            break;
+
+                        case R.id.nav_plants:
+                            selectedFragment = new PlantsFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+                    return true;
+
+                }
+            };
 
 }
