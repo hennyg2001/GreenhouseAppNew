@@ -42,6 +42,9 @@ public class GreenhouseActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
 
+        setSupportActionBar(findViewById(R.id.greenhouse_toolbar));
+        setTitle("Greenhouse");
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
 
         //Intent intent = getIntent();
