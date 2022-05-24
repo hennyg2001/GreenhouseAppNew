@@ -117,7 +117,21 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                     switch(item.getItemId()) {
                         case R.id.nav_info:
-                            selectedFragment = new GreenhouseFragment();
+
+                            Bundle greenhouseBundle = new Bundle();
+                            greenhouseBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
+                            greenhouseBundle.putString("name", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_NAME));
+                            greenhouseBundle.putString("location", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_LOCATION));
+                            greenhouseBundle.putString("description", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_DESCRIPTION));
+                            greenhouseBundle.putString("area", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_AREA));
+                            greenhouseBundle.putString("co2", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2));
+                            greenhouseBundle.putString("humidity", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY));
+                            greenhouseBundle.putString("temp", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE));
+
+                            Fragment infoFragment = new GreenhouseFragment();
+                            infoFragment.setArguments(greenhouseBundle);
+
+                            selectedFragment = infoFragment;
                             break;
 
                         case R.id.nav_graphs:

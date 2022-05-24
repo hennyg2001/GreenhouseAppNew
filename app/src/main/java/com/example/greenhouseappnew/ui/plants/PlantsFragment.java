@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.ui.plants;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity;
+import com.example.greenhouseappnew.activities.MainActivity;
 import com.example.greenhouseappnew.adapters.PlantAdapter;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PlantsFragment extends Fragment {
 
@@ -28,7 +32,7 @@ public class PlantsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
+        rootView = inflater.inflate(R.layout.fragment_plants, container, false);
 
         plantsViewModel = new ViewModelProvider(requireActivity()).get(PlantsViewModel.class);
 
@@ -51,16 +55,27 @@ public class PlantsFragment extends Fragment {
             @Override
             public void onItemClick(Plant plant) {
 
-                Bundle plantsBundle = new Bundle();
-                plantsBundle.putInt("id", plant.getIdGreenhouse());
-                plantsBundle.putString("name", plant.getName());
-                plantsBundle.putString("type", plant.getScientificName());
-                plantsBundle.putString("description", plant.getDescription());
+                Bundle plantBundle = new Bundle();
+                plantBundle.putInt("id", plant.getIdGreenhouse());
+                plantBundle.putString("name", plant.getName());
+                plantBundle.putString("type", plant.getScientificName());
+                plantBundle.putString("description", plant.getDescription());
+
+                Fragment plantProfileFragment = new PlantProfileFragment();
+                plantProfileFragment.setArguments(plantBundle);
 
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
-                        .add(R.id.plant_profile_Layout, PlantProfileFragment.class, plantsBundle)
+                        .replace(R.id.fragment_container, plantProfileFragment)
                         .commit();
+            }
+        });
+
+        FloatingActionButton addPlantButton = rootView.findViewById(R.id.addPlantButton);
+        addPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
