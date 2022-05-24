@@ -33,6 +33,7 @@ public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Greenhouse currentGreenhouse = greenhouses.get(position);
         holder.name.setText(currentGreenhouse.getName());
+        holder.location.setText(currentGreenhouse.getLocation());
     }
 
     @Override
@@ -52,10 +53,12 @@ public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView name;
+        private final TextView location;
 
         private ViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.tv_name);
+            name = itemView.findViewById(R.id.tv_greenhouse_name);
+            location = itemView.findViewById(R.id.tv_greenhouse_location);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

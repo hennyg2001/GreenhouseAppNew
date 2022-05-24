@@ -38,10 +38,6 @@ public class Routine {
         return id_Plant;
     }
 
-    public int getId_Plant() {
-        return id_Plant;
-    }
-
     public void setTask(String task) {
         this.task = task;
     }

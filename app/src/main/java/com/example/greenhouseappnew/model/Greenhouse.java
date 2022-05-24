@@ -1,24 +1,46 @@
 package com.example.greenhouseappnew.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
-@Entity
+@Entity(tableName = "greenhouse_table")
 public class Greenhouse {
 
 
     //ok related to the tables in the database
     @PrimaryKey(autoGenerate = true)
+    @NotNull
+    @ColumnInfo(name = "id")
     private int id; //ok
+
+    @ColumnInfo(name = "name")
     private String name; //ok
+
+    @ColumnInfo(name = "email")
     private String userEmail;
+
+    @ColumnInfo(name = "location")
     private String location; //ok
+
+    @ColumnInfo(name = "description")
     private String description; //ok
-    private Double area; //ok   / to instantiate and getmethod
+
+    @ColumnInfo(name = "area")
+    private Double area; //ok   / to instantiate and get method
+
+    @ColumnInfo(name = "co2")
     private Double co2Preferred; // ok  / to instantiate...
+
+    @ColumnInfo(name = "temp")
     private Double temperaturePreferred; // ok / to do///
+
+    @ColumnInfo(name = "humidity")
     private Double humidityPreferred; //ok
+
     private boolean actuatorSet;
 
 

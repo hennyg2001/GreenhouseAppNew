@@ -45,22 +45,17 @@ public class GreenhouseActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.greenhouse_toolbar));
         setTitle("Greenhouse");
 
+        Intent intent = getIntent();
+
+        Bundle greenhouseBundle = new Bundle();
+        greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0) );
+
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container, GreenhouseFragment.class, greenhouseBundle)
+                .commit();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
-
-        //Intent intent = getIntent();
-
-        /*
-        if (savedInstanceState == null) {
-
-            Bundle plantsBundle = new Bundle();
-            plantsBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0) );
-
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.greenhouse_fragment_container_view, PlantsFragment.class, plantsBundle)
-                    .commit();
-        }
-         */
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(

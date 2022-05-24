@@ -22,17 +22,17 @@ public interface GreenhouseDAO
     @Delete
     void delete(Greenhouse greenhouse);
 
-    @Query("SELECT * FROM Greenhouse")
-    List<Greenhouse> getAllGreenhouses();
-
     @Update
     void updateGreenhouse(Greenhouse greenhouse);
 
-    @Query("SELECT * FROM Greenhouse WHERE id = :id")
-    Greenhouse getGreenhouseById(int id);
+    @Query("SELECT * FROM greenhouse_table")
+    LiveData<List<Greenhouse>> getAllGreenhouses();
 
-    @Query("SELECT * FROM Greenhouse WHERE userEmail = :mail")
-    List<Greenhouse> getGreenhouseByEmail(String mail);
+    @Query("SELECT * FROM greenhouse_table WHERE id = :id")
+    LiveData<Greenhouse> getGreenhouseById(int id);
+
+    @Query("SELECT * FROM greenhouse_table WHERE email = :mail")
+    LiveData<List<Greenhouse>> getGreenhouseByEmail(String mail);
 
 
 

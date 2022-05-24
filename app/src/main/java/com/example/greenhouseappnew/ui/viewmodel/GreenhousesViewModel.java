@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.greenhouseappnew.Persistence.RoomRepository;
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
 
@@ -13,18 +14,17 @@ import java.util.List;
 
 public class GreenhousesViewModel extends AndroidViewModel {
 
-    private GreenhouseRepository repository;
+    private RoomRepository repository;
     private LiveData<List<Greenhouse>> allGreenhouses;
 
     public GreenhousesViewModel(@NonNull Application application) {
         super(application);
-        repository = new GreenhouseRepository();
-        allGreenhouses = repository.getGreenHouseList();
+        repository = new RoomRepository(application);
+        allGreenhouses = repository.getAllGreenhouses();
     }
 
     public LiveData<Greenhouse> get(int id) {
-        repository.searchForPlantById(id);
-        return repository.getGreenHouse();
+        return repository.getGreenhouseById(id);
     }
 
     public LiveData<List<Greenhouse>> getAll() {
@@ -32,12 +32,11 @@ public class GreenhousesViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Greenhouse>> getAllByEmail(String email) {
-        repository.searchForGreenhouseByEmail(email);
-        return repository.getGreenHouseList();
+        return repository.getGreenhousesByEmail(email);
     }
 
     public void insert(Greenhouse greenhouse) {
-        repository.addGreenhouse(greenhouse);
+        repository.insertGreenhouse(greenhouse);
     }
 
     public void update(Greenhouse greenhouse) {
@@ -45,7 +44,7 @@ public class GreenhousesViewModel extends AndroidViewModel {
     }
 
     public void delete(Greenhouse greenhouse) {
-        repository.deleteGreenhouse(greenhouse.getId());
+        repository.deleteGreenhouse(greenhouse);
     }
 
 }

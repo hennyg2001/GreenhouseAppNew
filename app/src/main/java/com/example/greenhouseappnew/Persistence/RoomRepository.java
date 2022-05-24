@@ -1,6 +1,9 @@
 package com.example.greenhouseappnew.Persistence;
 
 import android.app.Application;
+import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
 
 import com.example.greenhouseappnew.data.GreenhouseDAO;
 import com.example.greenhouseappnew.data.LogDAO;
@@ -17,14 +20,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class RoomRepository {
+
     private static RoomRepository instance;
+
     private final GreenhouseDAO greenhouseDAO;
     private final PlantDAO plantDAO;
     private final LogDAO logDAO;
     private final RoutineDAO routineDAO;
     private final ExecutorService  executorService;
 
-    private RoomRepository(Application application)
+    private LiveData<List<Greenhouse>> allGreenhouses;
+
+    public RoomRepository(Application application)
     {
         GreenhouseDB database = GreenhouseDB.getInstance(application);
         greenhouseDAO = database.greenhouseDAO();
@@ -32,32 +39,26 @@ public class RoomRepository {
         logDAO = database.logDAO();
         routineDAO = database.routineDAO();
         executorService = Executors.newFixedThreadPool(8);
+        allGreenhouses = greenhouseDAO.getAllGreenhouses();
     }
 
-    public static synchronized RoomRepository getInstance(Application application)
+    public LiveData<List<Greenhouse>> getAllGreenhouses()
     {
-       if(instance == null)
-       {
-           instance = new RoomRepository(application);
-       }
-       return instance;
+        return allGreenhouses;
     }
 
-    public List<Greenhouse> getAllGreenhouses()
-    {
-        return greenhouseDAO.getAllGreenhouses();
-    }
+    public LiveData<List<Greenhouse>> getGreenhousesByEmail(String email){return greenhouseDAO.getGreenhouseByEmail(email);}
 
-    public List<Greenhouse> getGreenhousesByEmail(String email){return greenhouseDAO.getGreenhouseByEmail(email);}
+    public LiveData<Greenhouse> getGreenhouseById(int id){return greenhouseDAO.getGreenhouseById(id);}
 
-    public Greenhouse getGreenhouseById(int id){return greenhouseDAO.getGreenhouseById(id);}
+    public void deleteGreenhouse(Greenhouse greenhouse){new DeleteGreenhouseAsyncTask(greenhouseDAO).execute(greenhouse);}
 
-    public void deleteGreenhouse(Greenhouse greenhouse){executorService.execute(() -> greenhouseDAO.delete(greenhouse));}
+    public void insertGreenhouse(Greenhouse greenhouse){new InsertGreenhouseAsyncTask(greenhouseDAO).execute(greenhouse);}
 
-    public void insertGreenhouse(Greenhouse greenhouse){executorService.execute(() -> greenhouseDAO.insert(greenhouse));}
+    public void updateGreenhouse(Greenhouse greenhouse){new UpdateGreenhouseAsyncTask(greenhouseDAO).execute(greenhouse);}
 
-    public void updateGreenhouse(Greenhouse greenhouse){executorService.execute(() -> greenhouseDAO.updateGreenhouse(greenhouse));}
 
+    /*
     public List<LogClass> getLogsByGreenhouseId(int id){return logDAO.getLogsByGreenhouseId(id);}
 
     public LogClass getLogById(int id) {return  logDAO.getLogById(id);}
@@ -81,9 +82,55 @@ public class RoomRepository {
     public void insertRoutine(Routine routine){executorService.execute(() -> routineDAO.insert(routine));}
 
 
+     */
 
+    public static class InsertGreenhouseAsyncTask extends AsyncTask<Greenhouse, Void, Void> {
 
+        private GreenhouseDAO greenhouseDAO;
 
+        private InsertGreenhouseAsyncTask(GreenhouseDAO greenhouseDAO) {
+            this.greenhouseDAO = greenhouseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Greenhouse... greenhouses) {
+            greenhouseDAO.insert(greenhouses[0]);
+            return null;
+        }
+
+    }
+
+    public static class DeleteGreenhouseAsyncTask extends AsyncTask<Greenhouse, Void, Void> {
+
+        private GreenhouseDAO greenhouseDAO;
+
+        private DeleteGreenhouseAsyncTask(GreenhouseDAO greenhouseDAO) {
+            this.greenhouseDAO = greenhouseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Greenhouse... greenhouses) {
+            greenhouseDAO.delete(greenhouses[0]);
+            return null;
+        }
+
+    }
+
+    public static class UpdateGreenhouseAsyncTask extends AsyncTask<Greenhouse, Void, Void> {
+
+        private GreenhouseDAO greenhouseDAO;
+
+        private UpdateGreenhouseAsyncTask(GreenhouseDAO greenhouseDAO) {
+            this.greenhouseDAO = greenhouseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Greenhouse... greenhouses) {
+            greenhouseDAO.updateGreenhouse(greenhouses[0]);
+            return null;
+        }
+
+    }
 
 
 

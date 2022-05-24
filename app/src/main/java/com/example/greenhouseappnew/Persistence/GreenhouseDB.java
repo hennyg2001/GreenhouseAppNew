@@ -20,7 +20,7 @@ import com.example.greenhouseappnew.model.Routine;
 
 
 @Database(entities = {Greenhouse.class, Plant.class, Routine.class, LogClass.class}, version = 1)
-public abstract class GreenhouseDB extends RoomDatabase{
+public abstract class GreenhouseDB extends RoomDatabase {
 
     private static GreenhouseDB instance;
 
@@ -33,7 +33,7 @@ public abstract class GreenhouseDB extends RoomDatabase{
     {
         if(instance == null)
         {
-            instance = Room.databaseBuilder(context,
+            instance = Room.databaseBuilder(context.getApplicationContext(),
                     GreenhouseDB.class, "greenhouse_database")
                     .fallbackToDestructiveMigration()
                     .build();
