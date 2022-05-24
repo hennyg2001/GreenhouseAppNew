@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.ui.greenhouse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,37 +13,45 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity;
+import com.example.greenhouseappnew.activities.GreenhouseActivity;
+import com.example.greenhouseappnew.activities.MainActivity;
 
 public class GreenhouseFragment extends Fragment {
 
     private TextView nameTextView, locationTextView, descriptionTextView, areaTextView, co2TextView, humidityTextView, tempTextView;
     private Button button;
 
+    private View rootView;
+
+    public GreenhouseFragment() {
+        //
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
 
-        int id = requireArguments().getInt("id");
-        String name = requireArguments().getString("name");
-        String location = requireArguments().getString("location");
-        String description = requireArguments().getString("description");
-        String area = requireArguments().getString("area");
-        String co2 = requireArguments().getString("co2");
-        String humidity = requireArguments().getString("humidity");
-        String temp = requireArguments().getString("temperature");
+        Bundle bundle = getArguments();
 
-        nameTextView = getView().findViewById(R.id.greenhouseNameTv);
-        locationTextView = getView().findViewById(R.id.greenhouseLocationTv);
-        descriptionTextView = getView().findViewById(R.id.greenhouseDescriptionTv);
-        areaTextView = getView().findViewById(R.id.greenhouseAreaTv);
-        co2TextView = getView().findViewById(R.id.greenhouseCo2Tv);
-        humidityTextView = getView().findViewById(R.id.greenhouseHumidityTv);
-        tempTextView = getView().findViewById(R.id.greenhouseTempTv);
+        String name = bundle.getString("name");
+        String location = bundle.getString("location");
+        String description = bundle.getString("description");
+        String area = bundle.getString("area");
+        String co2 = bundle.getString("co2");
+        String humidity = bundle.getString("humidity");
+        String temp = bundle.getString("temp");
+
+        nameTextView = rootView.findViewById(R.id.greenhouseNameTv);
+        locationTextView = rootView.findViewById(R.id.greenhouseLocationTv);
+        descriptionTextView = rootView.findViewById(R.id.greenhouseDescriptionTv);
+        areaTextView = rootView.findViewById(R.id.greenhouseAreaTv);
+        co2TextView = rootView.findViewById(R.id.greenhouseCo2Tv);
+        humidityTextView = rootView.findViewById(R.id.greenhouseHumidityTv);
+        tempTextView = rootView.findViewById(R.id.greenhouseTempTv);
+        button = rootView.findViewById(R.id.editGreenhouseButton);
 
         nameTextView.setText(name);
         locationTextView.setText(location);
@@ -52,7 +61,17 @@ public class GreenhouseFragment extends Fragment {
         humidityTextView.setText(humidity);
         tempTextView.setText(temp);
 
-        button = getView().findViewById(R.id.editGreenhouseButton);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 }

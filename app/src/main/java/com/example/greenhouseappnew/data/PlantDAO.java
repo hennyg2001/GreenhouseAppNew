@@ -16,11 +16,11 @@ import java.util.List;
 @Dao
 public interface PlantDAO {
 
-    @Query("SELECT * FROM Plant WHERE id = :id")
-    Plant getPlantById(int id);
+    @Query("SELECT * FROM plant_table WHERE id = :id")
+    LiveData<Plant> getPlantById(int id);
 
-    @Query("SELECT * FROM Plant WHERE id_Greenhouse = :id")
-    List<Plant> getPlantsFromGreenhouse(int id);
+    @Query("SELECT * FROM plant_table WHERE greenhouseId = :id")
+    LiveData<List<Plant>> getPlantsFromGreenhouse(int id);
 
     @Update
     void updatePlant(Plant plant);

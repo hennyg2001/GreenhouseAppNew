@@ -1,18 +1,33 @@
 package com.example.greenhouseappnew.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
-@Entity
+@Entity(tableName = "plant_table")
 public class Plant {
 
     @PrimaryKey(autoGenerate = true)
+    @NotNull
+    @ColumnInfo(name = "id")
     private int id;
-    private String description;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "description")
+    private String description;
+
+    @ColumnInfo(name = "type")
     private String type;
+
+    @ColumnInfo(name = "scientificName")
     private String scientificName;
+
+    @ColumnInfo(name = "greenhouseId")
     private int id_Greenhouse;
 
     public Plant(int id, String description, String name, String type, String scientificName, int id_Greenhouse) {

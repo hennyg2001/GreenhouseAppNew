@@ -48,14 +48,25 @@ public class GreenhouseActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         Bundle greenhouseBundle = new Bundle();
-        greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0) );
+        greenhouseBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
+        greenhouseBundle.putString("name", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_NAME));
+        greenhouseBundle.putString("location", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_LOCATION));
+        greenhouseBundle.putString("description", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_DESCRIPTION));
+        greenhouseBundle.putString("area", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_AREA));
+        greenhouseBundle.putString("co2", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2));
+        greenhouseBundle.putString("humidity", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY));
+        greenhouseBundle.putString("temp", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE));
 
-        getSupportFragmentManager().beginTransaction()
+        Fragment greenhouseFragment = new GreenhouseFragment();
+        greenhouseFragment.setArguments(greenhouseBundle);
+
+        getSupportFragmentManager()
+                .beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.fragment_container, GreenhouseFragment.class, greenhouseBundle)
+                .replace(R.id.fragment_container, greenhouseFragment)
                 .commit();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
@@ -74,15 +85,15 @@ public class GreenhouseActivity extends AppCompatActivity {
                         Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
                         Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
 
-                        int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
+                        int greenhouseId = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
 
-                        if (id == -1) {
+                        if (greenhouseId == -1) {
                             Toast.makeText(this, "Greenhouse can't be updated...", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp);
-                        greenhouse.setId(id);
+                        greenhouse.setId(greenhouseId);
                         greenhousesViewModel.update(greenhouse);
                         Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
 

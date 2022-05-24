@@ -30,6 +30,7 @@ public class RoomRepository {
     private final ExecutorService  executorService;
 
     private LiveData<List<Greenhouse>> allGreenhouses;
+    private LiveData<List<Greenhouse>> allPlants;
 
     public RoomRepository(Application application)
     {
@@ -41,6 +42,9 @@ public class RoomRepository {
         executorService = Executors.newFixedThreadPool(8);
         allGreenhouses = greenhouseDAO.getAllGreenhouses();
     }
+
+
+    // Greenhouse
 
     public LiveData<List<Greenhouse>> getAllGreenhouses()
     {
@@ -58,7 +62,8 @@ public class RoomRepository {
     public void updateGreenhouse(Greenhouse greenhouse){new UpdateGreenhouseAsyncTask(greenhouseDAO).execute(greenhouse);}
 
 
-    /*
+    // Log
+
     public List<LogClass> getLogsByGreenhouseId(int id){return logDAO.getLogsByGreenhouseId(id);}
 
     public LogClass getLogById(int id) {return  logDAO.getLogById(id);}
@@ -67,22 +72,26 @@ public class RoomRepository {
 
     public void insertLog(LogClass log){executorService.execute(() -> logDAO.insert(log));}
 
-    public Plant getPlantById(int id){ return plantDAO.getPlantById(id);}
 
-    public void updatePlant(Plant plant){executorService.execute(() -> plantDAO.insert(plant));}
+    // Plant
 
-    public void deletePlant(Plant plant){executorService.execute(() -> plantDAO.delete(plant));}
+    public LiveData<Plant> getPlantById(int id){ return plantDAO.getPlantById(id);}
 
-    public void insertPlant(Plant plant){executorService.execute(() -> plantDAO.insert(plant));}
+    public LiveData<List<Plant>> getPlantsByGreenhouse(int id) { return plantDAO.getPlantsFromGreenhouse(id); }
+
+    public void updatePlant(Plant plant){new UpdatePlantAsyncTask(plantDAO).execute(plant);}
+
+    public void deletePlant(Plant plant){new DeletePlantAsyncTask(plantDAO).execute(plant);}
+
+    public void insertPlant(Plant plant){new DeletePlantAsyncTask(plantDAO).execute(plant);}
+
+    // Routine
 
     public List<Routine> getRoutinesByPlantId(int id){return routineDAO.getRoutinesByPlantId(id);}
 
     public void deleteRoutine(Routine routine){executorService.execute(() -> routineDAO.delete(routine));}
 
     public void insertRoutine(Routine routine){executorService.execute(() -> routineDAO.insert(routine));}
-
-
-     */
 
     public static class InsertGreenhouseAsyncTask extends AsyncTask<Greenhouse, Void, Void> {
 
@@ -132,7 +141,52 @@ public class RoomRepository {
 
     }
 
+    public static class InsertPlantAsyncTask extends AsyncTask<Plant, Void, Void> {
 
+        private PlantDAO plantDAO;
 
+        private InsertPlantAsyncTask(PlantDAO plantDAO) {
+            this.plantDAO = plantDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Plant... plants) {
+            plantDAO.insert(plants[0]);
+            return null;
+        }
+
+    }
+
+    public static class DeletePlantAsyncTask extends AsyncTask<Plant, Void, Void> {
+
+        private PlantDAO plantDAO;
+
+        private DeletePlantAsyncTask(PlantDAO plantDAO) {
+            this.plantDAO = plantDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Plant... plants) {
+            plantDAO.delete(plants[0]);
+            return null;
+        }
+
+    }
+
+    public static class UpdatePlantAsyncTask extends AsyncTask<Plant, Void, Void> {
+
+        private PlantDAO plantDAO;
+
+        private UpdatePlantAsyncTask(PlantDAO plantDAO) {
+            this.plantDAO = plantDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Plant... plants) {
+            plantDAO.updatePlant(plants[0]);
+            return null;
+        }
+
+    }
 
 }

@@ -22,18 +22,19 @@ public class PlantsFragment extends Fragment {
 
     PlantsViewModel plantsViewModel;
 
+    private View rootView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_greenhouse_info, container, false);
 
         plantsViewModel = new ViewModelProvider(requireActivity()).get(PlantsViewModel.class);
 
-        int id = requireArguments().getInt("id");
+        Bundle bundle = getArguments();
+
+        int id = bundle.getInt("id");
 
         RecyclerView recyclerView = getView().findViewById(R.id.plantsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -42,7 +43,7 @@ public class PlantsFragment extends Fragment {
         PlantAdapter adapter = new PlantAdapter();
         recyclerView.setAdapter(adapter);
 
-        plantsViewModel.getAll().observe(getViewLifecycleOwner(), (plants) -> {
+        plantsViewModel.getAllPlantsByGreenhouse(id).observe(getViewLifecycleOwner(), (plants) -> {
             adapter.setPlants(plants);
         });
 
@@ -76,6 +77,7 @@ public class PlantsFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
+        return rootView;
     }
 
 }

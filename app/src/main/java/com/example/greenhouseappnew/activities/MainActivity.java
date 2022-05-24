@@ -28,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    public static final String MAIN_GREENHOUSE_ID = "com.example.and_recipeapp.MAIN_GREENHOUSE_ID";
+    public static final String MAIN_GREENHOUSE_NAME = "com.example.and_recipeapp.MAIN_GREENHOUSE_NAME";
+    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.and_recipeapp.MAIN_GREENHOUSE_LOCATION";
+    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.and_recipeapp.MAIN_GREENHOUSE_DESCRIPTION";
+    public static final String MAIN_GREENHOUSE_AREA = "com.example.and_recipeapp.MAIN_GREENHOUSE_AREA";
+    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_CO2";
+    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
+    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
+
     private GreenhousesViewModel greenhousesViewModel;
 
     @Override
@@ -97,14 +106,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_AREA, greenhouse.getArea());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
-                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
+                intent.putExtra(MAIN_GREENHOUSE_ID, greenhouse.getId());
+                intent.putExtra(MAIN_GREENHOUSE_NAME, greenhouse.getName());
+                intent.putExtra(MAIN_GREENHOUSE_LOCATION, greenhouse.getLocation());
+                intent.putExtra(MAIN_GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
+                intent.putExtra(MAIN_GREENHOUSE_AREA, greenhouse.getArea());
+                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
+                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
+                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
                 startActivity(intent);
             }
         });
