@@ -19,7 +19,7 @@ import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.model.Routine;
 
 
-@Database(entities = {Greenhouse.class, Plant.class, Routine.class, LogClass.class}, version = 1)
+@Database(entities = {Greenhouse.class, Plant.class, Routine.class, LogClass.class}, version = 2)
 public abstract class GreenhouseDB extends RoomDatabase {
 
     private static GreenhouseDB instance;

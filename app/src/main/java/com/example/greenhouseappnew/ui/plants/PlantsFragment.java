@@ -36,7 +36,7 @@ public class PlantsFragment extends Fragment {
 
         int id = bundle.getInt("id");
 
-        RecyclerView recyclerView = getView().findViewById(R.id.plantsRecyclerView);
+        RecyclerView recyclerView = rootView.findViewById(R.id.plantsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.hasFixedSize();
 

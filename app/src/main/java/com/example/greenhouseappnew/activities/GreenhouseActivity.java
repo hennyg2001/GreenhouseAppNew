@@ -113,6 +113,8 @@ public class GreenhouseActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
+                    Intent intent = getIntent();
+
                     switch(item.getItemId()) {
                         case R.id.nav_info:
                             selectedFragment = new GreenhouseFragment();
@@ -127,7 +129,14 @@ public class GreenhouseActivity extends AppCompatActivity {
                             break;
 
                         case R.id.nav_plants:
-                            selectedFragment = new PlantsFragment();
+
+                            Bundle plantBundle = new Bundle();
+                            plantBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
+
+                            Fragment plantsFragment = new PlantsFragment();
+                            plantsFragment.setArguments(plantBundle);
+
+                            selectedFragment = plantsFragment;
                             break;
                     }
 
