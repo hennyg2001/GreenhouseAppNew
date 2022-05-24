@@ -15,14 +15,14 @@ import com.example.greenhouseappnew.network.GreenhouseRepository;
 
 public class CreateEditGreenhouseActivity extends AppCompatActivity {
 
-    public static final String EXTRA_ID = "com.example.and_recipeapp.EXTRA_ID";
-    public static final String EXTRA_NAME = "com.example.and_recipeapp.EXTRA_NAME";
-    public static final String EXTRA_LOCATION = "com.example.and_recipeapp.EXTRA_LOCATION";
-    public static final String EXTRA_DESCRIPTION = "com.example.and_recipeapp.EXTRA_DESCRIPTION";
-    public static final String EXTRA_AREA = "com.example.and_recipeapp.EXTRA_AREA";
-    public static final String EXTRA_GREENHOUSE_PREFERRED_CO2 = "com.example.and_recipeapp.EXTRA_GREENHOUSE_PREFERRED_CO2";
-    public static final String EXTRA_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE";
+    public static final String EXTRA_ID = "com.example.greenhouseappnew.EXTRA_ID";
+    public static final String EXTRA_NAME = "com.example.greenhouseappnew.EXTRA_NAME";
+    public static final String EXTRA_LOCATION = "com.example.greenhouseappnew.EXTRA_LOCATION";
+    public static final String EXTRA_DESCRIPTION = "com.example.greenhouseappnew.EXTRA_DESCRIPTION";
+    public static final String EXTRA_AREA = "com.example.greenhouseappnew.EXTRA_AREA";
+    public static final String EXTRA_GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.EXTRA_GREENHOUSE_PREFERRED_CO2";
+    public static final String EXTRA_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY";
+    public static final String EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE";
 
     private EditText nameEditText, locationEditText, descriptionEditText, areaEditText, preferredCo2EditText, preferredHumidityEditText, preferredTempEditText;
     private Button createGreenhouseButton;

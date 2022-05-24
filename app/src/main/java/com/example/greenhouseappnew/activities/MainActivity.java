@@ -28,19 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    public static final String MAIN_GREENHOUSE_ID = "com.example.and_recipeapp.MAIN_GREENHOUSE_ID";
-    public static final String MAIN_GREENHOUSE_NAME = "com.example.and_recipeapp.MAIN_GREENHOUSE_NAME";
-    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.and_recipeapp.MAIN_GREENHOUSE_LOCATION";
-    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.and_recipeapp.MAIN_GREENHOUSE_DESCRIPTION";
-    public static final String MAIN_GREENHOUSE_AREA = "com.example.and_recipeapp.MAIN_GREENHOUSE_AREA";
-    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_CO2";
-    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
+    public static final String MAIN_GREENHOUSE_ID = "com.example.greenhouseappnew.MAIN_GREENHOUSE_ID";
+    public static final String MAIN_GREENHOUSE_NAME = "com.example.greenhouseappnew.MAIN_GREENHOUSE_NAME";
+    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_LOCATION";
+    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_DESCRIPTION";
+    public static final String MAIN_GREENHOUSE_AREA = "com.example.greenhouseappnew.MAIN_GREENHOUSE_AREA";
+    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_CO2";
+    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
+    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
 
     private GreenhousesViewModel greenhousesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());

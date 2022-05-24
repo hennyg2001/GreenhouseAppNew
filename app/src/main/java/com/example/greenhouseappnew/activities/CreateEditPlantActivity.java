@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.activities;
 
+import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_DESCRIPTION;
 import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_ID;
 import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_NAME;
 
@@ -13,15 +14,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
+import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
+import com.example.greenhouseappnew.ui.plants.PlantsFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 public class CreateEditPlantActivity extends AppCompatActivity {
+
+    public static final String EXTRA_PLANT_ID = "com.example.greenhouseappnew.EXTRA_PLANT_ID";
+    public static final String EXTRA_PLANT_NAME = "com.example.greenhouseappnew.EXTRA_PLANT_NAME";
+    public static final String EXTRA_PLANT_TYPE = "com.example.greenhouseappnew.EXTRA_PLANT_TYPE";
+    public static final String EXTRA_PLANT_DESCRIPTION = "com.example.greenhouseappnew.EXTRA_PLANT_DESCRIPTION";
 
     private EditText nameEditText, typeEditText, descriptionEditText;
     private Spinner spinner;
@@ -29,16 +39,16 @@ public class CreateEditPlantActivity extends AppCompatActivity {
 
     private PlantsViewModel plantsViewModel;
 
-    public static final String EXTRA_PLANT_ID = "com.example.and_recipeapp.EXTRA_PLANT_ID";
-    public static final String EXTRA_PLANT_NAME = "com.example.and_recipeapp.EXTRA_PLANT_NAME";
-    public static final String EXTRA_PLANT_TYPE = "com.example.and_recipeapp.EXTRA_PLANT_TYPE";
-    public static final String EXTRA_PLANT_DESCRIPTION = "com.example.and_recipeapp.EXTRA_PLANT_DESCRIPTION";
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plant);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
+        plantsViewModel = new ViewModelProvider(this).get(PlantsViewModel.class);
 
         // initialising all views through id defined above
         nameEditText = findViewById(R.id.plantName);
@@ -52,9 +62,6 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         descriptionEditText = findViewById(R.id.description);
 
         btn = findViewById(R.id.createPlantButton);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         Intent intent = getIntent();
 
@@ -97,10 +104,8 @@ public class CreateEditPlantActivity extends AppCompatActivity {
             data.putExtra(EXTRA_PLANT_ID, id);
         }
 
-        Plant plant = new Plant(name, type, description, data.getIntExtra("greenhouseId", 0));
-        plantsViewModel.insert(plant);
-
         setResult(RESULT_OK, data);
+
         finish();
 
     }

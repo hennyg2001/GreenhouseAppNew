@@ -30,7 +30,7 @@ public class RoomRepository {
     private final ExecutorService  executorService;
 
     private LiveData<List<Greenhouse>> allGreenhouses;
-    private LiveData<List<Greenhouse>> allPlants;
+    private LiveData<List<Plant>> allPlants;
 
     public RoomRepository(Application application)
     {
@@ -41,6 +41,7 @@ public class RoomRepository {
         routineDAO = database.routineDAO();
         executorService = Executors.newFixedThreadPool(8);
         allGreenhouses = greenhouseDAO.getAllGreenhouses();
+        allPlants = plantDAO.getAllPlants();
     }
 
 
@@ -78,6 +79,8 @@ public class RoomRepository {
     public LiveData<Plant> getPlantById(int id){ return plantDAO.getPlantById(id);}
 
     public LiveData<List<Plant>> getPlantsByGreenhouse(int id) { return plantDAO.getPlantsFromGreenhouse(id); }
+
+    public LiveData<List<Plant>> getAllPlants() { return allPlants; }
 
     public void updatePlant(Plant plant){new UpdatePlantAsyncTask(plantDAO).execute(plant);}
 

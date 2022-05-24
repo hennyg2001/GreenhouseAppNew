@@ -30,7 +30,7 @@ public class Plant {
     @ColumnInfo(name = "greenhouseId")
     private int id_Greenhouse;
 
-    public Plant(String name, String type, String description, int id_Greenhouse) {
+    public Plant(String name, String type, String description) {
         this.id = id;
         this.description = description;
         this.name = name;

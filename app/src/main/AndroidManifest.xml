@@ -48,6 +48,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PlantsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar"
+            android:parentActivityName=".activities.GreenhouseActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ALL_APPS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".authentication.LoginActivity"
             android:exported="true"
             android:label="Login"

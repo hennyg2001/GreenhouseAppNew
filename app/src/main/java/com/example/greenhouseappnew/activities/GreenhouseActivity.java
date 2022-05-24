@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.greenhouseappnew.PlantsActivity;
+import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.ui.graphs.GraphFragment;
 import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
+import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
@@ -23,16 +26,17 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class GreenhouseActivity extends AppCompatActivity {
 
-    public static final String GREENHOUSE_ID = "com.example.and_recipeapp.GREENHOUSE_ID";
-    public static final String GREENHOUSE_NAME = "com.example.and_recipeapp.GREENHOUSE_NAME";
-    public static final String GREENHOUSE_LOCATION = "com.example.and_recipeapp.GREENHOUSE_LOCATION";
-    public static final String GREENHOUSE_DESCRIPTION = "com.example.and_recipeapp.GREENHOUSE_DESCRIPTION";
-    public static final String GREENHOUSE_AREA = "com.example.and_recipeapp.GREENHOUSE_AREA";
-    public static final String GREENHOUSE_PREFERRED_CO2 = "com.example.and_recipeapp.GREENHOUSE_PREFERRED_CO2";
-    public static final String GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.GREENHOUSE_PREFERRED_TEMPERATURE";
+    public static final String GREENHOUSE_ID = "com.example.greenhouseappnew.GREENHOUSE_ID";
+    public static final String GREENHOUSE_NAME = "com.example.greenhouseappnew.GREENHOUSE_NAME";
+    public static final String GREENHOUSE_LOCATION = "com.example.greenhouseappnew.GREENHOUSE_LOCATION";
+    public static final String GREENHOUSE_DESCRIPTION = "com.example.greenhouseappnew.GREENHOUSE_DESCRIPTION";
+    public static final String GREENHOUSE_AREA = "com.example.greenhouseappnew.GREENHOUSE_AREA";
+    public static final String GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.GREENHOUSE_PREFERRED_CO2";
+    public static final String GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.GREENHOUSE_PREFERRED_HUMIDITY";
+    public static final String GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.GREENHOUSE_PREFERRED_TEMPERATURE";
 
     private GreenhousesViewModel greenhousesViewModel;
+    private PlantsViewModel plantsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,44 +72,32 @@ public class GreenhouseActivity extends AppCompatActivity {
 
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
 
-        // Launcher
-        ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-
-                    Intent data = result.getData();
-
-                    if (result.getResultCode() == RESULT_OK) {
-
-                        String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
-                        String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
-                        String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
-                        Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
-                        Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
-                        Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
-                        Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
-
-                        int greenhouseId = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
-
-                        if (greenhouseId == -1) {
-                            Toast.makeText(this, "Greenhouse can't be updated...", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp);
-                        greenhouse.setId(greenhouseId);
-                        greenhousesViewModel.update(greenhouse);
-                        Toast.makeText(this, "Greenhouse updated...", Toast.LENGTH_SHORT).show();
-
-                    } else {
-
-                        Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
-
     }
+
+    // Launcher
+    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+
+                Intent data = result.getData();
+
+                if(result.getResultCode() == RESULT_OK) {
+
+                    String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
+                    String type = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
+                    String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+
+                    Plant plant = new Plant(name, type, description);
+                    plantsViewModel.insert(plant);
+                    Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+
+                    Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
+
+                }
+            });
 
     private NavigationBarView.OnItemSelectedListener navListener =
             new NavigationBarView.OnItemSelectedListener() {
@@ -116,6 +108,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                     Intent intent = getIntent();
 
                     switch(item.getItemId()) {
+
                         case R.id.nav_info:
 
                             Bundle greenhouseBundle = new Bundle();
@@ -132,18 +125,25 @@ public class GreenhouseActivity extends AppCompatActivity {
                             infoFragment.setArguments(greenhouseBundle);
 
                             selectedFragment = infoFragment;
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
                             break;
 
                         case R.id.nav_graphs:
                             selectedFragment = new GraphFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
                             break;
 
                         case R.id.nav_watering:
                             selectedFragment = new WateringFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
                             break;
 
                         case R.id.nav_plants:
 
+                            /*
                             Bundle plantBundle = new Bundle();
                             plantBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
 
@@ -151,10 +151,14 @@ public class GreenhouseActivity extends AppCompatActivity {
                             plantsFragment.setArguments(plantBundle);
 
                             selectedFragment = plantsFragment;
+
+                             */
+
+                            Intent data = new Intent(GreenhouseActivity.this, PlantsActivity.class);
+                            mStartForResult.launch(data);
+
                             break;
                     }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
                     return true;
 
