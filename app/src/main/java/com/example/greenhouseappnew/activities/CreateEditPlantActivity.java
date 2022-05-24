@@ -3,6 +3,7 @@ package com.example.greenhouseappnew.activities;
 import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_ID;
 import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_NAME;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +15,19 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
+import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 public class CreateEditPlantActivity extends AppCompatActivity {
 
     private EditText nameEditText, typeEditText, descriptionEditText;
     private Spinner spinner;
     private Button btn;
+
+    private PlantsViewModel plantsViewModel;
 
     public static final String EXTRA_PLANT_ID = "com.example.and_recipeapp.EXTRA_PLANT_ID";
     public static final String EXTRA_PLANT_NAME = "com.example.and_recipeapp.EXTRA_PLANT_NAME";
@@ -47,7 +53,6 @@ public class CreateEditPlantActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.createPlantButton);
 
-        setSupportActionBar(findViewById(R.id.add_plant_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -91,6 +96,9 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         if(id != -1) {
             data.putExtra(EXTRA_PLANT_ID, id);
         }
+
+        Plant plant = new Plant(name, type, description, data.getIntExtra("greenhouseId", 0));
+        plantsViewModel.insert(plant);
 
         setResult(RESULT_OK, data);
         finish();

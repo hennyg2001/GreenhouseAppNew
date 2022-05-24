@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity;
+import com.example.greenhouseappnew.activities.CreateEditPlantActivity;
 import com.example.greenhouseappnew.activities.MainActivity;
 import com.example.greenhouseappnew.adapters.PlantAdapter;
 import com.example.greenhouseappnew.model.Plant;
@@ -38,7 +39,7 @@ public class PlantsFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
-        int id = bundle.getInt("id");
+        int greenHouseId = bundle.getInt("id");
 
         RecyclerView recyclerView = rootView.findViewById(R.id.plantsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -47,7 +48,7 @@ public class PlantsFragment extends Fragment {
         PlantAdapter adapter = new PlantAdapter();
         recyclerView.setAdapter(adapter);
 
-        plantsViewModel.getAllPlantsByGreenhouse(id).observe(getViewLifecycleOwner(), (plants) -> {
+        plantsViewModel.getAllPlantsByGreenhouse(greenHouseId).observe(getViewLifecycleOwner(), (plants) -> {
             adapter.setPlants(plants);
         });
 
@@ -56,7 +57,7 @@ public class PlantsFragment extends Fragment {
             public void onItemClick(Plant plant) {
 
                 Bundle plantBundle = new Bundle();
-                plantBundle.putInt("id", plant.getIdGreenhouse());
+                plantBundle.putInt("id", plant.getId());
                 plantBundle.putString("name", plant.getName());
                 plantBundle.putString("type", plant.getScientificName());
                 plantBundle.putString("description", plant.getDescription());
@@ -75,7 +76,9 @@ public class PlantsFragment extends Fragment {
         addPlantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), CreateEditPlantActivity.class);
+                intent.putExtra("greenhouseId", greenHouseId);
+                startActivity(intent);
             }
         });
 

@@ -30,6 +30,15 @@ public class Plant {
     @ColumnInfo(name = "greenhouseId")
     private int id_Greenhouse;
 
+    public Plant(String name, String type, String description, int id_Greenhouse) {
+        this.id = id;
+        this.description = description;
+        this.name = name;
+        this.type = type;
+        this.scientificName = scientificName;
+        this.id_Greenhouse = id_Greenhouse;
+    }
+
     public Plant(int id, String description, String name, String type, String scientificName, int id_Greenhouse) {
         this.id = id;
         this.description = description;
