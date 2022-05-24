@@ -54,7 +54,7 @@ public class PlantsActivity extends AppCompatActivity {
         setTitle("Plants");
 
         Intent intent = getIntent();
-        String greenhouseId = intent.getStringExtra("greenhouseId");
+        int greenhouseId = intent.getIntExtra("greenhouseId", 0);
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
@@ -69,7 +69,7 @@ public class PlantsActivity extends AppCompatActivity {
                         String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
                         String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
 
-                        Plant plant = new Plant(name, type, description);
+                        Plant plant = new Plant(name, type, description, greenhouseId);
                         plantsViewModel.insert(plant);
                         Toast.makeText(this, "Plant created...", Toast.LENGTH_SHORT).show();
 
@@ -100,7 +100,7 @@ public class PlantsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         plantsViewModel = new ViewModelProvider(this).get(PlantsViewModel.class);
-        plantsViewModel.getAllPlants().observe(this, (plants) -> {
+        plantsViewModel.getAllPlantsByGreenhouse(greenhouseId).observe(this, (plants) -> {
             adapter.setPlants(plants);
         });
 

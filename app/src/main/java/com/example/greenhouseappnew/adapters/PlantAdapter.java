@@ -34,7 +34,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull PlantAdapter.ViewHolder holder, int position) {
         Plant currentPlant = plants.get(position);
         holder.name.setText(currentPlant.getName());
-        holder.type.setText(currentPlant.getScientificName());
+        holder.type.setText(currentPlant.getType());
     }
 
     @Override

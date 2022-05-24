@@ -83,11 +83,12 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                 if(result.getResultCode() == RESULT_OK) {
 
-                    String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
-                    String type = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
-                    String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+                    String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
+                    String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
+                    String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
+                    int greenhouseId = data.getIntExtra(CreateEditPlantActivity.EXTRA_GREENHOUSE_ID, 0);
 
-                    Plant plant = new Plant(name, type, description);
+                    Plant plant = new Plant(name, type, description, greenhouseId);
                     plantsViewModel.insert(plant);
                     Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
 

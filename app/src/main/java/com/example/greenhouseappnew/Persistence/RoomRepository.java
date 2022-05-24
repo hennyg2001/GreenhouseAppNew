@@ -86,7 +86,7 @@ public class RoomRepository {
 
     public void deletePlant(Plant plant){new DeletePlantAsyncTask(plantDAO).execute(plant);}
 
-    public void insertPlant(Plant plant){new DeletePlantAsyncTask(plantDAO).execute(plant);}
+    public void insertPlant(Plant plant){new InsertPlantAsyncTask(plantDAO).execute(plant);}
 
     // Routine
 

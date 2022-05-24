@@ -32,6 +32,7 @@ public class CreateEditPlantActivity extends AppCompatActivity {
     public static final String EXTRA_PLANT_NAME = "com.example.greenhouseappnew.EXTRA_PLANT_NAME";
     public static final String EXTRA_PLANT_TYPE = "com.example.greenhouseappnew.EXTRA_PLANT_TYPE";
     public static final String EXTRA_PLANT_DESCRIPTION = "com.example.greenhouseappnew.EXTRA_PLANT_DESCRIPTION";
+    public static final String EXTRA_GREENHOUSE_ID = "com.example.greenhouseappnew.EXTRA_GREENHOUSE_ID";
 
     private EditText nameEditText, typeEditText, descriptionEditText;
     private Spinner spinner;
