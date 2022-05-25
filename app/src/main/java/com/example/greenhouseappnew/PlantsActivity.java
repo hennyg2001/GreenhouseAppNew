@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -59,6 +60,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
     private PlantsViewModel plantsViewModel;
 
     private FrameLayout fragmentContainer;
+    private ImageButton editPlantImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         setContentView(R.layout.fragment_plants);
 
         fragmentContainer = (FrameLayout) findViewById(R.id.plant_fragment_container);
+
+        editPlantImageButton = (ImageButton) findViewById(R.id.editPlantImageButton);
 
         setSupportActionBar(findViewById(R.id.plants_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -108,6 +112,15 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PlantsActivity.this, CreateEditPlantActivity.class);
+                mStartForResult.launch(intent);
+            }
+        });
+
+        editPlantImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlantsActivity.this, CreateEditPlantActivity.class);
+                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_ID, 0);
                 mStartForResult.launch(intent);
             }
         });

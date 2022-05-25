@@ -108,10 +108,10 @@
         android:id="@+id/editPlantBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:layout_below="@id/routinesRv"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_alignEnd="@id/plant_profile_Layout" />
+        android:layout_alignTop="@id/plant_profile_Layout"
+        android:layout_alignEnd="@id/plant_profile_Layout"
+        android:layout_marginTop="464dp"
+        android:layout_marginEnd="-28dp"
+        android:text="Edit" />
 
 </RelativeLayout>
