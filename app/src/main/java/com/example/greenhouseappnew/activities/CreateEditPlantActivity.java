@@ -46,6 +46,7 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plant);
 
+        setSupportActionBar(findViewById(R.id.add_plant_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -70,7 +71,7 @@ public class CreateEditPlantActivity extends AppCompatActivity {
 
             setTitle("Edit Plant");
             nameEditText.setText(intent.getStringExtra(EXTRA_PLANT_NAME));
-            typeEditText.setText(intent.getStringExtra(EXTRA_PLANT_TYPE));
+            spinner.setSelection(adapter.getPosition(intent.getStringExtra(EXTRA_PLANT_TYPE)));
             descriptionEditText.setText(intent.getStringExtra(EXTRA_PLANT_DESCRIPTION));
 
         } else {

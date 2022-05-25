@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -70,7 +71,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         fragmentContainer = (FrameLayout) findViewById(R.id.plant_fragment_container);
 
         View inflatedView = getLayoutInflater().inflate(R.layout.plant_item, null);
-        ImageButton editPlantImageButton = inflatedView.findViewById(R.id.editPlantImageButton);
+        ImageView editPlantImageButton = inflatedView.findViewById(R.id.editPlantImageButton);
 
         setSupportActionBar(findViewById(R.id.plants_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -116,15 +117,6 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
             }
         });
 
-        editPlantImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PlantsActivity.this, CreateEditPlantActivity.class);
-                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_ID, 0);
-                mStartForResult.launch(intent);
-            }
-        });
-
         RecyclerView recyclerView = findViewById(R.id.plantsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.hasFixedSize();
@@ -141,6 +133,15 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
             @Override
             public void onItemClick(Plant plant) {
                 openFragment(plant.getId(), plant.getName(), plant.getType(), plant.getDescription());
+            }
+            @Override
+            public void onEditClick(Plant plant) {
+                Intent intent = new Intent(PlantsActivity.this, CreateEditPlantActivity.class);
+                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_ID, plant.getId());
+                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME, plant.getName());
+                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE, plant.getType());
+                intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION, plant.getDescription());
+                mStartForResult.launch(intent);
             }
         });
 

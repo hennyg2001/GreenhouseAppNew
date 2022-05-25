@@ -28,13 +28,12 @@
             android:layout_below="@id/tv_name"
             android:text="Type" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/editPlantImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:src="@drawable/edit_icon"
-            android:background="?android:selectableItemBackground"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"/>
 

@@ -59,7 +59,9 @@ public class PlantsFragment extends Fragment {
             adapter.setPlants(plants);
         });
 
+        /*
         adapter.setOnItemClickListener(new PlantAdapter.OnItemListClicker() {
+
             @Override
             public void onItemClick(Plant plant) {
 
@@ -79,6 +81,8 @@ public class PlantsFragment extends Fragment {
 
             }
         });
+
+         */
 
         FloatingActionButton addPlantButton = rootView.findViewById(R.id.addPlantButton);
         addPlantButton.setOnClickListener(new View.OnClickListener() {

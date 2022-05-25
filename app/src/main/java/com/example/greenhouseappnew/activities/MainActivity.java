@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userId = intent.getStringExtra("userId");
 
-        View inflatedView = getLayoutInflater().inflate(R.layout.greenhouse_item, null);
-        ImageButton editGreenhouseImageButton = inflatedView.findViewById(R.id.editGreenhouseImageButton);
-
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -98,15 +95,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        editGreenhouseImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreateEditGreenhouseActivity.class);
-                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, 0);
-                mStartForResult.launch(intent);
-            }
-        });
-
         RecyclerView recyclerView = binding.greenhousesRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.hasFixedSize();
@@ -131,6 +119,19 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(MAIN_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
                 intent.putExtra(MAIN_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
                 intent.putExtra(MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
+                startActivity(intent);
+            }
+            @Override
+            public void onEditClick(Greenhouse greenhouse) {
+                Intent intent = new Intent(MainActivity.this, CreateEditGreenhouseActivity.class);
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, greenhouse.getId());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_NAME, greenhouse.getName());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION, greenhouse.getLocation());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION, greenhouse.getDescription());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_AREA, greenhouse.getArea());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
                 startActivity(intent);
             }
         });
