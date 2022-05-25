@@ -152,10 +152,10 @@ public class GreenhouseActivity extends AppCompatActivity {
                             data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_NAME, intent.getStringExtra(GREENHOUSE_NAME));
                             data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_LOCATION, intent.getStringExtra(GREENHOUSE_LOCATION));
                             data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_DESCRIPTION, intent.getStringExtra(GREENHOUSE_DESCRIPTION));
-                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_AREA, intent.getStringExtra(GREENHOUSE_AREA));
-                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_CO2, intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
-                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_HUMIDITY, intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
-                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_TEMPERATURE, intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_AREA, intent.getDoubleExtra(GREENHOUSE_AREA, 1));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_CO2, intent.getDoubleExtra(GREENHOUSE_PREFERRED_CO2, 1));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_HUMIDITY, intent.getDoubleExtra(GREENHOUSE_PREFERRED_HUMIDITY, 1));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_TEMPERATURE, intent.getDoubleExtra(GREENHOUSE_PREFERRED_TEMPERATURE, 1));
                             startActivity(data);
 
                             break;
@@ -178,10 +178,10 @@ public class GreenhouseActivity extends AppCompatActivity {
         greenhouseBundle.putString("name", intent.getStringExtra(GREENHOUSE_NAME));
         greenhouseBundle.putString("location", intent.getStringExtra(GREENHOUSE_LOCATION));
         greenhouseBundle.putString("description", intent.getStringExtra(GREENHOUSE_DESCRIPTION));
-        greenhouseBundle.putString("area", intent.getStringExtra(GREENHOUSE_AREA));
-        greenhouseBundle.putString("co2", intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
-        greenhouseBundle.putString("humidity", intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
-        greenhouseBundle.putString("temp", intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
+        greenhouseBundle.putDouble("area", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_AREA, 1));
+        greenhouseBundle.putDouble("co2", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2, 1));
+        greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY, 1));
+        greenhouseBundle.putDouble("temp", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, 1));
 
         Fragment greenhouseFragment = new GreenhouseFragment();
         greenhouseFragment.setArguments(greenhouseBundle);

@@ -166,10 +166,10 @@ public class PlantsActivity extends AppCompatActivity {
             data.putExtra(GreenhouseActivity.GREENHOUSE_NAME, intent.getStringExtra(CURRENT_GREENHOUSE_NAME));
             data.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, intent.getStringExtra(CURRENT_GREENHOUSE_LOCATION));
             data.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, intent.getStringExtra(CURRENT_GREENHOUSE_DESCRIPTION));
-            data.putExtra(GreenhouseActivity.GREENHOUSE_AREA, intent.getStringExtra(CURRENT_GREENHOUSE_AREA));
-            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, intent.getStringExtra(CURRENT_GREENHOUSE_CO2));
-            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, intent.getStringExtra(CURRENT_GREENHOUSE_HUMIDITY));
-            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, intent.getStringExtra(CURRENT_GREENHOUSE_TEMPERATURE));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_AREA, intent.getDoubleExtra(CURRENT_GREENHOUSE_AREA, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, intent.getDoubleExtra(CURRENT_GREENHOUSE_CO2, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, intent.getDoubleExtra(CURRENT_GREENHOUSE_HUMIDITY, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, intent.getDoubleExtra(CURRENT_GREENHOUSE_TEMPERATURE, 1));
             startActivity(data);
             finish();
 
