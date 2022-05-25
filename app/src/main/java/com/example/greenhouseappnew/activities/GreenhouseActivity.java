@@ -72,32 +72,6 @@ public class GreenhouseActivity extends AppCompatActivity {
 
     }
 
-    // Launcher
-    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-
-                Intent data = result.getData();
-
-                if(result.getResultCode() == RESULT_OK) {
-
-                    String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
-                    String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
-                    String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
-                    int greenhouseId = data.getIntExtra(CreateEditPlantActivity.EXTRA_GREENHOUSE_ID, 0);
-
-                    Plant plant = new Plant(name, type, description, greenhouseId);
-                    plantsViewModel.insert(plant);
-                    Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
-
-                }
-                else {
-
-                    Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
     private NavigationBarView.OnItemSelectedListener navListener =
             new NavigationBarView.OnItemSelectedListener() {
                 @Override

@@ -20,7 +20,6 @@ import com.example.greenhouseappnew.activities.MainActivity;
 public class GreenhouseFragment extends Fragment {
 
     private TextView nameTextView, locationTextView, descriptionTextView, areaTextView, co2TextView, humidityTextView, tempTextView;
-    private Button button;
 
     private View rootView;
 
@@ -51,7 +50,6 @@ public class GreenhouseFragment extends Fragment {
         co2TextView = rootView.findViewById(R.id.greenhouseCo2Tv);
         humidityTextView = rootView.findViewById(R.id.greenhouseHumidityTv);
         tempTextView = rootView.findViewById(R.id.greenhouseTempTv);
-        button = rootView.findViewById(R.id.editGreenhouseButton);
 
         nameTextView.setText(name);
         locationTextView.setText(location);
@@ -66,12 +64,7 @@ public class GreenhouseFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
     }
 
 }

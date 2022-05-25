@@ -60,7 +60,6 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
     private PlantsViewModel plantsViewModel;
 
     private FrameLayout fragmentContainer;
-    private ImageButton editPlantImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,8 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
 
         fragmentContainer = (FrameLayout) findViewById(R.id.plant_fragment_container);
 
-        editPlantImageButton = (ImageButton) findViewById(R.id.editPlantImageButton);
+        View inflatedView = getLayoutInflater().inflate(R.layout.plant_item, null);
+        ImageButton editPlantImageButton = inflatedView.findViewById(R.id.editPlantImageButton);
 
         setSupportActionBar(findViewById(R.id.plants_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
