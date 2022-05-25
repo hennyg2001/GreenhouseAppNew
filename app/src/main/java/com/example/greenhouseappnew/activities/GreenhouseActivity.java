@@ -70,8 +70,6 @@ public class GreenhouseActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, greenhouseFragment)
                 .commit();
 
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GreenhouseFragment()).commit();
-
     }
 
     // Launcher
@@ -149,19 +147,16 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                         case R.id.nav_plants:
 
-                            /*
-                            Bundle plantBundle = new Bundle();
-                            plantBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
-
-                            Fragment plantsFragment = new PlantsFragment();
-                            plantsFragment.setArguments(plantBundle);
-
-                            selectedFragment = plantsFragment;
-
-                             */
-
                             Intent data = new Intent(GreenhouseActivity.this, PlantsActivity.class);
-                            mStartForResult.launch(data);
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_ID, intent.getIntExtra(GREENHOUSE_ID, 0));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_NAME, intent.getStringExtra(GREENHOUSE_NAME));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_LOCATION, intent.getStringExtra(GREENHOUSE_LOCATION));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_DESCRIPTION, intent.getStringExtra(GREENHOUSE_DESCRIPTION));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_AREA, intent.getStringExtra(GREENHOUSE_AREA));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_CO2, intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_HUMIDITY, intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
+                            data.putExtra(PlantsActivity.CURRENT_GREENHOUSE_TEMPERATURE, intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
+                            startActivity(data);
 
                             break;
                     }
@@ -170,5 +165,33 @@ public class GreenhouseActivity extends AppCompatActivity {
 
                 }
             };
+
+    @Override
+    public void onRestart() {
+
+        super.onRestart();
+
+        Intent intent = getIntent();
+
+        Bundle greenhouseBundle = new Bundle();
+        greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0));
+        greenhouseBundle.putString("name", intent.getStringExtra(GREENHOUSE_NAME));
+        greenhouseBundle.putString("location", intent.getStringExtra(GREENHOUSE_LOCATION));
+        greenhouseBundle.putString("description", intent.getStringExtra(GREENHOUSE_DESCRIPTION));
+        greenhouseBundle.putString("area", intent.getStringExtra(GREENHOUSE_AREA));
+        greenhouseBundle.putString("co2", intent.getStringExtra(GREENHOUSE_PREFERRED_CO2));
+        greenhouseBundle.putString("humidity", intent.getStringExtra(GREENHOUSE_PREFERRED_HUMIDITY));
+        greenhouseBundle.putString("temp", intent.getStringExtra(GREENHOUSE_PREFERRED_TEMPERATURE));
+
+        Fragment greenhouseFragment = new GreenhouseFragment();
+        greenhouseFragment.setArguments(greenhouseBundle);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.fragment_container, greenhouseFragment)
+                .commit();
+
+    }
 
 }
