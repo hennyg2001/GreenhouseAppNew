@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.greenhouseappnew.Persistence.GreenhouseDB;
+import com.example.greenhouseappnew.data.GreenhouseDAO;
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
 
     private GreenhousesViewModel greenhousesViewModel;
+    private GreenhouseDAO greenhouseDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
                 greenhousesViewModel.delete(adapter.getGreenhouseAt(viewHolder.getAdapterPosition()));
             }
         }).attachToRecyclerView(recyclerView);
+
+        System.out.println(greenhousesViewModel.getAll().toString());
 
     }
 
