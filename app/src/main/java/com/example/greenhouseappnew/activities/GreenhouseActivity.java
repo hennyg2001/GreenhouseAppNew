@@ -137,8 +137,13 @@ public class GreenhouseActivity extends AppCompatActivity {
                             break;
 
                         case R.id.nav_watering:
-                            selectedFragment = new WateringFragment();
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+                            Bundle wateringBundle = new Bundle();
+                            wateringBundle.putInt("greenhouseId", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
+
+                            WateringFragment wateringFragment = new WateringFragment();
+                            wateringFragment.setArguments(wateringBundle);
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, wateringFragment).commit();
 
                             break;
 
