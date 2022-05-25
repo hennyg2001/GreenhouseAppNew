@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.example.greenhouseappnew.Persistence.GreenhouseDB;
+import com.example.greenhouseappnew.InfoActivity;
 import com.example.greenhouseappnew.data.GreenhouseDAO;
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
@@ -151,9 +151,13 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                Intent i = new Intent(getApplicationContext(), InfoActivity.class);
+                startActivity(i);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
