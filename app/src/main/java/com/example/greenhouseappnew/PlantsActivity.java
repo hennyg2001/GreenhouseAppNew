@@ -182,7 +182,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         PlantFragment fragment = PlantFragment.newInstance(id, name, type, description);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_bottom, R.anim.enter_from_bottom, R.anim.exit_to_bottom);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.plant_fragment_container, fragment, "PLANT_FRAGMENT").commit();
     }

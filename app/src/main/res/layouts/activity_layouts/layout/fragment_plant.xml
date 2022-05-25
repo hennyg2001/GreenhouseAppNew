@@ -4,29 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    tools:context=".PlantFragment">
+    tools:context=".PlantFragment"
+    android:background="@color/grey">
 
     <LinearLayout
         android:id="@+id/plant_profile_Layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="110dp">
+        android:layout_marginStart="50dp">
 
         <LinearLayout
             android:id="@+id/nameLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:text="Name"/>
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Name:"/>
 
             <TextView
                 android:id="@+id/plantNameTv"
                 android:layout_width="180dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="30dp"/>
 
         </LinearLayout>
@@ -40,11 +46,16 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:text="Type"/>
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Type:"/>
 
             <TextView
                 android:id="@+id/plantTypeTv"
                 android:layout_width="180dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="30dp"/>
 
         </LinearLayout>
@@ -56,13 +67,18 @@
             android:layout_marginTop="40dp">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="110dp"
                 android:layout_height="30dp"
-                android:text="Description"/>
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="Description:"/>
 
             <TextView
                 android:id="@+id/plantDescriptionTv"
                 android:layout_width="150dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="30dp"/>
 
         </LinearLayout>
