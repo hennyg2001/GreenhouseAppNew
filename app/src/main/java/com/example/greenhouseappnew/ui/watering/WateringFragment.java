@@ -43,19 +43,20 @@ public class WateringFragment extends Fragment {
 
         timeRemainingTextView = rootView.findViewById(R.id.time_remaining_tv);
 
+        timeRemainingBar = rootView.findViewById(R.id.time_remaining_bar);
+
         wateringButton = rootView.findViewById(R.id.wateringButton);
 
         wateringButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                myCountDownTimer = new MyCountDownTimer(20000, 1000);
+                myCountDownTimer = new MyCountDownTimer(10000, 1000);
                 myCountDownTimer.start();
+                wateringButton.setClickable(false);
                 //viewModel.activateWatering(greenhouseId);
             }
         });
-
-        timeRemainingBar = rootView.findViewById(R.id.time_remaining_bar);
 
         return rootView;
     }
@@ -76,12 +77,13 @@ public class WateringFragment extends Fragment {
 
             int progress = (int) (millisUntilFinished/1000);
 
-            timeRemainingBar.setProgress(timeRemainingBar.getMax()-progress);
+            timeRemainingBar.setProgress(timeRemainingBar.getMax() - progress);
             timeRemainingTextView.setText(String.valueOf(progress));
         }
 
         @Override
         public void onFinish() {
+            wateringButton.setClickable(true);
             wateringButton.setChecked(false);
             timeRemainingBar.setProgress(0);
         }
