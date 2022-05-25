@@ -121,6 +121,7 @@ public class PlantsActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 plantsViewModel.delete(adapter.getPlantAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getApplicationContext(), "Plant successfully deleted...", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
