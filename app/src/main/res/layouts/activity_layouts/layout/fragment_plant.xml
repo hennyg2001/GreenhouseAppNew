@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".PlantFragment">
+
+    <LinearLayout
+        android:id="@+id/plant_profile_Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="110dp">
+
+        <LinearLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="Name"/>
+
+            <TextView
+                android:id="@+id/plantNameTv"
+                android:layout_width="180dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/typeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="Type"/>
+
+            <TextView
+                android:id="@+id/plantTypeTv"
+                android:layout_width="180dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/descriptionLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Description"/>
+
+            <TextView
+                android:id="@+id/plantDescriptionTv"
+                android:layout_width="150dp"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/routines_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Routines"
+        android:layout_below="@id/plant_profile_Layout"
+        android:layout_alignStart="@id/plant_profile_Layout"
+        android:layout_marginTop="40dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/routinesRv"
+        android:scrollbars="vertical"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/routines_tv"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/plant_profile_Layout"
+        android:stateListAnimator="@null"/>
+
+    <Button
+        android:id="@+id/editPlantBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:layout_below="@id/routinesRv"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@id/plant_profile_Layout" />
+
+</RelativeLayout>

@@ -1,10 +1,12 @@
 package com.example.greenhouseappnew;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -16,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +40,7 @@ import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class PlantsActivity extends AppCompatActivity {
+public class PlantsActivity extends AppCompatActivity implements PlantFragment.OnFragmentInteractionListener {
 
     public static final String MAIN_PLANT_ID = "com.example.greenhouseappnew.MAIN_PLANT_ID";
     public static final String MAIN_PLANT_NAME = "com.example.greenhouseappnew.MAIN_PLANT_NAME";
@@ -54,11 +58,15 @@ public class PlantsActivity extends AppCompatActivity {
 
     private PlantsViewModel plantsViewModel;
 
+    private FrameLayout fragmentContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_plants);
+
+        fragmentContainer = (FrameLayout) findViewById(R.id.plant_fragment_container);
 
         setSupportActionBar(findViewById(R.id.plants_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -119,14 +127,7 @@ public class PlantsActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PlantAdapter.OnItemListClicker() {
             @Override
             public void onItemClick(Plant plant) {
-                Bundle plantBundle = new Bundle();
-                plantBundle.putInt("id", plant.getId());
-                plantBundle.putString("name", plant.getName());
-                plantBundle.putString("type", plant.getType());
-                plantBundle.putString("description", plant.getDescription());
-                Fragment plantProfileFragment = new PlantProfileFragment();
-                plantProfileFragment.setArguments(plantBundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, plantProfileFragment).commit();
+                openFragment(plant.getId(), plant.getName(), plant.getType(), plant.getDescription());
             }
         });
 
@@ -177,4 +178,17 @@ public class PlantsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void openFragment(int id, String name, String type, String description) {
+        PlantFragment fragment = PlantFragment.newInstance(id, name, type, description);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.plant_fragment_container, fragment, "PLANT_FRAGMENT").commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

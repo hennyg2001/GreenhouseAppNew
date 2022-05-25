@@ -1,9 +1,10 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".PlantsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:id="@+id/plantsRecyclerView"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="400dp"
             tools:listitem="@layout/plant_item"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
@@ -38,4 +39,10 @@
             android:layout_margin="20dp"
             app:srcCompat="@android:drawable/ic_input_add"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout
+            android:id="@+id/plant_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/plantsRecyclerView"/>
+
+</RelativeLayout>
