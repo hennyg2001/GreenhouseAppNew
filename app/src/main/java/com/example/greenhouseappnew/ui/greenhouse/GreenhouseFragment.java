@@ -39,10 +39,10 @@ public class GreenhouseFragment extends Fragment {
         String name = bundle.getString("name");
         String location = bundle.getString("location");
         String description = bundle.getString("description");
-        String area = bundle.getString("area");
-        String co2 = bundle.getString("co2");
-        String humidity = bundle.getString("humidity");
-        String temp = bundle.getString("temp");
+        Double area = bundle.getDouble("area");
+        Double co2 = bundle.getDouble("co2");
+        Double humidity = bundle.getDouble("humidity");
+        Double temp = bundle.getDouble("temp");
 
         nameTextView = rootView.findViewById(R.id.greenhouseNameTv);
         locationTextView = rootView.findViewById(R.id.greenhouseLocationTv);
@@ -56,10 +56,10 @@ public class GreenhouseFragment extends Fragment {
         nameTextView.setText(name);
         locationTextView.setText(location);
         descriptionTextView.setText(description);
-        areaTextView.setText(area);
-        co2TextView.setText(co2);
-        humidityTextView.setText(humidity);
-        tempTextView.setText(temp);
+        areaTextView.setText(Double.toString(area));
+        co2TextView.setText(Double.toString(co2));
+        humidityTextView.setText(Double.toString(humidity));
+        tempTextView.setText(Double.toString(temp));
 
         return rootView;
     }
