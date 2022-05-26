@@ -49,7 +49,7 @@ public class Greenhouse {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
 
-    public Greenhouse(int id, String Name, String Location, String UserEmail, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, boolean actuator) {
+    public Greenhouse(int id, String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, String UserEmail) {
         this.id = id;
         this.name = Name;
         this.location = Location;
@@ -59,7 +59,18 @@ public class Greenhouse {
         this.co2Preferred= PreferredCo2;
         this.temperaturePreferred= PreferredTemperature;
         this.humidityPreferred= PreferredHumidity;
-        this.actuatorSet = actuator;
+    }
+
+    public Greenhouse(String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity, String UserEmail) {
+        this.id = id;
+        this.name = Name;
+        this.location = Location;
+        this.userEmail = UserEmail;
+        this.description = Description;
+        this.area = Area;
+        this.co2Preferred= PreferredCo2;
+        this.temperaturePreferred= PreferredTemperature;
+        this.humidityPreferred= PreferredHumidity;
     }
 
     public Greenhouse(String Name, String Location, String Description, Double Area, Double PreferredCo2, Double PreferredTemperature, Double PreferredHumidity) {

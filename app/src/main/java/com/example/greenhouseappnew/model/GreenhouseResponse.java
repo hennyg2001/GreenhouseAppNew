@@ -16,7 +16,7 @@ public class GreenhouseResponse {
     private boolean actuatorSet;
 
     public Greenhouse getGreenhouse() {
-        return new Greenhouse(idGreenhouse, name,  location, userMail,  description,  area,  co2Preferred,  temperaturePreferred,  humidityPreferred, actuatorSet);
+        return new Greenhouse(name,  location,  description,  area,  co2Preferred,  temperaturePreferred,  humidityPreferred, userMail);
     }
 
     public String toString()

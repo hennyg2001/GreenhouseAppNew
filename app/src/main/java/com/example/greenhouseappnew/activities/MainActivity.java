@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
                         Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
 
-                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp);
+                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
                         greenhousesViewModel.insert(greenhouse);
                         Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
 
