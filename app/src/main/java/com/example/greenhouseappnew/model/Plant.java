@@ -39,6 +39,14 @@ public class Plant {
         this.id_Greenhouse = id_Greenhouse;
     }
 
+    public Plant(String description, String name, String type, String scientificName, int id_Greenhouse) {
+        this.description = description;
+        this.name = name;
+        this.type = type;
+        this.scientificName = scientificName;
+        this.id_Greenhouse = id_Greenhouse;
+    }
+
     public Plant() {
         // Default constructor required for calls to DataSnapShot.getValue(User.class)
     }
@@ -92,4 +100,5 @@ public class Plant {
     public void setId_Greenhouse(int id_Greenhouse) {
         this.id_Greenhouse = id_Greenhouse;
     }
+
 }

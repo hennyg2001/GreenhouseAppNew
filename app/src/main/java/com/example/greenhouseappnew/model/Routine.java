@@ -3,7 +3,7 @@ package com.example.greenhouseappnew.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "routine_table")
 public class Routine {
 
     @PrimaryKey (autoGenerate = true)
@@ -37,6 +37,7 @@ public class Routine {
     public int getId_Plant() {
         return id_Plant;
     }
+
 
     public void setTask(String task) {
         this.task = task;

@@ -14,7 +14,7 @@ import java.util.List;
 @Dao
 public interface RoutineDAO {
 
-    @Query("SELECT * FROM Routine WHERE id_Plant = :id")
+    @Query("SELECT * FROM routine_table WHERE id_Plant = :id")
    List<Routine> getRoutinesByPlantId(int id);
 
     @Insert

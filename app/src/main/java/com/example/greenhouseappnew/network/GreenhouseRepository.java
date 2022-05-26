@@ -124,7 +124,6 @@ public class GreenhouseRepository {
             @Override
             public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
-
             }
         });
     }
@@ -177,13 +176,13 @@ public class GreenhouseRepository {
 
     public void searchForGreenhouseByEmail(String email) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<GreenhouseListResponse> call = greenhouseApi.getGreenHouseByEmail(email);
-        call.enqueue(new Callback<GreenhouseListResponse>() {
+        Call<List<GreenhouseListResponse>> call = greenhouseApi.getGreenHouseByEmail(email);
+        call.enqueue(new Callback<List<GreenhouseListResponse>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<GreenhouseListResponse> call, Response<GreenhouseListResponse> response) {
+            public void onResponse(Call<List<GreenhouseListResponse>> call, Response<List<GreenhouseListResponse>> response) {
                 if (response.isSuccessful()) {
-                    greenHouseList.setValue(response.body().getResponse());
+                    //greenHouseList.setValue();
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -191,7 +190,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<GreenhouseListResponse> call, Throwable t) {
+            public void onFailure(Call<List<GreenhouseListResponse>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });
@@ -199,13 +198,13 @@ public class GreenhouseRepository {
 
     public void searchForPlantsByGreenhouseId(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<PlantListResponse> call = greenhouseApi.getPlantsFromGreenHouse(id);
-        call.enqueue(new Callback<PlantListResponse>() {
+        Call<List<PlantListResponse>> call = greenhouseApi.getPlantsFromGreenHouse(id);
+        call.enqueue(new Callback<List<PlantListResponse>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<PlantListResponse> call, Response<PlantListResponse> response) {
+            public void onResponse(Call<List<PlantListResponse>> call, Response<List<PlantListResponse>> response) {
                 if (response.isSuccessful()) {
-                    plantList.setValue(response.body().getResponse());
+                    //plantList.setValue(response.body().getResponse());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -213,7 +212,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<PlantListResponse> call, Throwable t) {
+            public void onFailure(Call<List<PlantListResponse>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });
@@ -265,21 +264,23 @@ public class GreenhouseRepository {
 
     public void addGreenhouse(Greenhouse params) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<GreenhouseResponse> call = greenhouseApi.addGreenHouse(params);
-        call.enqueue(new Callback<GreenhouseResponse>() {
+        Call<Void> call = greenhouseApi.addGreenHouse(params);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<GreenhouseResponse> call, Response<GreenhouseResponse> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful())
                 {
-                    addGreenHouse.postValue(response.body().getGreenhouse());
+                    //addGreenHouse.postValue(response.body().getGreenhouse());
+                    Log.i("Success", "The greenhouse was added");
                 }
                 else
                 {
-                    addGreenHouse.postValue(null);
+                    //addGreenHouse.postValue(null);
+                    Log.i("Failure", "There was a problem");
                 }
             }
             @Override
-            public void onFailure(Call<GreenhouseResponse> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.i("Error", t.getMessage());
             }
         });
@@ -287,21 +288,23 @@ public class GreenhouseRepository {
 
     public void addPlant(Plant plant) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<PlantResponse> call = greenhouseApi.addPlant(plant);
-        call.enqueue(new Callback<PlantResponse>() {
+        Call<Void> call = greenhouseApi.addPlant(plant);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<PlantResponse> call, Response<PlantResponse> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful())
                 {
-                    addPlant.postValue(response.body().getPlant());
+                   // addPlant.postValue(response.body().getPlant());
+                    Log.i("Success", "The Plant was added");
                 }
                 else
                 {
-                    addPlant.postValue(null);
+                   // addPlant.postValue(null);
+                    Log.i("Failure", "There was a problem");
                 }
             }
             @Override
-            public void onFailure(Call<PlantResponse> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.i("Error", t.getMessage());
             }
         });
@@ -369,12 +372,12 @@ public class GreenhouseRepository {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-
+                Log.i("Success", "Plant was deleted successfully");
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Log.i("Failure", "There was a problem");
             }
         });
     }

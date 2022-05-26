@@ -5,18 +5,22 @@ import java.util.ArrayList;
 public class GreenhouseResponse {
 
     private int idGreenhouse; //ok
-    private String Name; //ok
-    private String Location; //ok
-    private String UserMail;
-    private String Description; //ok
-    private Double Area; //ok   / to instantiate and getmethod
-    private Double PreferredCo2; // ok  / to instantiate...
-    private Double PreferredTemperature; // ok / to do///
-    private Double PreferredHumidity; //ok
-    private boolean Actuator;
+    private String name; //ok
+    private String location; //ok
+    private String userMail;
+    private String description; //ok
+    private Double area; //ok   / to instantiate and getmethod
+    private Double co2Preferred; // ok  / to instantiate...
+    private Double temperaturePreferred; // ok / to do///
+    private Double humidityPreferred; //ok
+    private boolean actuatorSet;
 
     public Greenhouse getGreenhouse() {
-        return new Greenhouse(idGreenhouse, Name,  Location, UserMail,  Description,  Area,  PreferredCo2,  PreferredTemperature,  PreferredHumidity, Actuator);
+        return new Greenhouse(idGreenhouse, name,  location, userMail,  description,  area,  co2Preferred,  temperaturePreferred,  humidityPreferred, actuatorSet);
     }
 
+    public String toString()
+    {
+        return "Name: " + name + " description: " + description;
+    }
 }

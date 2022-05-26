@@ -11,7 +11,7 @@ public class ServiceProvider {
         if(greenHouseApi == null)
         {
             greenHouseApi = new Retrofit.Builder()
-                    .baseUrl("http://localhost:5001/")
+                    .baseUrl("https://greenhouse-sep4-2022.azurewebsites.net/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(GreenHouseApi.class);

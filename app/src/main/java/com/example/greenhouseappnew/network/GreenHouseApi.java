@@ -36,10 +36,10 @@ public interface GreenHouseApi {
     Call<PlantResponse> getPlantById(@Path("plantId") int plantId);
 
     @GET("Greenhouse/{userEmail}")
-    Call<GreenhouseListResponse> getGreenHouseByEmail(@Path("userEmail") String userEmail);
+    Call<List<GreenhouseListResponse>> getGreenHouseByEmail(@Path("userEmail") String userEmail);
 
-    @GET("Plants/{greenhouseId")
-    Call<PlantListResponse> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
+    @GET("Plants/{greenhouseId}")
+    Call<List<PlantListResponse>> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
 
     @GET("Logs/{greenhouseId}")
     Call<LogListResponse> getLogsByGreenhouseId(@Path("greenhouseId") int greenhouseId);
@@ -52,11 +52,11 @@ public interface GreenHouseApi {
 
     @POST("Greenhouse")
     @Headers({"Accept:application/json", "Content-Type:application/json"})
-    Call<GreenhouseResponse> addGreenHouse(@Body Greenhouse params);
+    Call<Void> addGreenHouse(@Body Greenhouse params);
 
     @POST("Plants")
     @Headers({"Accept:application/json", "Content-Type:application/json"})
-    Call<PlantResponse> addPlant(@Body Plant params);
+    Call<Void> addPlant(@Body Plant params);
 
     @POST("Actuator/{greenhouseId}")
     Call<Void> activeActuator(@Body int greenhouseId);
