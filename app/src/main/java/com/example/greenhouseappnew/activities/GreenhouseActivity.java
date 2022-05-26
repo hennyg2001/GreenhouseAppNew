@@ -52,14 +52,14 @@ public class GreenhouseActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         Bundle greenhouseBundle = new Bundle();
-        greenhouseBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
-        greenhouseBundle.putString("name", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_NAME));
-        greenhouseBundle.putString("location", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_LOCATION));
-        greenhouseBundle.putString("description", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_DESCRIPTION));
-        greenhouseBundle.putDouble("area", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_AREA, 1));
-        greenhouseBundle.putDouble("co2", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2, 1));
-        greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY, 1));
-        greenhouseBundle.putDouble("temp", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, 1));
+        greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0));
+        greenhouseBundle.putString("name", intent.getStringExtra(GREENHOUSE_NAME));
+        greenhouseBundle.putString("location", intent.getStringExtra(GREENHOUSE_LOCATION));
+        greenhouseBundle.putString("description", intent.getStringExtra(GREENHOUSE_DESCRIPTION));
+        greenhouseBundle.putDouble("area", intent.getDoubleExtra(GREENHOUSE_AREA, 1));
+        greenhouseBundle.putDouble("co2", intent.getDoubleExtra(GREENHOUSE_PREFERRED_CO2, 1));
+        greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(GREENHOUSE_PREFERRED_HUMIDITY, 1));
+        greenhouseBundle.putDouble("temp", intent.getDoubleExtra(GREENHOUSE_PREFERRED_TEMPERATURE, 1));
 
         Fragment greenhouseFragment = new GreenhouseFragment();
         greenhouseFragment.setArguments(greenhouseBundle);
@@ -85,14 +85,14 @@ public class GreenhouseActivity extends AppCompatActivity {
                         case R.id.nav_info:
 
                             Bundle greenhouseBundle = new Bundle();
-                            greenhouseBundle.putInt("id", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
-                            greenhouseBundle.putString("name", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_NAME));
-                            greenhouseBundle.putString("location", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_LOCATION));
-                            greenhouseBundle.putString("description", intent.getStringExtra(MainActivity.MAIN_GREENHOUSE_DESCRIPTION));
-                            greenhouseBundle.putDouble("area", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_AREA, 1));
-                            greenhouseBundle.putDouble("co2", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2, 1));
-                            greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY, 1));
-                            greenhouseBundle.putDouble("temp", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, 1));
+                            greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0));
+                            greenhouseBundle.putString("name", intent.getStringExtra(GREENHOUSE_NAME));
+                            greenhouseBundle.putString("location", intent.getStringExtra(GREENHOUSE_LOCATION));
+                            greenhouseBundle.putString("description", intent.getStringExtra(GREENHOUSE_DESCRIPTION));
+                            greenhouseBundle.putDouble("area", intent.getDoubleExtra(GREENHOUSE_AREA, 1));
+                            greenhouseBundle.putDouble("co2", intent.getDoubleExtra(GREENHOUSE_PREFERRED_CO2, 1));
+                            greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(GREENHOUSE_PREFERRED_HUMIDITY, 1));
+                            greenhouseBundle.putDouble("temp", intent.getDoubleExtra(GREENHOUSE_PREFERRED_TEMPERATURE, 1));
 
                             Fragment infoFragment = new GreenhouseFragment();
                             infoFragment.setArguments(greenhouseBundle);
