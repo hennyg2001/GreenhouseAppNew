@@ -111,14 +111,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Greenhouse greenhouse) {
                 Intent intent = new Intent(MainActivity.this, GreenhouseActivity.class);
-                intent.putExtra(MAIN_GREENHOUSE_ID, greenhouse.getId());
-                intent.putExtra(MAIN_GREENHOUSE_NAME, greenhouse.getName());
-                intent.putExtra(MAIN_GREENHOUSE_LOCATION, greenhouse.getLocation());
-                intent.putExtra(MAIN_GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
-                intent.putExtra(MAIN_GREENHOUSE_AREA, greenhouse.getArea());
-                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
-                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
-                intent.putExtra(MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_ID, greenhouse.getId());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_NAME, greenhouse.getName());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, greenhouse.getLocation());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, greenhouse.getDescription());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_AREA, greenhouse.getArea());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
+                intent.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
                 startActivity(intent);
             }
             @Override

@@ -79,7 +79,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         setTitle("Plants");
 
         Intent intent = getIntent();
-        int greenhouseId = intent.getIntExtra("greenhouseId", 0);
+        int greenhouseId = intent.getIntExtra(CURRENT_GREENHOUSE_ID, 0);
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
