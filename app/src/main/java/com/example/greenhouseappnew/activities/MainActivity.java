@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Greenhouses");
 
         Intent intent = getIntent();
-        String userId = intent.getStringExtra("userId");
+        String email = intent.getStringExtra("email");
 
         // Launcher
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         greenhousesViewModel = new ViewModelProvider(this).get(GreenhousesViewModel.class);
-        greenhousesViewModel.getAll().observe(this, (greenhouses) -> {
+        greenhousesViewModel.getAllByEmail(email).observe(this, (greenhouses) -> {
             adapter.setGreenhouses(greenhouses);
         });
 
