@@ -3,6 +3,7 @@ package com.example.greenhouseappnew.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.model.Greenhouse;
+import com.example.greenhouseappnew.model.Plant;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -54,11 +56,13 @@ public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.Vi
 
         private final TextView name;
         private final TextView location;
+        private final ImageView editGreenhouseImage;
 
         private ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_greenhouse_name);
             location = itemView.findViewById(R.id.tv_greenhouse_location);
+            editGreenhouseImage = itemView.findViewById(R.id.editGreenhouseImageButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -69,12 +73,23 @@ public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.Vi
                     }
                 }
             });
+
+            editGreenhouseImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION) {
+                        listener.onEditClick(greenhouses.get(position));
+                    }
+                }
+            });
         }
 
     }
 
     public interface OnItemListClicker {
         void onItemClick(Greenhouse greenhouse);
+        void onEditClick(Greenhouse greenhouse);
     }
 
     public void setOnItemClickListener(OnItemListClicker listener) {

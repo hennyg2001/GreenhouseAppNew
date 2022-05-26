@@ -11,9 +11,11 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenhouseAppNew">
-        <activity android:name=".activities.GraphsActivity"
+        <activity
+            android:name=".InfoActivity"
             android:exported="false" />
-        <activity android:name=".activities.CreateEditPlantActivity"
+        <activity
+            android:name=".activities.GraphsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
@@ -30,8 +32,19 @@
         <activity
             android:name=".activities.CreateEditGreenhouseActivity"
             android:exported="true"
-            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ALL_APPS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CreateEditPlantActivity"
+            android:exported="true"
+            android:parentActivityName=".PlantsActivity"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.ALL_APPS" />
 
@@ -41,8 +54,19 @@
         <activity
             android:name=".activities.GreenhouseActivity"
             android:exported="true"
-            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar"
-            android:parentActivityName=".activities.MainActivity">
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ALL_APPS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PlantsActivity"
+            android:exported="true"
+            android:parentActivityName=".activities.GreenhouseActivity"
+            android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.ALL_APPS" />
 

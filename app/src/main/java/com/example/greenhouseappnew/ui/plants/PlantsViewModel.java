@@ -21,6 +21,7 @@ public class PlantsViewModel extends AndroidViewModel {
     public PlantsViewModel(@NotNull Application application) {
         super(application);
         repository = new RoomRepository(application);
+        allPlants = repository.getAllPlants();
     }
 
     public LiveData<Plant> get(int id) {
@@ -29,6 +30,10 @@ public class PlantsViewModel extends AndroidViewModel {
 
     public LiveData<List<Plant>> getAllPlantsByGreenhouse(int id) {
         return repository.getPlantsByGreenhouse(id);
+    }
+
+    public LiveData<List<Plant>> getAllPlants() {
+        return allPlants;
     }
 
     public void insert(Plant plant) {

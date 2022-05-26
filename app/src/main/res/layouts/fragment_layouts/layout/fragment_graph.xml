@@ -8,7 +8,7 @@
     tools:context=".ui.graphs.GraphFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CO2_btn"
+        android:id="@+id/constraint_layout"
         android:layout_width="409dp"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp">
@@ -17,7 +17,6 @@
             android:id="@+id/values_chart"
             android:layout_width="406dp"
             android:layout_height="621dp"
-            app:layout_constraintBottom_toTopOf="@+id/Temperature_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,25 +29,25 @@
             android:layout_height="wrap_content"
             android:text="Humidity"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/Temperature_btn"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/temperature_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:text="Temperature"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
             app:layout_constraintStart_toEndOf="@+id/humidity_btn" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/CO2_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
             android:text="CO2  Level"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Temperature_btn" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

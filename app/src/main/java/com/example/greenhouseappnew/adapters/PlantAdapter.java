@@ -3,6 +3,7 @@ package com.example.greenhouseappnew.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull PlantAdapter.ViewHolder holder, int position) {
         Plant currentPlant = plants.get(position);
         holder.name.setText(currentPlant.getName());
-        holder.type.setText(currentPlant.getScientificName());
+        holder.type.setText(currentPlant.getType());
     }
 
     @Override
@@ -55,11 +56,13 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
         private final TextView name;
         private final TextView type;
+        private final ImageView editPlantImage;
 
         private ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             type = itemView.findViewById(R.id.tv_type);
+            editPlantImage = itemView.findViewById(R.id.editPlantImageButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,12 +73,23 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
                     }
                 }
             });
+
+            editPlantImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION) {
+                        listener.onEditClick(plants.get(position));
+                    }
+                }
+            });
         }
 
     }
 
     public interface OnItemListClicker {
         void onItemClick(Plant plant);
+        void onEditClick(Plant plant);
     }
 
     public void setOnItemClickListener(PlantAdapter.OnItemListClicker listener) {

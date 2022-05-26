@@ -40,7 +40,4 @@ public abstract class GreenhouseDB extends RoomDatabase {
         }
         return instance;
     }
-
-
-
 }

@@ -22,6 +22,9 @@ public interface PlantDAO {
     @Query("SELECT * FROM plant_table WHERE greenhouseId = :id")
     LiveData<List<Plant>> getPlantsFromGreenhouse(int id);
 
+    @Query("SELECT * FROM plant_table")
+    LiveData<List<Plant>> getAllPlants();
+
     @Update
     void updatePlant(Plant plant);
 

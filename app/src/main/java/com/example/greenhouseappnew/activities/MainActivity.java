@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.greenhouseappnew.InfoActivity;
+import com.example.greenhouseappnew.data.GreenhouseDAO;
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
@@ -28,19 +31,21 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    public static final String MAIN_GREENHOUSE_ID = "com.example.and_recipeapp.MAIN_GREENHOUSE_ID";
-    public static final String MAIN_GREENHOUSE_NAME = "com.example.and_recipeapp.MAIN_GREENHOUSE_NAME";
-    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.and_recipeapp.MAIN_GREENHOUSE_LOCATION";
-    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.and_recipeapp.MAIN_GREENHOUSE_DESCRIPTION";
-    public static final String MAIN_GREENHOUSE_AREA = "com.example.and_recipeapp.MAIN_GREENHOUSE_AREA";
-    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_CO2";
-    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.and_recipeapp.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
+    public static final String MAIN_GREENHOUSE_ID = "com.example.greenhouseappnew.MAIN_GREENHOUSE_ID";
+    public static final String MAIN_GREENHOUSE_NAME = "com.example.greenhouseappnew.MAIN_GREENHOUSE_NAME";
+    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_LOCATION";
+    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_DESCRIPTION";
+    public static final String MAIN_GREENHOUSE_AREA = "com.example.greenhouseappnew.MAIN_GREENHOUSE_AREA";
+    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_CO2";
+    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
+    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
 
     private GreenhousesViewModel greenhousesViewModel;
+    private GreenhouseDAO greenhouseDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -116,6 +121,19 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
                 startActivity(intent);
             }
+            @Override
+            public void onEditClick(Greenhouse greenhouse) {
+                Intent intent = new Intent(MainActivity.this, CreateEditGreenhouseActivity.class);
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_ID, greenhouse.getId());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_NAME, greenhouse.getName());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION, greenhouse.getLocation());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION, greenhouse.getDescription());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_AREA, greenhouse.getArea());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
+                intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
+                startActivity(intent);
+            }
         });
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
@@ -131,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
+        System.out.println(greenhousesViewModel.getAll().toString());
+
     }
 
     @Override
@@ -145,9 +165,13 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                Intent i = new Intent(getApplicationContext(), InfoActivity.class);
+                startActivity(i);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }
