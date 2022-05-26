@@ -43,7 +43,12 @@ public class SignupActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+
+                String email = inputEmail.getText().toString().trim();
+
+                Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
                 finish();
             }
         });
@@ -85,7 +90,9 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                    intent.putExtra("email", email);
+                                    startActivity(intent);
                                     finish();
                                 }
                             }
