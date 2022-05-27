@@ -44,11 +44,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PlantsActivity extends AppCompatActivity implements PlantFragment.OnFragmentInteractionListener {
 
-    public static final String MAIN_PLANT_ID = "com.example.greenhouseappnew.MAIN_PLANT_ID";
-    public static final String MAIN_PLANT_NAME = "com.example.greenhouseappnew.MAIN_PLANT_NAME";
-    public static final String MAIN_PLANT_TYPE = "com.example.greenhouseappnew.MAIN_PLANT_TYPE";
-    public static final String MAIN_PLANT_DESCRIPTION = "com.example.greenhouseappnew.MAIN_PLANT_DESCRIPTION";
-
     public static final String CURRENT_GREENHOUSE_ID = "com.example.greenhouseappnew.CURRENT_GREENHOUSE_ID";
     public static final String CURRENT_GREENHOUSE_NAME = "com.example.greenhouseappnew.CURRENT_GREENHOUSE_NAME";
     public static final String CURRENT_GREENHOUSE_LOCATION = "com.example.greenhouseappnew.CURRENT_GREENHOUSE_LOCATION";

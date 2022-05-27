@@ -121,7 +121,7 @@ public class GreenhouseActivity extends AppCompatActivity {
                         case R.id.nav_watering:
 
                             Bundle wateringBundle = new Bundle();
-                            wateringBundle.putInt("greenhouseId", intent.getIntExtra(MainActivity.MAIN_GREENHOUSE_ID, 0));
+                            wateringBundle.putInt("greenhouseId", intent.getIntExtra(GREENHOUSE_ID, 0));
 
                             WateringFragment wateringFragment = new WateringFragment();
                             wateringFragment.setArguments(wateringBundle);

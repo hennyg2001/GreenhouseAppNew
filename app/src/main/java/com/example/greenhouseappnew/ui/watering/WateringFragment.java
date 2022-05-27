@@ -54,7 +54,7 @@ public class WateringFragment extends Fragment {
                 myCountDownTimer = new MyCountDownTimer(10000, 1000);
                 myCountDownTimer.start();
                 wateringButton.setClickable(false);
-                //viewModel.activateWatering(greenhouseId);
+                viewModel.activateWatering(greenhouseId);
             }
         });
 
