@@ -17,6 +17,7 @@
             app:popupTheme="@style/Theme.GreenhouseAppNew.PopupOverlay">
 
             <ImageView
+                android:id="@+id/homeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/home_icon"

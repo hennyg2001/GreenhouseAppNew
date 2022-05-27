@@ -3,6 +3,8 @@ package com.example.greenhouseappnew.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -50,6 +52,14 @@ public class GreenhouseActivity extends AppCompatActivity {
 
         setSupportActionBar(findViewById(R.id.greenhouse_toolbar));
         setTitle(intent.getStringExtra(GREENHOUSE_NAME));
+
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Bundle greenhouseBundle = new Bundle();
         greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0));
