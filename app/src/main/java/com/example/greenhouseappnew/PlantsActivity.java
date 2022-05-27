@@ -174,6 +174,18 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         int id = item.getItemId();
         if (id == android.R.id.home) {
 
+            Intent intent = getIntent();
+
+            Intent data = new Intent(PlantsActivity.this, GreenhouseActivity.class);
+            data.putExtra(GreenhouseActivity.GREENHOUSE_ID, intent.getIntExtra(CURRENT_GREENHOUSE_ID, 0));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_NAME, intent.getStringExtra(CURRENT_GREENHOUSE_NAME));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_LOCATION, intent.getStringExtra(CURRENT_GREENHOUSE_LOCATION));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_DESCRIPTION, intent.getStringExtra(CURRENT_GREENHOUSE_DESCRIPTION));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_AREA, intent.getDoubleExtra(CURRENT_GREENHOUSE_AREA, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_CO2, intent.getDoubleExtra(CURRENT_GREENHOUSE_CO2, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_HUMIDITY, intent.getDoubleExtra(CURRENT_GREENHOUSE_HUMIDITY, 1));
+            data.putExtra(GreenhouseActivity.GREENHOUSE_PREFERRED_TEMPERATURE, intent.getDoubleExtra(CURRENT_GREENHOUSE_TEMPERATURE, 1));
+            startActivity(data);
             finish();
 
         }

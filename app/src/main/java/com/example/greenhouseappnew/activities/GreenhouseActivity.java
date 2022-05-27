@@ -150,32 +150,4 @@ public class GreenhouseActivity extends AppCompatActivity {
                 }
             };
 
-    @Override
-    public void onRestart() {
-
-        super.onRestart();
-
-        Intent intent = getIntent();
-
-        Bundle greenhouseBundle = new Bundle();
-        greenhouseBundle.putInt("id", intent.getIntExtra(GREENHOUSE_ID, 0));
-        greenhouseBundle.putString("name", intent.getStringExtra(GREENHOUSE_NAME));
-        greenhouseBundle.putString("location", intent.getStringExtra(GREENHOUSE_LOCATION));
-        greenhouseBundle.putString("description", intent.getStringExtra(GREENHOUSE_DESCRIPTION));
-        greenhouseBundle.putDouble("area", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_AREA, 1));
-        greenhouseBundle.putDouble("co2", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_CO2, 1));
-        greenhouseBundle.putDouble("humidity", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_HUMIDITY, 1));
-        greenhouseBundle.putDouble("temp", intent.getDoubleExtra(MainActivity.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE, 1));
-
-        Fragment greenhouseFragment = new GreenhouseFragment();
-        greenhouseFragment.setArguments(greenhouseBundle);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setReorderingAllowed(true)
-                .replace(R.id.fragment_container, greenhouseFragment)
-                .commit();
-
-    }
-
 }
