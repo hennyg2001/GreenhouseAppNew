@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".PlantFragment"
+    android:background="@color/grey">
+
+    <TextView
+        android:id="@+id/plantRoutinesTv"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:text="@string/routinesTitle"
+        android:textSize="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/white"/>
+
+    <TableLayout
+        android:id="@+id/plantRoutinesTableLayout"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/plantRoutinesTv"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:text="Task"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:text="Frequency"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:text="Day"
+                android:textAlignment="center"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:text="Water plant"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineFrequencyTv1"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineDayTv1"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:textAlignment="center"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:text="Add fertilizer"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineFrequencyTv2"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineDayTv2"
+                android:layout_height="wrap_content"
+                android:text="Monday"
+                android:textAlignment="center"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:text="Trim plant"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineFrequencyTv3"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineDayTv3"
+                android:layout_height="wrap_content"
+                android:text="Tuesday"
+                android:textAlignment="center"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:text="Add pesticide"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/routineFrequencyTv4"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+
+            <TextView
+                android:id="@+id/routineDayTv4"
+                android:layout_height="wrap_content"
+                android:text="Friday"
+                android:textAlignment="center"
+                android:layout_width="60dp"
+                android:textColor="@color/white"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>
