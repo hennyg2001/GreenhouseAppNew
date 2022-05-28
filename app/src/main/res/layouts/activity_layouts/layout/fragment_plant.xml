@@ -85,33 +85,4 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/routines_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Routines"
-        android:layout_below="@id/plant_profile_Layout"
-        android:layout_alignStart="@id/plant_profile_Layout"
-        android:layout_marginTop="40dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/routinesRv"
-        android:scrollbars="vertical"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/routines_tv"
-        android:layout_marginTop="20dp"
-        android:layout_alignStart="@id/plant_profile_Layout"
-        android:stateListAnimator="@null"/>
-
-    <Button
-        android:id="@+id/editPlantBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/plant_profile_Layout"
-        android:layout_alignEnd="@id/plant_profile_Layout"
-        android:layout_marginTop="464dp"
-        android:layout_marginEnd="-28dp"
-        android:text="Edit" />
-
 </RelativeLayout>

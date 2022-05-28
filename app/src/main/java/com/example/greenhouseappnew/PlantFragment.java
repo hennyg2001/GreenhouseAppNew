@@ -79,8 +79,6 @@ public class PlantFragment extends Fragment {
         descriptionTextView = view.findViewById(R.id.plantDescriptionTv);
         descriptionTextView.setText(mDescription);
 
-        buttonFragment = view.findViewById(R.id.editPlantBtn);
-
         buttonFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

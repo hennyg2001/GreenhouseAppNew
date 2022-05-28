@@ -35,7 +35,7 @@ public class CreateEditPlantActivity extends AppCompatActivity {
     public static final String EXTRA_GREENHOUSE_ID = "com.example.greenhouseappnew.EXTRA_GREENHOUSE_ID";
 
     private EditText nameEditText, typeEditText, descriptionEditText;
-    private Spinner spinner;
+    private Spinner spinner, daySpinner1, daySpinner2, daySpinner3, daySpinner4;
     private Button btn;
 
     private PlantsViewModel plantsViewModel;
@@ -64,6 +64,22 @@ public class CreateEditPlantActivity extends AppCompatActivity {
         descriptionEditText = findViewById(R.id.description);
 
         btn = findViewById(R.id.createPlantButton);
+
+        daySpinner1 = (Spinner) findViewById(R.id.daySpinner);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.days_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySpinner1.setAdapter(adapter2);
+
+        daySpinner2 = (Spinner) findViewById(R.id.daySpinner2);
+        daySpinner2.setAdapter(adapter2);
+
+        daySpinner3 = (Spinner) findViewById(R.id.daySpinner3);
+        daySpinner3.setAdapter(adapter2);
+
+        daySpinner4 = (Spinner) findViewById(R.id.daySpinner4);
+        daySpinner4.setAdapter(adapter2);
+
 
         Intent intent = getIntent();
 
