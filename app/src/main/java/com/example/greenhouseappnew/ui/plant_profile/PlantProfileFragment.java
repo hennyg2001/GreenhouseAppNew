@@ -36,7 +36,6 @@ public class PlantProfileFragment extends Fragment {
         typeTextView.setText(type);
         descriptionTextView.setText(description);
 
-        button = getView().findViewById(R.id.editPlantButton);
     }
 
 }
