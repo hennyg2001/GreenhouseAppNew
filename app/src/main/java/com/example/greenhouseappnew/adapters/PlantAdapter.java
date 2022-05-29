@@ -90,7 +90,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION) {
-                        listener.onEditClick(plants.get(position));
+                        listener.onRoutinesClick(plants.get(position));
                     }
                 }
             });

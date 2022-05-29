@@ -35,7 +35,6 @@ public class PlantFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private TextView nameTextView, typeTextView, descriptionTextView;
-    private Button buttonFragment;
 
     public PlantFragment() {
         // Required empty public constructor
@@ -78,13 +77,6 @@ public class PlantFragment extends Fragment {
 
         descriptionTextView = view.findViewById(R.id.plantDescriptionTv);
         descriptionTextView.setText(mDescription);
-
-        buttonFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         return view;
     }
