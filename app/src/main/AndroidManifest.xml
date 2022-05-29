@@ -95,7 +95,7 @@
             android:label="SignUp"
             android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.ALL_APPS" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

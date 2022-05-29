@@ -56,13 +56,14 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
         private final TextView name;
         private final TextView type;
-        private final ImageView editPlantImage;
+        private final ImageView editPlantImage, routinesImage;
 
         private ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             type = itemView.findViewById(R.id.tv_type);
             editPlantImage = itemView.findViewById(R.id.editPlantImageButton);
+            routinesImage = itemView.findViewById(R.id.plantRoutinesImageButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -83,6 +84,16 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
                     }
                 }
             });
+
+            routinesImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION) {
+                        listener.onEditClick(plants.get(position));
+                    }
+                }
+            });
         }
 
     }
@@ -90,6 +101,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     public interface OnItemListClicker {
         void onItemClick(Plant plant);
         void onEditClick(Plant plant);
+        void onRoutinesClick(Plant plant);
     }
 
     public void setOnItemClickListener(PlantAdapter.OnItemListClicker listener) {

@@ -138,6 +138,10 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
                 intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION, plant.getDescription());
                 mStartForResult.launch(intent);
             }
+            @Override
+            public void onRoutinesClick(Plant plant) {
+                openRoutinesFragment(plant.getId());
+            }
         });
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
@@ -194,6 +198,15 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_bottom, R.anim.enter_from_bottom, R.anim.exit_to_bottom);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.plant_fragment_container, fragment, "PLANT_FRAGMENT").commit();
+    }
+
+    public void openRoutinesFragment(int id) {
+        RoutinesFragment fragment = RoutinesFragment.newInstance(id);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_bottom, R.anim.enter_from_bottom, R.anim.exit_to_bottom);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.plant_fragment_container, fragment, "ROUTINES_FRAGMENT").commit();
     }
 
     @Override
