@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.ui.plant_profile;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.greenhouseappnew.R;
 
 /**
  * A simple {@link Fragment} subclass.

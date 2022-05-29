@@ -1,8 +1,10 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.greenhouseappnew.R;
 
 public class InfoActivity extends AppCompatActivity {
 

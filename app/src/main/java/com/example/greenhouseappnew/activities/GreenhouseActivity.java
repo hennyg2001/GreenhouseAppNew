@@ -5,23 +5,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.greenhouseappnew.PlantsActivity;
-import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.ui.graphs.GraphFragment;
 import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
-import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.ui.plants.PlantsFragment;
 import com.example.greenhouseappnew.ui.watering.WateringFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;

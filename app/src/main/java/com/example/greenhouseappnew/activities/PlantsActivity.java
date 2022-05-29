@@ -1,4 +1,4 @@
-package com.example.greenhouseappnew;
+package com.example.greenhouseappnew.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,19 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,19 +21,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity;
-import com.example.greenhouseappnew.activities.CreateEditPlantActivity;
-import com.example.greenhouseappnew.activities.GreenhouseActivity;
-import com.example.greenhouseappnew.activities.MainActivity;
-import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
+import com.example.greenhouseappnew.ui.plant_profile.PlantFragment;
+import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.ui.plant_profile.RoutinesFragment;
 import com.example.greenhouseappnew.adapters.PlantAdapter;
-import com.example.greenhouseappnew.databinding.ActivityMainBinding;
-import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
-import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
-import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PlantsActivity extends AppCompatActivity implements PlantFragment.OnFragmentInteractionListener {

@@ -16,7 +16,7 @@
             android:name=".activities.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".InfoActivity"
+            android:name=".activities.InfoActivity"
             android:exported="false" />
         <activity
             android:name=".activities.GraphsActivity"
@@ -47,7 +47,7 @@
         <activity
             android:name=".activities.CreateEditPlantActivity"
             android:exported="true"
-            android:parentActivityName=".PlantsActivity"
+            android:parentActivityName=".activities.PlantsActivity"
             android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.ALL_APPS" />
@@ -68,7 +68,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PlantsActivity"
+            android:name=".activities.PlantsActivity"
             android:exported="true"
             android:parentActivityName=".activities.GreenhouseActivity"
             android:theme="@style/Theme.GreenhouseAppNew.NoActionBar">
