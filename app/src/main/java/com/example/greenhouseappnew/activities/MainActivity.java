@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println(greenhousesViewModel.getAll().toString());
 
+        System.out.println(greenhousesViewModel.getAll());
     }
 
     @Override
