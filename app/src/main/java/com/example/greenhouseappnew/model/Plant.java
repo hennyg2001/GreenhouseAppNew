@@ -35,7 +35,6 @@ public class Plant {
         this.description = description;
         this.name = name;
         this.type = type;
-        this.scientificName = scientificName;
         this.id_Greenhouse = id_Greenhouse;
     }
 
