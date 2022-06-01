@@ -13,9 +13,6 @@
         android:theme="@style/Theme.GreenhouseAppNew"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.InfoActivity"
             android:exported="false" />
         <activity

@@ -33,13 +33,19 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla" />
+            android:text="The aim of our GreenHouse system is to significantly improve the production quality of a greenhouse, valuing and emphasizing the data collected over the time by specific sensors." />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla" />
+            android:text="Through different graphs and tables, the user is able to analyze the values regarding CO2, temperature and humidity retrieved in the greenhouse, selecting different time windows to discover the effects of a certain setting. " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Additionally, the system is able to trigger an action on the greenhouse, either manually at any moment or automatically when the safe range of values is exceeded."/>
 
         <TextView
             android:layout_width="match_parent"

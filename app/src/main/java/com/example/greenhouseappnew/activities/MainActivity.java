@@ -174,10 +174,8 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_info:
-                Intent i = new Intent(getApplicationContext(), InfoActivity.class);
+                Intent i = new Intent(MainActivity.this, InfoActivity.class);
                 startActivity(i);
-            case R.id.action_settings:
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
