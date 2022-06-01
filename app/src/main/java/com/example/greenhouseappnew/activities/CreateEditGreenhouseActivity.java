@@ -78,15 +78,7 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
             @Override
             public void onClick (View v){
 
-                if(getTitle().toString() == "Edit Greenhouse") {
-
-                    editGreenhouse();
-
-                } else if(getTitle().toString() == "Add Greenhouse") {
-
-                    saveGreenhouse();
-
-                }
+                saveGreenhouse();
 
             }
 
@@ -124,47 +116,6 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         }
 
         setResult(RESULT_OK, data);
-        finish();
-
-    }
-
-    private void editGreenhouse() {
-
-        //int id = getIntent().getIntExtra(EXTRA_ID, -1);
-        String name = nameEditText.getText().toString().trim();
-        String location = locationEditText.getText().toString().trim();
-        String description = descriptionEditText.getText().toString().trim();
-        String area = areaEditText.getText().toString().trim();
-        String preferredCo2 = preferredCo2EditText.getText().toString().trim();
-        String preferredHumidity = preferredHumidityEditText.getText().toString().trim();
-        String preferredTemp = preferredTempEditText.getText().toString().trim();
-
-        /*
-        Greenhouse greenhouse = new Greenhouse(name, location, description, area, preferredCo2, preferredHumidity, preferredTemp, "305916@viauc.dk");
-        greenhouse.setId(id);
-        viewModel.update(greenhouse);
-         */
-
-        if (name.trim().isEmpty() || location.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a name and location", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Intent data = new Intent();
-        data.putExtra(EXTRA_NAME, name);
-        data.putExtra(EXTRA_LOCATION, location);
-        data.putExtra(EXTRA_DESCRIPTION, description);
-        data.putExtra(EXTRA_AREA, area);
-        data.putExtra(EXTRA_GREENHOUSE_PREFERRED_CO2, preferredCo2);
-        data.putExtra(EXTRA_GREENHOUSE_PREFERRED_HUMIDITY, preferredHumidity);
-        data.putExtra(EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE, preferredTemp);
-
-        int id = getIntent().getIntExtra(EXTRA_ID, -1);
-        if(id != -1) {
-            data.putExtra(EXTRA_ID, id);
-        }
-
-        setResult(2, data);
         finish();
 
     }

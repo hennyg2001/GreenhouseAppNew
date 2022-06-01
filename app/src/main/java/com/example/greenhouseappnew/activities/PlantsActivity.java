@@ -68,32 +68,6 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         Intent intent = getIntent();
         greenhouseId = intent.getIntExtra(CURRENT_GREENHOUSE_ID, 0);
 
-        // Launcher
-        ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-
-                    Intent data = result.getData();
-
-                    if(result.getResultCode() == RESULT_OK) {
-
-                        String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
-                        String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
-                        String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
-
-                        Plant plant = new Plant(name, type, description, greenhouseId);
-                        plantsViewModel.insert(plant);
-                        Toast.makeText(this, "Plant created...", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else {
-
-                        Toast.makeText(this, "Plant not saved...", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
-
         FloatingActionButton addPlantButton = findViewById(R.id.addPlantButton);
 
         addPlantButton.setOnClickListener(new View.OnClickListener() {
