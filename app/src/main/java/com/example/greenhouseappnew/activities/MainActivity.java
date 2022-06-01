@@ -26,20 +26,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    public static final int EDIT_NOTE_REQUEST = 2;
+
     private ActivityMainBinding binding;
 
-    public static final String MAIN_GREENHOUSE_ID = "com.example.greenhouseappnew.MAIN_GREENHOUSE_ID";
-    public static final String MAIN_GREENHOUSE_NAME = "com.example.greenhouseappnew.MAIN_GREENHOUSE_NAME";
-    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_LOCATION";
-    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_DESCRIPTION";
-    public static final String MAIN_GREENHOUSE_AREA = "com.example.greenhouseappnew.MAIN_GREENHOUSE_AREA";
-    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_CO2";
-    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
-
     private GreenhousesViewModel greenhousesViewModel;
-    private GreenhouseDAO greenhouseDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +66,27 @@ public class MainActivity extends AppCompatActivity {
                         Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
                         greenhousesViewModel.insert(greenhouse);
                         Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
+
+                    } else if (result.getResultCode() == EDIT_NOTE_REQUEST) {
+
+                        int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
+
+                        if (id == -1) {
+                            Toast.makeText(this, "Greenhouse can't be updated", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
+                        String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
+                        String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+                        Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
+                        Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
+                        Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
+                        Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
+
+                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
+                        greenhouse.setId(id);
+                        greenhousesViewModel.update(greenhouse);
 
                     }
                     else {
