@@ -80,6 +80,7 @@ public class GreenhouseAdapter extends RecyclerView.Adapter<GreenhouseAdapter.Vi
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION) {
                         listener.onEditClick(greenhouses.get(position));
+                        notifyItemChanged(position, view);
                     }
                 }
             });

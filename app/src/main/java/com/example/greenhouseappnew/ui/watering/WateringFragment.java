@@ -13,8 +13,10 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 public class WateringFragment extends Fragment {
 
@@ -36,6 +38,8 @@ public class WateringFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_watering, container, false);
+
+        viewModel = new ViewModelProvider(this).get(WateringViewModel.class);
 
         Bundle bundle = getArguments();
 

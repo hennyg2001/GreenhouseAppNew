@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.greenhouseappnew.data.GreenhouseDAO;
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
+import com.example.greenhouseappnew.model.Plant;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
@@ -26,20 +27,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    public static final int ADD_GREENHOUSE_REQUEST = 1;
+    public static final int EDIT_GREENHOUSE_REQUEST = 2;
+
     private ActivityMainBinding binding;
 
-    public static final String MAIN_GREENHOUSE_ID = "com.example.greenhouseappnew.MAIN_GREENHOUSE_ID";
-    public static final String MAIN_GREENHOUSE_NAME = "com.example.greenhouseappnew.MAIN_GREENHOUSE_NAME";
-    public static final String MAIN_GREENHOUSE_LOCATION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_LOCATION";
-    public static final String MAIN_GREENHOUSE_DESCRIPTION = "com.example.greenhouseappnew.MAIN_GREENHOUSE_DESCRIPTION";
-    public static final String MAIN_GREENHOUSE_AREA = "com.example.greenhouseappnew.MAIN_GREENHOUSE_AREA";
-    public static final String MAIN_GREENHOUSE_PREFERRED_CO2 = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_CO2";
-    public static final String MAIN_GREENHOUSE_PREFERRED_HUMIDITY = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_HUMIDITY";
-    public static final String MAIN_GREENHOUSE_PREFERRED_TEMPERATURE = "com.example.greenhouseappnew.MAIN_GREENHOUSE_PREFERRED_TEMPERATURE";
-
+    private String email;
     private GreenhousesViewModel greenhousesViewModel;
-    private GreenhouseDAO greenhouseDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,43 +47,13 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Greenhouses");
 
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
-
-        // Launcher
-        ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-
-                    Intent data = result.getData();
-
-                    if(result.getResultCode() == RESULT_OK) {
-
-                        String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
-                        String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
-                        String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
-                        Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
-                        Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
-                        Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
-                        Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
-
-                        Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
-                        greenhousesViewModel.insert(greenhouse);
-                        Toast.makeText(this, "Greenhouse created...", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else {
-
-                        Toast.makeText(this, "Greenhouse not saved...", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
+        email = intent.getStringExtra("email");
 
         binding.addGreenhouseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CreateEditGreenhouseActivity.class);
-                mStartForResult.launch(intent);
+                startActivityForResult(intent, ADD_GREENHOUSE_REQUEST);
             }
         });
 
@@ -130,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2, greenhouse.getCo2Preferred());
                 intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY, greenhouse.getHumidityPreferred());
                 intent.putExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE, greenhouse.getTemperaturePreferred());
-                startActivity(intent);
+                startActivityForResult(intent, EDIT_GREENHOUSE_REQUEST);
             }
         });
 
@@ -150,6 +114,50 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(greenhousesViewModel.getAll().toString());
 
         System.out.println(greenhousesViewModel.getAll());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_GREENHOUSE_REQUEST && resultCode == RESULT_OK) {
+            String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
+            String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
+            String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+            Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
+            Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
+            Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
+            Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
+
+            Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
+            greenhousesViewModel.insert(greenhouse);
+
+            Toast.makeText(this, "Greenhouse saved", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_GREENHOUSE_REQUEST && resultCode == RESULT_OK) {
+
+            int id = data.getIntExtra(CreateEditGreenhouseActivity.EXTRA_ID, -1);
+
+            if (id == -1) {
+                Toast.makeText(this, "Greenhouse can't be updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String name = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_NAME);
+            String location = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_LOCATION);
+            String description = data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_DESCRIPTION);
+            Double area = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_AREA));
+            Double co2 = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_CO2));
+            Double humidity = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_HUMIDITY));
+            Double temp = Double.parseDouble(data.getStringExtra(CreateEditGreenhouseActivity.EXTRA_GREENHOUSE_PREFERRED_TEMPERATURE));
+
+            Greenhouse greenhouse = new Greenhouse(name, location, description, area, co2, humidity, temp, email);
+            greenhouse.setId(id);
+            greenhousesViewModel.update(greenhouse);
+
+            Toast.makeText(this, "Greenhouse updated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Greenhouse not saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

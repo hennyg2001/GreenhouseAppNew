@@ -6,12 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.databinding.ActivityMainBinding;
+import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.network.GreenhouseRepository;
+import com.example.greenhouseappnew.ui.greenhouse.GreenhouseViewModel;
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 public class CreateEditGreenhouseActivity extends AppCompatActivity {
 
@@ -27,6 +32,8 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
     private EditText nameEditText, locationEditText, descriptionEditText, areaEditText, preferredCo2EditText, preferredHumidityEditText, preferredTempEditText;
     private Button createGreenhouseButton;
 
+    GreenhousesViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,8 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         preferredHumidityEditText = findViewById(R.id.greenhousePreferredHumidity);
         preferredTempEditText = findViewById(R.id.greenhousePreferredTemperature);
         createGreenhouseButton = findViewById(R.id.createGreenhouseButton);
+
+        viewModel = new ViewModelProvider(this).get(GreenhousesViewModel.class);
 
         setSupportActionBar(findViewById(R.id.add_greenhouse_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -86,6 +95,11 @@ public class CreateEditGreenhouseActivity extends AppCompatActivity {
         String preferredCo2 = preferredCo2EditText.getText().toString().trim();
         String preferredHumidity = preferredHumidityEditText.getText().toString().trim();
         String preferredTemp = preferredTempEditText.getText().toString().trim();
+
+        if (name.trim().isEmpty() || location.trim().isEmpty()) {
+            Toast.makeText(this, "Please insert a name and location", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent data = new Intent();
         data.putExtra(EXTRA_NAME, name);

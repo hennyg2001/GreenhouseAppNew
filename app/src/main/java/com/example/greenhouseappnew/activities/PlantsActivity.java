@@ -44,6 +44,11 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
 
     private FrameLayout fragmentContainer;
 
+    public static final int ADD_PLANT_REQUEST = 1;
+    public static final int EDIT_PLANT_REQUEST = 2;
+
+    private int greenhouseId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -61,33 +66,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
         setTitle("Plants");
 
         Intent intent = getIntent();
-        int greenhouseId = intent.getIntExtra(CURRENT_GREENHOUSE_ID, 0);
-
-        // Launcher
-        ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-
-                    Intent data = result.getData();
-
-                    if(result.getResultCode() == RESULT_OK) {
-
-                        String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
-                        String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
-                        String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
-
-                        Plant plant = new Plant(name, type, description, greenhouseId);
-                        plantsViewModel.insert(plant);
-                        Toast.makeText(this, "Plant created...", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else {
-
-                        Toast.makeText(this, "Plant not saved...", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
+        greenhouseId = intent.getIntExtra(CURRENT_GREENHOUSE_ID, 0);
 
         FloatingActionButton addPlantButton = findViewById(R.id.addPlantButton);
 
@@ -95,7 +74,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PlantsActivity.this, CreateEditPlantActivity.class);
-                mStartForResult.launch(intent);
+                startActivityForResult(intent, ADD_PLANT_REQUEST);
             }
         });
 
@@ -123,7 +102,7 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
                 intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME, plant.getName());
                 intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE, plant.getType());
                 intent.putExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION, plant.getDescription());
-                mStartForResult.launch(intent);
+                startActivityForResult(intent, EDIT_PLANT_REQUEST);
             }
             @Override
             public void onRoutinesClick(Plant plant) {
@@ -145,6 +124,41 @@ public class PlantsActivity extends AppCompatActivity implements PlantFragment.O
             }
         }).attachToRecyclerView(recyclerView);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_PLANT_REQUEST && resultCode == RESULT_OK) {
+            String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
+            String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
+            String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
+
+            Plant plant = new Plant(name, type, description, greenhouseId);
+            plantsViewModel.insert(plant);
+
+            Toast.makeText(this, "Plant saved", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_PLANT_REQUEST && resultCode == RESULT_OK) {
+            int id = data.getIntExtra(CreateEditPlantActivity.EXTRA_PLANT_ID, -1);
+
+            if (id == -1) {
+                Toast.makeText(this, "Plant can't be updated", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String name = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_NAME);
+            String type = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_TYPE);
+            String description = data.getStringExtra(CreateEditPlantActivity.EXTRA_PLANT_DESCRIPTION);
+
+            Plant plant = new Plant(name, type, description, greenhouseId);
+            plant.setId(id);
+            plantsViewModel.update(plant);
+
+            Toast.makeText(this, "Plant updated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Plant not saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
