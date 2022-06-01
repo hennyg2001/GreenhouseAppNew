@@ -1,10 +1,5 @@
 package com.example.greenhouseappnew.activities;
 
-import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_DESCRIPTION;
-import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_ID;
-import static com.example.greenhouseappnew.activities.CreateEditGreenhouseActivity.EXTRA_NAME;
-
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,17 +9,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.greenhouseappnew.R;
-import com.example.greenhouseappnew.model.Greenhouse;
-import com.example.greenhouseappnew.model.Plant;
-import com.example.greenhouseappnew.network.GreenhouseRepository;
-import com.example.greenhouseappnew.ui.plant_profile.PlantProfileFragment;
-import com.example.greenhouseappnew.ui.plants.PlantsFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
-import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 public class CreateEditPlantActivity extends AppCompatActivity {
 
