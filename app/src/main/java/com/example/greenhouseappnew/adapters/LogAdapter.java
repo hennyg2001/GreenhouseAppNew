@@ -9,27 +9,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.LogClass;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
-    ArrayList<LogClass> logClasses;
+    List<LogClass> logClasses = new ArrayList<>();
     LogAdapter.OnListItemClicker listener;
-
-    LogAdapter(ArrayList<LogClass> logClasses, LogAdapter.OnListItemClicker listener) {
-        this.logClasses = logClasses;
-        this.listener = listener;
-    }
 
     @NotNull
     @Override
-    public LogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.plant_item, parent, false);
+        View view = inflater.inflate(R.layout.table_item, parent, false);
         return new LogAdapter.ViewHolder(view);
     }
 
@@ -37,8 +34,18 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         viewHolder.name.setText("test");
     }
 
+    public void setLogs(List<LogClass> logs) {
+        this.logClasses = logs;
+        notifyDataSetChanged();
+    }
+
+    @Override
     public int getItemCount() {
         return logClasses.size();
+    }
+
+    public LogClass getLogAt(int position) {
+        return logClasses.get(position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -21,7 +21,6 @@ import java.util.List;
 
 public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolder> {
 
-    Context context;
     List<LogClass> logList = new ArrayList<>();
 
     @NonNull
