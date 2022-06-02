@@ -41,7 +41,7 @@ public interface GreenHouseApi {
     Call<List<Greenhouse>> getGreenHouseByEmail(@Path("userEmail") String userEmail);
 
     @GET("Plants/{greenhouseId}")
-    Call<List<PlantListResponse>> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
+    Call<List<Plant>> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
 
     @GET("Logs/{greenhouseId}")
     Call<List<LogClass>> getLogsByGreenhouseId(@Path("greenhouseId") int greenhouseId);

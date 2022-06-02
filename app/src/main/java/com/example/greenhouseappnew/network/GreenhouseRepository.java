@@ -198,13 +198,13 @@ public class GreenhouseRepository {
 
     public void searchForPlantsByGreenhouseId(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<List<PlantListResponse>> call = greenhouseApi.getPlantsFromGreenHouse(id);
-        call.enqueue(new Callback<List<PlantListResponse>>() {
+        Call<List<Plant>> call = greenhouseApi.getPlantsFromGreenHouse(id);
+        call.enqueue(new Callback<List<Plant>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<List<PlantListResponse>> call, Response<List<PlantListResponse>> response) {
+            public void onResponse(Call<List<Plant>> call, Response<List<Plant>> response) {
                 if (response.isSuccessful()) {
-                    //plantList.setValue(response.body().getResponse());
+                    plantList.setValue(response.body());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -212,7 +212,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<List<PlantListResponse>> call, Throwable t) {
+            public void onFailure(Call<List<Plant>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });

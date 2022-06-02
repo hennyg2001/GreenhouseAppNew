@@ -16,12 +16,14 @@ import java.util.List;
 public class PlantsViewModel extends AndroidViewModel {
 
     private RoomRepository repository;
+    private GreenhouseRepository greenhouseRepository;
     private LiveData<List<Plant>> allPlants;
 
     public PlantsViewModel(@NotNull Application application) {
         super(application);
         repository = new RoomRepository(application);
-        allPlants = repository.getAllPlants();
+        greenhouseRepository = new GreenhouseRepository();
+        allPlants = greenhouseRepository.getPlantList();
     }
 
     public LiveData<Plant> get(int id) {
@@ -29,7 +31,8 @@ public class PlantsViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Plant>> getAllPlantsByGreenhouse(int id) {
-        return repository.getPlantsByGreenhouse(id);
+        greenhouseRepository.searchForPlantsByGreenhouseId(id);
+        return greenhouseRepository.getPlantList();
     }
 
     public LiveData<List<Plant>> getAllPlants() {
@@ -37,15 +40,15 @@ public class PlantsViewModel extends AndroidViewModel {
     }
 
     public void insert(Plant plant) {
-        repository.insertPlant(plant);
+        greenhouseRepository.addPlant(plant);
     }
 
     public void update(Plant plant) {
-        repository.updatePlant(plant);
+        greenhouseRepository.updatePlant(plant);
     }
 
     public void delete(Plant plant) {
-        repository.deletePlant(plant);
+        greenhouseRepository.deletePlant(plant.getId());
     }
 
 }
