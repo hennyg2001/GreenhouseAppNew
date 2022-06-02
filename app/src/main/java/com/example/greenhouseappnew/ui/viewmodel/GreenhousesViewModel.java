@@ -15,11 +15,13 @@ import java.util.List;
 public class GreenhousesViewModel extends AndroidViewModel {
 
     private RoomRepository repository;
+    private GreenhouseRepository greenhouseRepository;
     private LiveData<List<Greenhouse>> allGreenhouses;
 
     public GreenhousesViewModel(@NonNull Application application) {
         super(application);
         repository = new RoomRepository(application);
+        greenhouseRepository = new GreenhouseRepository();
         allGreenhouses = repository.getAllGreenhouses();
     }
 
@@ -32,6 +34,7 @@ public class GreenhousesViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Greenhouse>> getAllByEmail(String email) {
+        //greenhouseRepository.searchForGreenhouseByEmail(email);
         return repository.getGreenhousesByEmail(email);
     }
 

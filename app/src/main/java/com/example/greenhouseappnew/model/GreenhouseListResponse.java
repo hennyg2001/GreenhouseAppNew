@@ -24,7 +24,9 @@ public class GreenhouseListResponse {
 
     private Double humidityPreferred;
 
-    public Greenhouse getResponse() {
-        return new Greenhouse( name,  location,  description,  area,  co2Preferred,  temperaturePreferred,  humidityPreferred);
+    private List<Greenhouse> response;
+
+    public List<Greenhouse> getResponse() {
+        return response;
     }
 }

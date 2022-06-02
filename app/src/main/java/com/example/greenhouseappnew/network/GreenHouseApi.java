@@ -18,6 +18,7 @@ import com.example.greenhouseappnew.model.RoutineResponse;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -36,7 +37,7 @@ public interface GreenHouseApi {
     Call<PlantResponse> getPlantById(@Path("plantId") int plantId);
 
     @GET("Greenhouse/{userEmail}")
-    Call<List<GreenhouseListResponse>> getGreenHouseByEmail(@Path("userEmail") String userEmail);
+    Call<GreenhouseListResponse> getGreenHouseByEmail(@Path("userEmail") String userEmail);
 
     @GET("Plants/{greenhouseId}")
     Call<List<PlantListResponse>> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
@@ -59,7 +60,8 @@ public interface GreenHouseApi {
     Call<Void> addPlant(@Body Plant params);
 
     @POST("Actuator/{greenhouseId}")
-    Call<Void> activeActuator(@Body int greenhouseId);
+    @Headers({"Accept:application/json", "Content-Type:application/json"})
+    Call<Void> activeActuator(@Path("greenhouseId") int greenhouseId);
 
     @PUT("Greenhouse")
     Call<GreenhouseResponse> updateGreenhouse(@Body Greenhouse greenHouse);

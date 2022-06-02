@@ -176,13 +176,13 @@ public class GreenhouseRepository {
 
     public void searchForGreenhouseByEmail(String email) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<List<GreenhouseListResponse>> call = greenhouseApi.getGreenHouseByEmail(email);
-        call.enqueue(new Callback<List<GreenhouseListResponse>>() {
+        Call<GreenhouseListResponse> call = greenhouseApi.getGreenHouseByEmail(email);
+        call.enqueue(new Callback<GreenhouseListResponse>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<List<GreenhouseListResponse>> call, Response<List<GreenhouseListResponse>> response) {
+            public void onResponse(Call<GreenhouseListResponse> call, Response<GreenhouseListResponse> response) {
                 if (response.isSuccessful()) {
-                    //greenHouseList.setValue();
+                    greenHouseList.setValue(response.body().getResponse());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -190,7 +190,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<List<GreenhouseListResponse>> call, Throwable t) {
+            public void onFailure(Call<GreenhouseListResponse> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });
@@ -410,12 +410,12 @@ public class GreenhouseRepository {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-
+                Log.i("Success", "The actuator was activated");
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Log.i("Failure", "The actuator was not activated");
             }
         });
     }
