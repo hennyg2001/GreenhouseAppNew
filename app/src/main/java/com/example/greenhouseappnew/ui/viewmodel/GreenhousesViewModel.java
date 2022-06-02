@@ -34,20 +34,20 @@ public class GreenhousesViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Greenhouse>> getAllByEmail(String email) {
-        //greenhouseRepository.searchForGreenhouseByEmail(email);
-        return repository.getGreenhousesByEmail(email);
+        greenhouseRepository.searchForGreenhouseByEmail(email);
+        return greenhouseRepository.getGreenHouseList();
     }
 
     public void insert(Greenhouse greenhouse) {
-        repository.insertGreenhouse(greenhouse);
+        greenhouseRepository.addGreenhouse(greenhouse);
     }
 
     public void update(Greenhouse greenhouse) {
-        repository.updateGreenhouse(greenhouse);
+        greenhouseRepository.updateGreenhouse(greenhouse);
     }
 
     public void delete(Greenhouse greenhouse) {
-        repository.deleteGreenhouse(greenhouse);
+        greenhouseRepository.deleteGreenhouse(greenhouse.getId());
     }
 
 }

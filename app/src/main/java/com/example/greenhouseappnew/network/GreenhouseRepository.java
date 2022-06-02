@@ -176,13 +176,13 @@ public class GreenhouseRepository {
 
     public void searchForGreenhouseByEmail(String email) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<GreenhouseListResponse> call = greenhouseApi.getGreenHouseByEmail(email);
-        call.enqueue(new Callback<GreenhouseListResponse>() {
+        Call<List<Greenhouse>> call = greenhouseApi.getGreenHouseByEmail(email);
+        call.enqueue(new Callback<List<Greenhouse>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<GreenhouseListResponse> call, Response<GreenhouseListResponse> response) {
+            public void onResponse(Call<List<Greenhouse>> call, Response<List<Greenhouse>> response) {
                 if (response.isSuccessful()) {
-                    greenHouseList.setValue(response.body().getResponse());
+                    greenHouseList.setValue(response.body());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -190,7 +190,7 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<GreenhouseListResponse> call, Throwable t) {
+            public void onFailure(Call<List<Greenhouse>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });
@@ -220,13 +220,13 @@ public class GreenhouseRepository {
 
     public void searchForLogsByGreenhouseId(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
-        Call<LogListResponse> call = greenhouseApi.getLogsByGreenhouseId(id);
-        call.enqueue(new Callback<LogListResponse>() {
+        Call<List<LogClass>> call = greenhouseApi.getLogsByGreenhouseId(id);
+        call.enqueue(new Callback<List<LogClass>>() {
             @EverythingIsNonNull
             @Override
-            public void onResponse(Call<LogListResponse> call, Response<LogListResponse> response) {
+            public void onResponse(Call<List<LogClass>> call, Response<List<LogClass>> response) {
                 if (response.isSuccessful()) {
-                    logList.setValue(response.body().getResponse());
+                    logList.setValue(response.body());
                     Log.i("Header", response.headers().toString());
                     Log.i("Complete response", String.valueOf(response.code()));
                     Log.i("Success", response.body().toString());
@@ -234,12 +234,13 @@ public class GreenhouseRepository {
             }
             @EverythingIsNonNull
             @Override
-            public void onFailure(Call<LogListResponse> call, Throwable t) {
+            public void onFailure(Call<List<LogClass>> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong :( " + t.getMessage());
             }
         });
     }
 
+    /*
     public void searchForLogById(int id) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();
         Call<LogListResponse> call = greenhouseApi.getLogsByGreenhouseId(id);
@@ -261,6 +262,8 @@ public class GreenhouseRepository {
             }
         });
     }
+
+     */
 
     public void addGreenhouse(Greenhouse params) {
         GreenHouseApi greenhouseApi = ServiceProvider.getGreenHouseApi();

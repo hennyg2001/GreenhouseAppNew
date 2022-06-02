@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.greenhouseappnew.ui.graphs.GraphFragment;
+import com.example.greenhouseappnew.ui.graphs.TableFragment;
 import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
 import com.example.greenhouseappnew.ui.plants.PlantsViewModel;
 import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
@@ -106,8 +107,12 @@ public class GreenhouseActivity extends AppCompatActivity {
                             break;
 
                         case R.id.nav_graphs:
-                            selectedFragment = new GraphFragment();
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                            Bundle graphsBundle = new Bundle();
+                            graphsBundle.putInt("greenhouseId", intent.getIntExtra(GREENHOUSE_ID, 0));
+
+                            TableFragment tableFragment = new TableFragment();
+                            tableFragment.setArguments(graphsBundle);
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, tableFragment).commit();
 
                             break;
 

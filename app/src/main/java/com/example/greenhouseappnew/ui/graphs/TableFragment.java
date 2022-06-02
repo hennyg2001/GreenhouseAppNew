@@ -1,5 +1,6 @@
 package com.example.greenhouseappnew.ui.graphs;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.greenhouseappnew.R;
+import com.example.greenhouseappnew.adapters.GreenhouseAdapter;
 import com.example.greenhouseappnew.adapters.TableAdapter;
 import com.example.greenhouseappnew.model.LogClass;
+import com.example.greenhouseappnew.ui.viewmodel.GreenhousesViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,8 @@ public class TableFragment extends Fragment {
    private RecyclerView recyclerView;
    private TableAdapter tableAdapter;
    private GraphViewModel viewModel;
+
+    private int mId;
 
 
     public TableFragment() {
@@ -62,36 +67,26 @@ public class TableFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        mId = getArguments().getInt("greenhouseId");
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_graphs, null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_table, container, false);
         viewModel = new ViewModelProvider(this).get(GraphViewModel.class);
-        recyclerView  = root.findViewById(R.id.table_recycler_view);
-        setRecyclerView();
-        return inflater.inflate(R.layout.fragment_table, container, false);
+        Context context = view.getContext();
+        RecyclerView recyclerView = view.findViewById(R.id.table_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.hasFixedSize();
+
+        TableAdapter adapter = new TableAdapter();
+        recyclerView.setAdapter(adapter);
+
+        viewModel.getAllLogsById(mId).observe(getViewLifecycleOwner(), (logs) -> {
+            adapter.setLogs(logs);
+        });
+        return view;
     }
 
-    public void setRecyclerView()
-    {
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        tableAdapter = new TableAdapter(this.getContext(), getList());
-        recyclerView.setAdapter(tableAdapter);
-    }
-
-    public List<LogClass> getList()
-    {
-        List<LogClass> logClassList = new ArrayList<>();
-        //add code from viewmodel to populate
-        logClassList = viewModel.getLogList().getValue();
-
-        return logClassList;
-
-    }
 }

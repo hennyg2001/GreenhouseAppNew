@@ -7,6 +7,7 @@ import androidx.room.Delete;
 import com.example.greenhouseappnew.model.Greenhouse;
 import com.example.greenhouseappnew.model.GreenhouseListResponse;
 import com.example.greenhouseappnew.model.GreenhouseResponse;
+import com.example.greenhouseappnew.model.LogClass;
 import com.example.greenhouseappnew.model.LogListResponse;
 import com.example.greenhouseappnew.model.LogResponse;
 import com.example.greenhouseappnew.model.Plant;
@@ -37,13 +38,13 @@ public interface GreenHouseApi {
     Call<PlantResponse> getPlantById(@Path("plantId") int plantId);
 
     @GET("Greenhouse/{userEmail}")
-    Call<GreenhouseListResponse> getGreenHouseByEmail(@Path("userEmail") String userEmail);
+    Call<List<Greenhouse>> getGreenHouseByEmail(@Path("userEmail") String userEmail);
 
     @GET("Plants/{greenhouseId}")
     Call<List<PlantListResponse>> getPlantsFromGreenHouse(@Path("greenhouseId") int greenhouseId);
 
     @GET("Logs/{greenhouseId}")
-    Call<LogListResponse> getLogsByGreenhouseId(@Path("greenhouseId") int greenhouseId);
+    Call<List<LogClass>> getLogsByGreenhouseId(@Path("greenhouseId") int greenhouseId);
 
     @GET("LogsById/{logId}")
     Call<LogResponse> getLogById(@Path("logId") int logId);

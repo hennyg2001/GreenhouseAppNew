@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import com.example.greenhouseappnew.R;
 import com.example.greenhouseappnew.ui.graphs.GraphFragment;
 import com.example.greenhouseappnew.ui.graphs.TableFragment;
+import com.example.greenhouseappnew.ui.greenhouse.GreenhouseFragment;
 
 public class GraphsActivity extends AppCompatActivity {
     Button tableBtn, graphBtn;
@@ -28,17 +29,23 @@ public class GraphsActivity extends AppCompatActivity {
         graphBtn = findViewById(R.id.graph_btn);
         graphLayout = findViewById(R.id.graph_frame_layout);
 
+        Fragment graphsFragment = new GraphFragment();
+        //graphsFragment.setArguments(greenhouseBundle);
+
+        Fragment tableFragment = new TableFragment();
+
+
         graphBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new GraphFragment());
+                replaceFragment(graphsFragment);
             }
         });
 
         tableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new TableFragment());
+                replaceFragment(tableFragment);
             }
         });
 
